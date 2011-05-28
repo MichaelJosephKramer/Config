@@ -48,3 +48,6 @@ set wildignore=*.o,*.obj,*~
 " Status Line
 set ls=2
 set statusline=\ %t\ %y\ Line:\ %l/%L:%c
+
+" CoffeeScript commands
+autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow
