@@ -48,3 +48,13 @@ set wildignore=*.o,*.obj,*~
 " Status Line
 set ls=2
 set statusline=\ %t\ %y\ Line:\ %l/%L:%c
+
+" CoffeeScript commands
+autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow
+
+" Move swap files
+if has("win32")
+   set directory=$TMP
+else
+   set directory=/tmp
+end
