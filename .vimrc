@@ -52,6 +52,9 @@ set statusline=\ %t\ %y\ Line:\ %l/%L:%c
 " CoffeeScript commands
 autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow
 
+" JSON syntax highlighting
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
 " Move swap files
 if has("win32")
    set directory=$TMP
