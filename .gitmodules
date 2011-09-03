@@ -13,8 +13,8 @@
 [submodule ".vim/bundle/vim-cucumber"]
 	path = .vim/bundle/vim-cucumber
 	url = http://github.com/tpope/vim-cucumber.git
-[submodule ".vim/bundle/tabular.vim"]
-	path = .vim/bundle/tabular.vim
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
 [submodule ".vim/bundle/vim-coffee-script"]
 	path = .vim/bundle/vim-coffee-script
