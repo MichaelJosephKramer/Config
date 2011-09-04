@@ -7,6 +7,9 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 filetype indent plugin on
 
+"Map leader key
+let mapleader=","
+
 "Remap ;; to ESC
 imap ;; <Esc> 
 
