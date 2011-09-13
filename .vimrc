@@ -20,6 +20,9 @@ colorscheme vividchalk
 
 syntax on
 
+"Remove splash screen
+set shortmess+=I
+
 set nobackup
 
 set hidden
