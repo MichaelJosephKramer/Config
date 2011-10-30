@@ -33,3 +33,6 @@ RPS1="%{$fg[green]%}%t%{$reset_color%}"
 
 # RVM configuration
 "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Aliases
+alias gitrm='git ls-files --deleted | xargs git rm'
