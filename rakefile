@@ -4,10 +4,10 @@ require 'rake'
 desc "symlink all dot files and bin directory"
 task :default do
   files = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..']
-  symlink files
+  symlink_to_home files
 end
 
-def symlink(files)
+def symlink_to_home(files)
   files.each do |file|
     case
       when file_identical?(file) then skip_identical_file(file)
