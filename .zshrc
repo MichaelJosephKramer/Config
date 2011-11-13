@@ -1,35 +1,34 @@
-# Activates terminal colors
-export CLICOLOR=1
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
 
-# Sets terminal colors
-export LSCOLORS=Dxfxcxdxbxegedabadacad
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
 
-# Sets colors in the completions lists
-export ZLS_COLORS=$LSCOLORS
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
 
-# Loads auto-completion list
-zmodload -i zsh/complist
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
 
-# Loads prompt colors
-autoload colors; colors
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
 
-# Options
-setopt CORRECT # Corrects spelling errors
-setopt CORRECT_ALL # Corrects argument errors
-setopt MENU_COMPLETE # Tab scrolls through completion options
-setopt HIST_IGNORE_DUPS # Ignore duplicates
-setopt HIST_FIND_NO_DUPS # Ignore duplicates
-setopt NOBEEP # I hate the beep
-setopt AUTO_CD # Automatically change directory without typing "cd"
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Node Path
-export NODE_PATH=/usr/local/lib/node_modules
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
 
-# Prompt -> "Michael-> path>"
-PS1="%{$reset_color$fg[cyan]%}Michael-> %{$reset_color$fg[yellow]%}%~>%{$reset_color%}"
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
 
-# Right Prompt -> "[current time]"
-RPS1="%{$fg[green]%}%t%{$reset_color%}"
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
 
 # RVM configuration
 "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
