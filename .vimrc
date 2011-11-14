@@ -8,13 +8,21 @@ call pathogen#runtime_append_all_bundles()
 filetype indent plugin on
 
 "Map leader key
-let mapleader=","
+let mapleader = ","
+let maplocalleader = "/"
 
 "Remap ;; to ESC
-imap ;; <Esc> 
+inoremap ;; <Esc>
 
 "Remap F2 to NERDTreeToggle
-map <silent> <F2> :NERDTreeToggle<CR>
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
+
+"Quickly edit/reload the vimrc file
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
+
+"View compiled CoffeeScript
+vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 
 colorscheme vividchalk
 
@@ -24,6 +32,7 @@ syntax on
 set shortmess+=I
 
 set nobackup
+set nowritebackup
 
 set hidden
 set number 
@@ -45,6 +54,7 @@ set incsearch
 set ignorecase
 set smartcase
 set visualbell 
+set backspace=indent,eol,start
 
 " Path/File Expansion
 set wildmode=list:longest
@@ -55,11 +65,18 @@ set wildignore=*.o,*.obj,*~
 set ls=2
 set statusline=\ %t\ %y\ Line:\ %l/%L:%c
 
-" CoffeeScript commands
-autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow
-
 " JSON syntax highlighting
-autocmd BufNewFile,BufRead *.json set ft=javascript
+augroup json
+  autocmd!
+  autocmd BufNewFile,BufRead *.json set ft=javascript
+augroup end
+
+" Comments
+augroup comments
+  autocmd!
+  autocmd FileType coffee,ruby nnoremap <buffer> <localleader>c I#<esc>
+  autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+augroup end
 
 " Move swap files
 if has("win32")
