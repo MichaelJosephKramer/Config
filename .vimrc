@@ -65,10 +65,11 @@ set wildignore=*.o,*.obj,*~
 set ls=2
 set statusline=\ %t\ %y\ Line:\ %l/%L:%c
 
-" JSON syntax highlighting
-augroup json
+" additonal syntax highlighting
+augroup syntax 
   autocmd!
-  autocmd BufNewFile,BufRead *.json set ft=javascript
+  autocmd BufNewFile,BufRead *.json setfiletype javascript
+  autocmd BufNewFile,BufRead *.rabl setfiletype ruby
 augroup end
 
 " Comments
