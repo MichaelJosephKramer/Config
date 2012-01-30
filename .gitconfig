@@ -14,3 +14,13 @@
 	email = michael.kramer@live.com
 [core]
 	editor = /usr/bin/vim
+[merge]
+	tool = p4merge
+	keepBackup = false
+[mergetool "p4merge"]
+	cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  trustExitCode = false
+  keepTemporaries = false
+  keepBackup = false
+[diff]
+  external = p4diff
