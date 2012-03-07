@@ -31,6 +31,9 @@ syntax on
 "Remove splash screen
 set shortmess+=I
 
+"I don't need the help
+noremap <F1> <ESC>
+
 set nobackup
 set nowritebackup
 
