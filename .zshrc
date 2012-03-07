@@ -35,3 +35,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias gitrm='git ls-files --deleted | xargs git rm'
+alias vim='~/Applications/MacVim.app/Contents/MacOS/vim'
