@@ -3,7 +3,7 @@
   ci = commit
   st = status
   br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  hist = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
   last = cat-file commit HEAD
@@ -24,3 +24,5 @@
   keepBackup = false
 [diff]
   external = p4diff
+[mergetool]
+	keepBackup = false
