@@ -33,6 +33,21 @@ source $ZSH/oh-my-zsh.sh
 # RVM configuration
 "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# Tmuxinator configuration
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+export EDITOR=vim
+
 # Aliases
 alias gitrm='git ls-files --deleted | xargs git rm'
 alias vim='~/Applications/MacVim.app/Contents/MacOS/vim'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Oracle Client
+export DYLD_LIBRARY_PATH="/usr/local/oracle/instantclient_10_2"
+export SQLPATH="/usr/local/oracle/instantclient_10_2"
+export TNS_ADMIN="/usr/local/oracle/network/admin"
+export NLS_LANG="AMERICAN_AMERICA.UTF8"
+export PATH=$PATH:$DYLD_LIBRARY_PATH
+export ORACLE_HOME="/usr/local/oracle/instantclient_10_2"
+export USE_32BIT_FOR_ORACLE=true
