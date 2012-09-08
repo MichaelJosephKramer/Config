@@ -11,8 +11,8 @@ filetype indent plugin on
 let mapleader = ","
 let maplocalleader = "/"
 
-"Remap ;; to ESC
-inoremap ;; <Esc>
+"Remap kj to ESC
+inoremap kj <Esc>
 
 "Remap F2 to NERDTreeToggle
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
