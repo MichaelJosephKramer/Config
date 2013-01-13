@@ -39,7 +39,6 @@ export EDITOR=vim
 
 # Aliases
 alias gitrm='git ls-files --deleted | xargs git rm'
-alias vim='~/Applications/MacVim.app/Contents/MacOS/vim'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
