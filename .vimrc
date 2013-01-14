@@ -36,7 +36,7 @@ nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 
 syntax on
-colorscheme vividchalk
+:silent! colorscheme vividchalk
 
 "Remove splash screen
 set shortmess+=I
