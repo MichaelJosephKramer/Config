@@ -1,10 +1,21 @@
 "VIM compatibility
 set nocompatible
 
-"Pathogen Configuration
+"Vundle Configuration
 filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+
+set rtp+=~/Config/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'wincent/Command-T'
+
 filetype indent plugin on
 
 "Map leader key
@@ -24,9 +35,8 @@ nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 "View compiled CoffeeScript
 vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 
-colorscheme vividchalk
-
 syntax on
+colorscheme vividchalk
 
 "Remove splash screen
 set shortmess+=I
