@@ -26,3 +26,5 @@
   external = p4diff
 [mergetool]
 	keepBackup = false
+[heroku]
+	account = personal
