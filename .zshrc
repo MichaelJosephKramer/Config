@@ -39,8 +39,14 @@ export EDITOR=vim
 
 # Aliases
 alias gitrm='git ls-files --deleted | xargs git rm'
+alias trash='sudo rm -Rf ~/.Trash/*'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+### Comverge                         
+alias zars='NO_BIS=y LOCALE="en-ZA" be rails s'
+alias zarc='NO_BIS=y LOCALE="en-ZA" be rails c'
+alias jci='bundle exec jasmine-headless-webkit -c -j spec/javascripts/support/energy_insight.yml' 
