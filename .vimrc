@@ -15,6 +15,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'wincent/Command-T'
+Bundle 'tpope/vim-commentary'
 
 filetype indent plugin on
 
@@ -83,13 +84,6 @@ augroup syntax
   autocmd!
   autocmd BufNewFile,BufRead *.json setfiletype javascript
   autocmd BufNewFile,BufRead *.rabl setfiletype ruby
-augroup end
-
-" Comments
-augroup comments
-  autocmd!
-  autocmd FileType coffee,ruby nnoremap <buffer> <localleader>c I#<esc>
-  autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 augroup end
 
 " Move swap files
