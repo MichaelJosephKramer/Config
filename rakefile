@@ -4,9 +4,9 @@ require 'rake'
 desc "symlink all dot files and bin directory"
 task :default do
   files = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..']
+  symlink_to_home files
   update_submodules
   update_vim_plugins
-  symlink_to_home files
 end
 
 def update_submodules
@@ -14,7 +14,7 @@ def update_submodules
 end
 
 def update_vim_plugins
-  sh 'vim +BundleInstall +qall'
+  sh 'vim -u .vim/install.vim +BundleInstall +qall'
 end
 
 def symlink_to_home(files)
