@@ -13,6 +13,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-commentary'
+Bundle 'airblade/vim-gitgutter'
 
 " ****************************************************************************** 
 " COMMAND-T
@@ -34,3 +35,10 @@ nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
 " compile CoffeeScript in a new buffer
 vnoremap <silent> <localleader>c :CoffeeCompile<CR>
+
+
+" ****************************************************************************** 
+" VIM-GITGUTTER
+" ****************************************************************************** 
+
+nnoremap <silent> <leader>g :ToggleGitGutter<CR>
