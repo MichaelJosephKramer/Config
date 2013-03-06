@@ -41,4 +41,11 @@ vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 " VIM-GITGUTTER
 " ****************************************************************************** 
 
-nnoremap <silent> <leader>g :ToggleGitGutter<CR>
+" start with git gutter offer
+let g:gitgutter_enabled = 0
+
+" toggle the git gutter
+nnoremap <silent> <leader>g :GitGutterToggle<CR>
+
+" toggler the git gutter highlights
+nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
