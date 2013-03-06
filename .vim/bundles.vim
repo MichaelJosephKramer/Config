@@ -36,16 +36,15 @@ nnoremap <silent> <F2> :NERDTreeToggle<CR>
 " compile CoffeeScript in a new buffer
 vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 
-
 " ****************************************************************************** 
 " VIM-GITGUTTER
 " ****************************************************************************** 
 
-" start with git gutter offer
+" start with git gutter off
 let g:gitgutter_enabled = 0
 
 " toggle the git gutter
 nnoremap <silent> <leader>g :GitGutterToggle<CR>
 
-" toggler the git gutter highlights
+" toggle the git gutter highlights
 nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
