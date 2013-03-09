@@ -13,15 +13,20 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 
 " ****************************************************************************** 
 " COMMAND-T
 " ******************************************************************************   
 
-let g:CommandTCancelMap = ['<ESC>', '<C-c>']
-let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
-let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
+" basic mapping to use the window
+let g:CommandTCancelMap = '<ESC>'
+let g:CommandTSelectNextMap = '<ESC>OB'
+let g:CommandTSelectPrevMap = '<ESC>OA'
+
+" show hidden files
+let g:CommandTScanDotDirectories = 1
 
 " ******************************************************************************
 " NERDTREEE
