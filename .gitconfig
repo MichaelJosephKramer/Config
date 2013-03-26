@@ -1,11 +1,5 @@
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
   hist = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
   last = cat-file commit HEAD
 [color]
   ui = true
@@ -14,6 +8,7 @@
 	email = michael.kramer@live.com
 [core]
 	editor = /usr/bin/vim
+	pager = less -F -X
 [merge]
 	tool = p4merge
 	keepBackup = false
