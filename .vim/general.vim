@@ -115,7 +115,7 @@ set smartcase
 set laststatus=2
 
 " the deets...
-set statusline=\ File:\ %t\ %y\ %r 
+set statusline=\ %{fugitive#statusline()}\ File:\ %t\ %y\ %r 
 set statusline+=%=Buffer:\ %n\ --\ Location:\ %l/%L:%c\ 
 
 " ****************************************************************************** 
