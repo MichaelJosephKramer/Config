@@ -35,8 +35,8 @@ set cursorcolumn
 " allow hidden buffers instead of closing
 set hidden
 
-" always show line number
-set number 
+" show the relative line number
+set relativenumber
 
 " scroll buffer
 set scrolloff=10
