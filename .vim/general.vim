@@ -118,6 +118,10 @@ set laststatus=2
 set statusline=\ %{fugitive#statusline()}\ File:\ %t\ %y\ %r 
 set statusline+=%=Buffer:\ %n\ --\ Location:\ %l/%L:%c\ 
 
+" change color of the statusbar on mode change
+au InsertEnter * highlight statusline ctermbg=226 ctermfg=16
+au InsertLeave * highlight statusline ctermbg=255 ctermfg=0 cterm=bold
+
 " ****************************************************************************** 
 " TABS AND SPACES
 " ******************************************************************************
