@@ -1,25 +1,25 @@
 [alias]
   alias = !git config -l | grep alias | cut -c 7- | sort
-  hist = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
-  last = cat-file commit HEAD
+  hist  = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
+  last  = cat-file commit HEAD
   rmall = !git ls-files --deleted | xargs git rm
-  this = !git init && git add . && git commit -m \"Initial commit\"
+  this  = !git init && git add . && git commit -m \"Initial commit\"
 [color]
   ui = true
 [user]
-  name = Michael Joseph Kramer
+  name  = Michael Joseph Kramer
   email = michael.kramer@live.com
 [core]
   editor = /usr/bin/vim
-  pager = less -F -X
+  pager  = less -F -X
 [merge]
-  tool = p4merge
+  tool       = p4merge
   keepBackup = false
 [mergetool "p4merge"]
-  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-  trustExitCode = false
+  cmd             = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  trustExitCode   = false
   keepTemporaries = false
-  keepBackup = false
+  keepBackup      = false
 [diff]
   external = p4diff
 [mergetool]
