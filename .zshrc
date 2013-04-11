@@ -39,7 +39,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 
 # Aliases
-alias gitrm='git ls-files --deleted | xargs git rm'
 alias trash='sudo rm -Rf ~/.Trash/*'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
