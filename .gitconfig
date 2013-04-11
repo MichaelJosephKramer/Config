@@ -4,22 +4,22 @@
 [color]
   ui = true
 [user]
-	name = Michael Joseph Kramer
-	email = michael.kramer@live.com
+  name = Michael Joseph Kramer
+  email = michael.kramer@live.com
 [core]
-	editor = /usr/bin/vim
-	pager = less -F -X
+  editor = /usr/bin/vim
+  pager = less -F -X
 [merge]
-	tool = p4merge
-	keepBackup = false
+  tool = p4merge
+  keepBackup = false
 [mergetool "p4merge"]
-	cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
   trustExitCode = false
   keepTemporaries = false
   keepBackup = false
 [diff]
   external = p4diff
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [heroku]
-	account = personal
+  account = personal
