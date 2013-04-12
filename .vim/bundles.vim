@@ -29,9 +29,10 @@ let g:CommandTSelectPrevMap = '<ESC>OA'
 let g:CommandTScanDotDirectories = 1
 
 " ******************************************************************************
-" NERDTREEE
+" NERDTREE
 " ****************************************************************************** 
 
+" toggle NERDTree on and off
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
 " ****************************************************************************** 
