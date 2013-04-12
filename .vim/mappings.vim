@@ -14,4 +14,4 @@ inoremap kj <Esc>
 " TOGGLE RELATIVENUMBER TO NUMBER
 " ******************************************************************************
 
-nnoremap <silent> <leader>n :call ToggleRelativeNumber()<cr>
+nnoremap <silent> <leader>r :call ToggleRelativeNumber()<cr>
