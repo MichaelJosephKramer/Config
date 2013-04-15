@@ -8,14 +8,24 @@ augroup syntax
   autocmd BufNewFile,BufRead {Gemfile,Guardfile,*.rabl} setfiletype ruby
 augroup end
 
+
 " ****************************************************************************** 
-" BASICS
+" COLORSCHEME
 "
 " Oh, behave...
 " ****************************************************************************** 
 
 " the color sheme, dumbass
 colorscheme vividchalk
+
+" enable color syntax highlighting
+syntax on
+
+" ****************************************************************************** 
+" BASICS
+"
+" Oh, behave...
+" ****************************************************************************** 
 
 " update the file if it's been changed externally
 set autoread
@@ -27,7 +37,10 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 
 " highlight current line
-set cul
+set cursorline
+
+" current line highlight details
+highlight cursorline cterm=bold
 
 " highlight current column
 set cursorcolumn
@@ -52,9 +65,6 @@ set showmatch
 
 " vim is terrible without this - no beeps
 set visualbell 
-
-" enable color syntax highlighting
-syntax on
 
 " ****************************************************************************** 
 " BACKUP FILES
@@ -118,9 +128,9 @@ set laststatus=2
 set statusline=\ %{fugitive#statusline()}\ File:\ %t\ %y\ %r 
 set statusline+=%=Buffer:\ %n\ --\ Location:\ %l/%L:%c\ 
 
-" change color of the statusbar on mode change
+" change color of the status line on mode change
 au InsertEnter * highlight statusline ctermbg=226 ctermfg=16
-au InsertLeave * highlight statusline ctermbg=255 ctermfg=0 cterm=bold
+au InsertLeave * highlight statusline ctermbg=255 ctermfg=0
 
 " ****************************************************************************** 
 " TABS AND SPACES
