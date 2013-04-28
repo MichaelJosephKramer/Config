@@ -3,7 +3,7 @@
   hist  = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
   last  = cat-file commit HEAD
   rmall = !git ls-files --deleted | xargs git rm
-  this  = !git init && git add . && git commit -m \"Initial commit\"
+  this  = !git init && git add . && git commit -m 'Initial commit'
 [color]
   ui = true
 [user]
