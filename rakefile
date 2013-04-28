@@ -6,11 +6,18 @@ task :default do
   files = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..']
   symlink_to_home files
   update_submodules
+  install_vundle
   update_vim_plugins
 end
 
 def update_submodules
   sh 'git submodule update --init' 
+end
+
+def install_vundle
+  clear_vundle_dir = 'rm -rf ~/.vim/bundle/vundle'
+  clone_vundle = 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
+  sh "#{clear_vundle_dir} && #{clone_vundle}"
 end
 
 def update_vim_plugins
