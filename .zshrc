@@ -47,5 +47,5 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Comverge                         
-alias zars='NO_BIS=y LOCALE="en-ZA" be rails s'
+alias zars='NO_BIS=y LOCALE="en-ZA" be rails s thin'
 alias zarc='NO_BIS=y LOCALE="en-ZA" be rails c'
