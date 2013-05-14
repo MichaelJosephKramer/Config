@@ -8,11 +8,8 @@ augroup syntax
   autocmd BufNewFile,BufRead {Gemfile,Guardfile,*.rabl} setfiletype ruby
 augroup end
 
-
 " ****************************************************************************** 
 " COLORSCHEME
-"
-" Oh, behave...
 " ****************************************************************************** 
 
 " the color sheme, dumbass
