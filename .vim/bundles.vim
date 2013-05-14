@@ -5,18 +5,18 @@
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'rking/ag.vim'
-Bundle 'wincent/Command-T'
-Bundle 'scrooloose/nerdtree'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-vividchalk'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'rking/ag.vim'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'wincent/Command-T'
 
 " ****************************************************************************** 
 " COMMAND-T
