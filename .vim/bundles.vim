@@ -14,6 +14,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 
