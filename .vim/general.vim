@@ -126,8 +126,11 @@ set statusline=\ %{fugitive#statusline()}\ File:\ %t\ %y\ %r
 set statusline+=%=Buffer:\ %n\ --\ Location:\ %l/%L:%c\ 
 
 " change color of the status line on mode change
-au InsertEnter * highlight statusline ctermbg=226 ctermfg=16
-au InsertLeave * highlight statusline ctermbg=255 ctermfg=0
+augroup insert_highlight
+  autocmd!
+  autocmd InsertEnter * highlight statusline ctermbg=226 ctermfg=16
+  autocmd InsertLeave * highlight statusline ctermbg=255 ctermfg=0
+augroup end
 
 " ****************************************************************************** 
 " TABS AND SPACES
