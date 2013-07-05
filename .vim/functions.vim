@@ -9,3 +9,9 @@ function! ToggleRelativeNumber()
     set relativenumber
   endif
 endfunc
+
+function! SetRelativeNumberIfNumbersAreSet()
+  if (&relativenumber || &number)
+    set relativenumber
+  endif
+endfunc

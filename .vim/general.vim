@@ -136,3 +136,15 @@ set shiftwidth=2
 
 " columns per tab in insert mode
 set softtabstop=2
+
+" ****************************************************************************** 
+" NUMBERING
+" ******************************************************************************   
+
+augroup numbering
+  autocmd!
+  autocmd BufEnter * :call SetRelativeNumberIfNumbersAreSet()
+  autocmd InsertEnter * set number
+  autocmd InsertLeave * set relativenumber
+augroup end
+
