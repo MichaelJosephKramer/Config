@@ -6,6 +6,7 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'bling/vim-airline'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
@@ -36,6 +37,15 @@ let g:CommandTScanDotDirectories = 1
 
 " toggle NERDTree on and off
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
+
+" ****************************************************************************** 
+" VIM-AIRLINE
+" ****************************************************************************** 
+
+" add fancy glyphs -- requires a powerline font
+let g:airline_powerline_fonts=1
+
+let g:airline_theme='light'
 
 " ****************************************************************************** 
 " VIM-COFFEE-SCRIPT
