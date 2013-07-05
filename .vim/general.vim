@@ -89,7 +89,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " ignore from completion
-set wildignore=*.o,*.obj,*~
+set wildignore=*.o,*.obj,*~,*.git
 
 " ******************************************************************************
 " CURSOR
