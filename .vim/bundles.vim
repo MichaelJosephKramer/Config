@@ -32,6 +32,16 @@ let g:CommandTSelectPrevMap = '<ESC>OA'
 let g:CommandTScanDotDirectories = 1
 
 " ******************************************************************************
+" FUGITIVE
+" ****************************************************************************** 
+
+" allow Ggrep results to appear in the quickfix window
+autocmd QuickFixCmdPre *grep* cwindow
+
+" allow Glog results to appear in the quickfix window
+autocmd QuickFixCmdPost *log* cwindow
+
+" ******************************************************************************
 " NERDTREE
 " ****************************************************************************** 
 
