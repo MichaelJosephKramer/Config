@@ -48,6 +48,9 @@ autocmd QuickFixCmdPost *log* cwindow
 " toggle NERDTree on and off
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
+" close NERDTree when a file is selected
+let NERDTreeQuitOnOpen = 1
+
 " ****************************************************************************** 
 " VIM-AIRLINE
 " ****************************************************************************** 
