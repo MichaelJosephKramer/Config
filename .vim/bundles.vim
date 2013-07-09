@@ -58,6 +58,7 @@ let NERDTreeQuitOnOpen = 1
 " add fancy glyphs -- requires a powerline font
 let g:airline_powerline_fonts=1
 
+" set the airline theme
 let g:airline_theme='light'
 
 " ****************************************************************************** 
