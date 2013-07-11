@@ -105,6 +105,12 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " SEARCH
 " ******************************************************************************
 
+" highlight search matches
+set hlsearch
+
+" underline search matches
+hi Search cterm=underline
+
 " show matches as you type the search pattern
 set incsearch
 
