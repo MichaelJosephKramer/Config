@@ -33,7 +33,12 @@ let g:CommandTSelectPrevMap = '<ESC>OA'
 " show hidden files
 let g:CommandTScanDotDirectories = 1
 
+" set defaults to smaller numbers because performance
+let g:CommandTMaxFiles = 10000
+let g:CommandTMaxDepth = 10
 
+" flush the contents of the bugger
+nnoremap <silent> <leader>f :CommandTFlush<CR>
 
 " ******************************************************************************
 " NERDTREE
