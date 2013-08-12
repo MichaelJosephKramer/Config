@@ -4,6 +4,8 @@
   last  = cat-file commit HEAD
   rmall = !git ls-files --deleted | xargs git rm
   this  = !git init && git add . && git commit -m 'Initial commit'
+  sha   = !git rev-parse HEAD | tr -d \"\n\" | pbcopy
+  br    = !git name-rev HEAD --name-only | tr -d \"\n\" | pbcopy
 [color]
   ui = true
 [user]
