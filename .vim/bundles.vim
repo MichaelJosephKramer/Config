@@ -21,6 +21,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'wincent/Command-T'
 
