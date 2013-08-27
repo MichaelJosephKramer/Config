@@ -49,6 +49,9 @@ hi ColorColumn ctermbg=235
 " allow hidden buffers instead of closing
 set hidden
 
+" show the line number
+set number
+
 " show the relative line number
 set relativenumber
 
@@ -153,8 +156,8 @@ set softtabstop=2
 
 augroup numbering
   autocmd!
-  autocmd BufEnter * :call SetRelativeNumberIfNumbersAreSet()
-  autocmd InsertEnter * set number
+  autocmd BufEnter * set relativenumber
+  autocmd InsertEnter * set norelativenumber
   autocmd InsertLeave * set relativenumber
 augroup end
 

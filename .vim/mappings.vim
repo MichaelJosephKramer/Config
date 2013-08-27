@@ -14,7 +14,7 @@ inoremap kj <Esc>
 " TOGGLE RELATIVENUMBER TO NUMBER
 " ******************************************************************************
 
-nnoremap <silent> <leader>r :call ToggleRelativeNumber()<cr>
+nnoremap <silent> <leader>r :set relativenumber!<cr>
 
 " ******************************************************************************
 " REMAP FOR REVERSE SEARCH
