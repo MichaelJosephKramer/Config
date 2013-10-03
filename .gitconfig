@@ -22,7 +22,7 @@
   trustExitCode   = false
   keepTemporaries = false
   keepBackup      = false
-[diff]
+[difftool]
   external = p4diff
 [mergetool]
   keepBackup = false
