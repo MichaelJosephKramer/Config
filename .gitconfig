@@ -12,7 +12,7 @@
   name  = Michael Joseph Kramer
   email = michael@saghou.se
 [core]
-  editor = /usr/bin/vim
+  editor = /usr/local/bin/vim
   pager  = less -F -X
 [merge]
   tool       = p4merge
