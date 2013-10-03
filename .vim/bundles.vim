@@ -67,6 +67,9 @@ nnoremap <silent> <F2> :NERDTreeToggle<CR>
 " close NERDTree when a file is selected
 let NERDTreeQuitOnOpen = 1
 
+" directories NERDTree should ignore
+let NERDTreeIgnore = ['node_modules$[[dir]]']
+
 " ******************************************************************************
 " VIM-AIRLINE
 " ******************************************************************************

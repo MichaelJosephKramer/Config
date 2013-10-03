@@ -96,7 +96,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " ignore from completion
-set wildignore=*.o,*.obj,*~,*.git,bundle
+set wildignore=*.git,bundle,node_modules
 
 " ******************************************************************************
 " CURSOR
