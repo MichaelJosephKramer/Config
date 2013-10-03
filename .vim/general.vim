@@ -161,3 +161,8 @@ augroup numbering
   autocmd InsertLeave * set relativenumber
 augroup end
 
+" ******************************************************************************
+" FOLDING
+" ******************************************************************************
+
+set nofoldenable
