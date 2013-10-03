@@ -26,4 +26,4 @@ nnoremap \ ,
 " REMOVE SEARCH HIGHLIGHTING
 " ******************************************************************************
 
-nnoremap <silent> <leader>w :set hls!<cr>
+nnoremap <silent> <leader>w :noh<cr>
