@@ -10,7 +10,7 @@
   ui = true
 [user]
   name  = Michael Joseph Kramer
-  email = michael@saghou.se
+	email = michael@sagehou.se
 [core]
   editor = /usr/local/bin/vim
   pager  = less -F -X
