@@ -41,7 +41,6 @@ export EDITOR=vim
 # Aliases
 alias trash='sudo rm -Rf ~/.Trash/*'
 alias speedup='sudo rm -rf /private/var/log/asl/*.asl'
-alias chrome="open /Applications/Google\ Chrome.app/ --args --disable-web-security"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
