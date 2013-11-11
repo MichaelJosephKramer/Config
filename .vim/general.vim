@@ -150,6 +150,9 @@ set shiftwidth=2
 " columns per tab in insert mode
 set softtabstop=2
 
+" set list characters
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸▸
+
 " ******************************************************************************
 " NUMBERING
 " ******************************************************************************
