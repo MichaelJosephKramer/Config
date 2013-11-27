@@ -17,6 +17,7 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
@@ -69,6 +70,31 @@ let NERDTreeQuitOnOpen = 1
 
 " directories NERDTree should ignore
 let NERDTreeIgnore = ['node_modules$[[dir]]']
+
+" ******************************************************************************
+" SYNTASTIC
+" ******************************************************************************
+
+" set to check files when opened
+let g:syntastic_check_on_open = 1
+
+" set syntastic error symbol
+let g:syntastic_error_symbol = '⛔'
+
+" set syntastic warning symbol
+let g:syntastic_warning_symbol = '🚧'
+
+" set syntastic to always populate the loclist
+let g:syntastic_always_populate_loc_list = 1
+
+" open and close the loclist automatically
+let g:syntastic_auto_loc_list = 1
+
+" set active/passive filetypes
+let g:syntastic_mode_map= { 'mode': 'active',
+  \ 'active_filetypes'  : ['javascript'],
+  \ 'passive_filetypes' : ['html']
+  \ }
 
 " ******************************************************************************
 " VIM-AIRLINE
