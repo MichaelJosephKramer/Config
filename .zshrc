@@ -52,3 +52,7 @@ source ~/.bin/tmuxinator.zsh
 
 # Let tmux set the window title
 export DISABLE_AUTO_TITLE=true
+
+# chruby configuration
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
