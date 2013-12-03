@@ -25,30 +25,23 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler git rails3 rvm)
+plugins=(bundler git rails3)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-
-# RVM configuration
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Tmuxinator configuration
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 export EDITOR=vim
 
+# Tmuxinator autocompletion
+source ~/.bin/tmuxinator.zsh
+
 # Aliases
 alias trash='sudo rm -Rf ~/.Trash/*'
 alias speedup='sudo rm -rf /private/var/log/asl/*.asl'
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-# Tmuxinator autocompletion
-source ~/.bin/tmuxinator.zsh
 
 # Let tmux set the window title
 export DISABLE_AUTO_TITLE=true
