@@ -50,6 +50,8 @@
 	<false/>
 	<key>HideActivityIndicator</key>
 	<false/>
+	<key>HideMenuBarInFullscreen</key>
+	<true/>
 	<key>HideScrollbar</key>
 	<false/>
 	<key>HideTab</key>
@@ -110,9 +112,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>654 699 445 270 0 0 2560 1418 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>232 741 924 485 0 0 2560 1418 </string>
+	<string>232 741 605 485 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>20 22 1242 1376 0 0 2560 1418 </string>
+	<string>20 22 2518 1376 0 0 2560 1418 </string>
 	<key>NeverWarnAboutShortLivedSessions_F842C127-223D-4472-813D-F1B9009C7354</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -843,6 +845,8 @@
 			<string>/Volumes/Documents/Users/Michael</string>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -907,7 +911,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-11-12T13:33:08Z</date>
+	<date>2013-11-23T14:09:12Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -949,6 +953,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>1.0.0.20131109</string>
+	<string>1.0.0.20131116</string>
 </dict>
 </plist>
