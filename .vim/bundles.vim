@@ -91,10 +91,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 
 " set active/passive filetypes
-let g:syntastic_mode_map= { 'mode': 'active',
-  \ 'active_filetypes'  : ['javascript'],
+let g:syntastic_mode_map= {
+  \ 'mode': 'active',
+  \ 'active_filetypes'  : [],
   \ 'passive_filetypes' : ['html']
   \ }
+
+" toggle the mode
+nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
 
 " ******************************************************************************
 " VIM-AIRLINE
