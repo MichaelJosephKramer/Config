@@ -8,7 +8,6 @@ call vundle#rc()
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'csexton/trailertrash.vim'
-Bundle 'ervandew/supertab'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
@@ -24,6 +23,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vividchalk'
+Bundle 'valloric/youcompleteme'
 Bundle 'wincent/Command-T'
 
 " ******************************************************************************
