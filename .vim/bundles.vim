@@ -24,7 +24,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'valloric/youcompleteme'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'wincent/Command-T'
 
 " ******************************************************************************
