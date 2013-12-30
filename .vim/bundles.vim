@@ -16,13 +16,13 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'rizzatti/dash.vim'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rking/ag.vim'
+Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'wincent/Command-T'
@@ -58,6 +58,19 @@ let g:dash_map = {
   \ 'javascript' : 'underscore',
   \ 'ruby'       : 'rails'
   \ }
+
+" ******************************************************************************
+" NERDTREE
+" ******************************************************************************
+
+" toggle NERDTree on and off
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
+
+" close NERDTree when a file is selected
+let NERDTreeQuitOnOpen = 1
+
+" directories NERDTree should ignore
+let NERDTreeIgnore = ['node_modules$[[dir]]']
 
 " ******************************************************************************
 " SYNTASTIC
