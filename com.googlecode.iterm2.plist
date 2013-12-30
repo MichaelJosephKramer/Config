@@ -114,7 +114,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>232 741 924 485 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>20 32 1396 826 0 0 1440 878 </string>
+	<string>20 747 890 651 0 0 2560 1418 </string>
 	<key>NeverWarnAboutShortLivedSessions_F842C127-223D-4472-813D-F1B9009C7354</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -913,7 +913,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-12-14T12:02:40Z</date>
+	<date>2013-12-30T16:23:23Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -947,7 +947,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>Lucida Grande</string>
+	<string>.Lucida Grande UI</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
