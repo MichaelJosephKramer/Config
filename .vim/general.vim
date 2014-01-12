@@ -8,6 +8,9 @@ augroup syntax
   autocmd BufNewFile,BufRead {Gemfile,Guardfile,*.rabl} setfiletype ruby
 augroup end
 
+" correct terrible out-of-the-box html indentation
+let g:html_indent_inctags = "html,body,head,tbody,script"
+
 " ******************************************************************************
 " COLORSCHEME
 " ******************************************************************************
