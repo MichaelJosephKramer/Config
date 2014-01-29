@@ -47,5 +47,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export DISABLE_AUTO_TITLE=true
 
 # chruby configuration
-source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
