@@ -8,10 +8,10 @@ call vundle#rc()
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'csexton/trailertrash.vim'
-Bundle 'gmarik/vundle'
+Bundle 'ervandew/supertab'
+Bundle 'marik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'marijnh/tern_for_vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rizzatti/dash.vim'
 Bundle 'rizzatti/funcoo.vim'
@@ -101,12 +101,6 @@ let g:syntastic_mode_map= {
 " toggle the mode
 nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
 
-" ******************************************************************************
-" TERN-FOR-VIM
-" ******************************************************************************
-
-" disable the preview window
-autocmd BufEnter * set completeopt-=preview
 
 " ******************************************************************************
 " VIM-AIRLINE
