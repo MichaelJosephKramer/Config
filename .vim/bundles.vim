@@ -24,7 +24,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'vim-scripts/summerfruit256.vim'
 Bundle 'wincent/Command-T'
 
 " ******************************************************************************
