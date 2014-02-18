@@ -4,9 +4,9 @@
 
 function! ToggleColor()
   if (g:colors_name == "vividchalk")
-    :exec "color summerfruit256"
+    color summerfruit256
   else
-    :exec "color vividchalk"
+    color vividchalk
   endif
 
   highlight cursorline cterm=bold
