@@ -45,6 +45,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Let tmux set the window title
 export DISABLE_AUTO_TITLE=true
-
-# chruby configuration
-source /usr/local/opt/chruby/share/chruby/auto.sh
