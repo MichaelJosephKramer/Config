@@ -137,20 +137,8 @@ set smartcase
 set laststatus=2
 
 " ******************************************************************************
-" TABS AND SPACES
+" LISTCHARS
 " ******************************************************************************
-
-" use spaces instead of tabs
-set expandtab
-
-" columns per tab
-set tabstop=2
-
-" number of spaces per indent (<< or >>)
-set shiftwidth=2
-
-" columns per tab in insert mode
-set softtabstop=2
 
 " set list characters
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸▸
