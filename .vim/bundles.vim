@@ -103,7 +103,6 @@ let g:syntastic_mode_map= {
 " toggle the mode
 nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
 
-
 " ******************************************************************************
 " VIM-AIRLINE
 " ******************************************************************************
