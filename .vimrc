@@ -19,6 +19,12 @@ source ~/.vim/functions.vim
 source ~/.vim/general.vim
 source ~/.vim/mappings.vim
 source ~/.vim/tmux.vim
+
+" ******************************************************************************
+" SOURCE SIMPLENOTE CONFIG
+" ******************************************************************************
+
+" Not managed by git because of the password
 if filereadable(expand("\~/.simplenoterc"))
   source \~/.simplenoterc
 endif
