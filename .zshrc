@@ -39,6 +39,7 @@ source ~/.bin/tmuxinator.zsh
 # Aliases
 alias trash='sudo rm -Rf ~/.Trash/*'
 alias speedup='sudo rm -rf /private/var/log/asl/*.asl'
+alias clean_gems='for i in `gem list --no-versions`; do gem uninstall -aIx $i; done'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
