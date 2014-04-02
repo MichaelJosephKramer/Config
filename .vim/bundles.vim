@@ -14,8 +14,6 @@ Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mrtazz/simplenote.vim'
 Bundle 'pangloss/vim-javascript'
-Bundle 'rizzatti/dash.vim'
-Bundle 'rizzatti/funcoo.vim'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
@@ -48,19 +46,6 @@ let g:CommandTMaxDepth = 10
 
 " flush the contents of the bugger
 nnoremap <silent> <leader>f :CommandTFlush<CR>
-
-" ******************************************************************************
-" DASH
-" ******************************************************************************
-
-" search dash for the keyword under the cursor
-:nmap <silent> <leader>d <Plug>DashSearch
-
-" mappings
-let g:dash_map = {
-  \ 'javascript' : 'underscore',
-  \ 'ruby'       : 'rails'
-  \ }
 
 " ******************************************************************************
 " SIMPLENOTE.VIM
