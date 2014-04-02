@@ -46,3 +46,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Let tmux set the window title
 export DISABLE_AUTO_TITLE=true
+
+# Eliminate XCode 5.1 Clang error
+export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
