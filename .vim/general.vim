@@ -10,7 +10,7 @@ augroup syntax
 augroup end
 
 " correct terrible out-of-the-box html indentation
-let g:html_indent_inctags = "html,body,head,tbody,script"
+let g:html_indent_inctags = "html,body,head,tbody,script,li,p"
 
 " ******************************************************************************
 " COLORSCHEME
