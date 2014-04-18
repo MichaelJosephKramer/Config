@@ -18,7 +18,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -43,9 +43,6 @@ alias clean_gems='for i in `gem list --no-versions`; do gem uninstall -aIx $i; d
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-# Let tmux set the window title
-export DISABLE_AUTO_TITLE=true
 
 # Eliminate XCode 5.1 Clang error
 export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
