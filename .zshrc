@@ -1,12 +1,12 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$HOME/.zsh_customizations
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="cloud"
-ZSH_THEME_CLOUD_PREFIX='🍺'
+ZSH_THEME="kramer"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler git rails3)
+plugins=(bundler git rails)
 
 source $ZSH/oh-my-zsh.sh
 
