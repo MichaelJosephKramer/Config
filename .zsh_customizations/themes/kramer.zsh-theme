@@ -31,6 +31,11 @@ function my_git_prompt() {
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNMERGED"
   fi
 
+  # is anything stashed?
+  if [ "$(git stash list 2>/dev/null)" != "" ]; then
+    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STASHED"
+  fi
+
   if [[ -n $STATUS ]]; then
     STATUS=" $STATUS"
   fi
@@ -58,3 +63,4 @@ ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[magenta]%}○"
