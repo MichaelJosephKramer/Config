@@ -55,8 +55,8 @@ fi
 
 PROMPT='$ZSH_THEME_PREFIX ${PROMPT_HOST}%{$fg_bold[green]%} %c $(my_git_prompt)%{$fg_bold[yellow]%}▷ %{$reset_color%}'
 
-ZSH_THEME_GIT_PROMPT_PREFIX="$fg[white]( %{$fg_bold[blue]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="$fg[white] ) %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}( %{$fg_bold[blue]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg[white]%} ) %{$reset_color%}"
 
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
