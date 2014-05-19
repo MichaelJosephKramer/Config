@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mrtazz/simplenote.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
@@ -21,12 +22,21 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-sleuth'
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'vim-scripts/summerfruit256.vim'
-Bundle 'wincent/Command-T'
+
+" ******************************************************************************
+" CTRLP.VIM
+" ******************************************************************************
+
+" show hidden files
+let g:ctrlp_show_hidden = 1
+
+" visual config
+let g:ctrlp_match_window = "bottom,order:ttp,min:1,max:20,results:20"
 
 " ******************************************************************************
 " COMMAND-T
