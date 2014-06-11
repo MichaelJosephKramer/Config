@@ -46,3 +46,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Eliminate XCode 5.1 Clang error
 export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
+
+# Load chruby if present
+if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  chruby ruby-2.1.1
+fi
