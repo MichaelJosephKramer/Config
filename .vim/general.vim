@@ -150,7 +150,6 @@ set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸▸
 
 augroup numbering
   autocmd!
-  autocmd BufEnter * set relativenumber
   autocmd InsertEnter * set norelativenumber
   autocmd InsertLeave * set relativenumber
 augroup end

@@ -96,7 +96,14 @@ nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
 " ******************************************************************************
 
 " toggle tagbar
-nmap <F8> :TagbarToggle<CR>
+nnoremap <silent> <F8> :TagbarToggle<CR>
+
+" hide line numbers
+let g:tagbar_show_linenumbers = 0
+
+" ******************************************************************************
+" VIM-AIRLINE
+" ******************************************************************************
 
 " add fancy glyphs -- requires a powerline font
 let g:airline_powerline_fonts=1
