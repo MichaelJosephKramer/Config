@@ -14,6 +14,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'mrtazz/simplenote.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
@@ -110,8 +111,11 @@ let g:syntastic_mode_map= {
 nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
 
 " ******************************************************************************
-" VIM-AIRLINE
+" TAGBAR
 " ******************************************************************************
+
+" toggle tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " add fancy glyphs -- requires a powerline font
 let g:airline_powerline_fonts=1
