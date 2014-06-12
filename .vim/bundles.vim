@@ -40,35 +40,6 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = "bottom,order:ttp,min:1,max:20,results:20"
 
 " ******************************************************************************
-" COMMAND-T
-" ******************************************************************************
-
-" basic mapping to use the window
-let g:CommandTCancelMap = '<ESC>'
-let g:CommandTSelectNextMap = '<ESC>OB'
-let g:CommandTSelectPrevMap = '<ESC>OA'
-
-" show hidden files
-let g:CommandTScanDotDirectories = 1
-
-" set defaults to smaller numbers because performance
-let g:CommandTMaxFiles = 10000
-let g:CommandTMaxDepth = 10
-
-" flush the contents of the bugger
-nnoremap <silent> <leader>f :CommandTFlush<CR>
-
-" ******************************************************************************
-" SIMPLENOTE.VIM
-" ******************************************************************************
-
-" source the simplenote config
-" not managed by git because of the password
-if filereadable(expand("\~/.simplenoterc"))
-  source \~/.simplenoterc
-endif
-
-" ******************************************************************************
 " NERDTREE
 " ******************************************************************************
 
@@ -80,6 +51,16 @@ let NERDTreeQuitOnOpen = 1
 
 " directories NERDTree should ignore
 let NERDTreeIgnore = ['node_modules$[[dir]]']
+
+" ******************************************************************************
+" SIMPLENOTE.VIM
+" ******************************************************************************
+
+" source the simplenote config
+" not managed by git because of the password
+if filereadable(expand("\~/.simplenoterc"))
+  source \~/.simplenoterc
+endif
 
 " ******************************************************************************
 " SYNTASTIC
