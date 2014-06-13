@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler git rails)
+plugins=(bundler git rails tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -34,7 +34,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 
 # Tmuxinator autocompletion
-source ~/.bin/tmuxinator.zsh
+alias mux=tmuxinator
 
 # Aliases
 alias trash='sudo rm -Rf ~/.Trash/*'
