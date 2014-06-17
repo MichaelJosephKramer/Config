@@ -33,6 +33,9 @@ Bundle 'vim-scripts/summerfruit256.vim'
 " CTRLP.VIM
 " ******************************************************************************
 
+" add plugins
+let g:ctrlp_extensions = ['tag']
+
 " show hidden files
 let g:ctrlp_show_hidden = 1
 
