@@ -10,10 +10,11 @@
   ui = true
 [user]
   name  = Michael Joseph Kramer
-	email = michael@sagehou.se
+  email = michael@sagehou.se
 [core]
   editor = /usr/local/bin/vim
   pager  = less -F -X
+  excludesfile = ~/.gitignore-global
 [merge]
   tool       = p4merge
   keepBackup = false
