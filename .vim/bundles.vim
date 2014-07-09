@@ -19,6 +19,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-fugitive'
@@ -120,6 +121,14 @@ let g:airline_theme='light'
 
 " compile CoffeeScript in a new buffer
 vnoremap <silent> <localleader>c :CoffeeCompile<CR>
+
+" ******************************************************************************
+" VIM-RSPEC
+" ******************************************************************************
+nnoremap <leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <leader>s :call RunNearestSpec()<CR>
+nnoremap <leader>l :call RunLastSpec()<CR>
+nnoremap <leader>a :call RunAllSpecs()<CR>
 
 " ******************************************************************************
 " VIM-GITGUTTER
