@@ -159,3 +159,13 @@ augroup end
 " ******************************************************************************
 
 set nofoldenable
+
+" ******************************************************************************
+" PROJECT-SPECIFIC
+" ******************************************************************************
+
+" allow per-project configuration files
+set exrc
+
+" prevent bad things in project-specific files
+set secure
