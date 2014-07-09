@@ -114,7 +114,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>232 741 924 485 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2560 766 890 651 2560 540 1440 878 </string>
+	<string>20 747 890 651 0 0 2560 1418 </string>
 	<key>NeverWarnAboutShortLivedSessions_F842C127-223D-4472-813D-F1B9009C7354</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -913,7 +913,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-05-19T12:47:39Z</date>
+	<date>2014-07-02T12:50:14Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -947,7 +947,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>.Lucida Grande UI</string>
+	<string>Lucida Grande</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
@@ -959,6 +959,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20140421</string>
+	<string>1.0.0.20140518</string>
 </dict>
 </plist>
