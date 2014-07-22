@@ -43,6 +43,9 @@ let g:ctrlp_show_hidden = 1
 " visual config
 let g:ctrlp_match_window = "bottom,order:ttp,min:1,max:20,results:20"
 
+" open buffer mode
+nnoremap <silent> <c-b> :CtrlPBuffer<CR>
+
 " ******************************************************************************
 " NERDTREE
 " ******************************************************************************
