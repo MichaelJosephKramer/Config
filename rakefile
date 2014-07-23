@@ -20,12 +20,12 @@ end
 
 def install_vundle
   clear_vundle_dir = 'rm -rf ~/.vim/bundle/vundle'
-  clone_vundle = 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
+  clone_vundle = 'git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
   sh "#{clear_vundle_dir} && #{clone_vundle}"
 end
 
 def update_vim_plugins
-  sh 'vim -u .vim/install.vim +BundleInstall +qall'
+  sh 'vim -u .vim/install.vim +PluginInstall +qall'
 end
 
 def symlink_to_home
