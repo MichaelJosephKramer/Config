@@ -25,7 +25,7 @@ def install_vundle
 end
 
 def update_vim_plugins
-  sh 'vim -u .vim/install.vim +BundleInstall +qall'
+  sh 'vim -u .vim/install.vim +PluginInstall +qall'
 end
 
 def symlink_to_home
