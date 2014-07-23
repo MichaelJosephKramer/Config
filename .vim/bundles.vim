@@ -30,6 +30,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vividchalk'
 Plugin 'vim-scripts/summerfruit256.vim'
 
+call vundle#end()
+
 " ******************************************************************************
 " CTRLP.VIM
 " ******************************************************************************
