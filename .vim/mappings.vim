@@ -35,7 +35,7 @@ nnoremap <silent> <leader>0 :call ToggleColor()<cr>
 nnoremap <silent> <leader>w :wa<cr>
 
 " ******************************************************************************
-" SWITCHB BETWEEN LAST TWO BUFFERS
+" SWITCH BETWEEN LAST TWO BUFFERS
 " ******************************************************************************
 
 nnoremap <leader><leader> <c-^>
