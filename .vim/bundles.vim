@@ -13,7 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mrtazz/simplenote.vim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
@@ -29,24 +28,28 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vividchalk'
 Plugin 'vim-scripts/summerfruit256.vim'
+Plugin 'wincent/command-t'
 
 call vundle#end()
 
 " ******************************************************************************
-" CTRLP.VIM
+" COMMAND-T
 " ******************************************************************************
 
-" add plugins
-let g:ctrlp_extensions = ['tag']
+" basic mapping to use the window
+let g:CommandTCancelMap = '<ESC>'
+let g:CommandTSelectNextMap = '<ESC>OB'
+let g:CommandTSelectPrevMap = '<ESC>OA'
 
 " show hidden files
-let g:ctrlp_show_hidden = 1
+let g:CommandTScanDotDirectories = 1
 
-" visual config
-let g:ctrlp_match_window = "bottom,order:ttp,min:1,max:20,results:20"
+" set defaults to smaller numbers because performance
+let g:CommandTMaxFiles = 10000
+let g:CommandTMaxDepth = 10
 
-" open buffer mode
-nnoremap <silent> <c-b> :CtrlPBuffer<CR>
+" flush the contents of the bugger
+nnoremap <silent> <leader>f :CommandTFlush<CR>
 
 " ******************************************************************************
 " NERDTREE
