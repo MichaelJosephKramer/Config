@@ -130,10 +130,10 @@ vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 " ******************************************************************************
 " VIM-RSPEC
 " ******************************************************************************
-nnoremap <leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <leader>s :call RunNearestSpec()<CR>
-nnoremap <leader>l :call RunLastSpec()<CR>
-nnoremap <leader>a :call RunAllSpecs()<CR>
+nnoremap <localleader>c :wa<cr>:call RunCurrentSpecFile()<CR>
+nnoremap <localleader>n :wa<cr>:call RunNearestSpec()<CR>
+nnoremap <localleader>l :wa<cr>:call RunLastSpec()<CR>
+nnoremap <localleader>a :wa<cr>:call RunAllSpecs()<CR>
 
 " ******************************************************************************
 " VIM-GITGUTTER
