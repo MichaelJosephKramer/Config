@@ -133,8 +133,8 @@ vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 " ******************************************************************************
 " VIM-RSPEC
 " ******************************************************************************
-nnoremap <localleader>c :wa<cr>:call RunCurrentSpecFile()<CR>
-nnoremap <localleader>n :wa<cr>:call RunNearestSpec()<CR>
+nnoremap <localleader>t :wa<cr>:call RunCurrentSpecFile()<CR>
+nnoremap <localleader>s :wa<cr>:call RunNearestSpec()<CR>
 nnoremap <localleader>l :wa<cr>:call RunLastSpec()<CR>
 nnoremap <localleader>a :wa<cr>:call RunAllSpecs()<CR>
 
