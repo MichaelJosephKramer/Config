@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'csexton/trailertrash.vim'
+Plugin 'eapache/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
@@ -63,6 +64,35 @@ let NERDTreeQuitOnOpen = 1
 
 " directories NERDTree should ignore
 let NERDTreeIgnore = ['node_modules$[[dir]]']
+
+" ******************************************************************************
+" RAINBOW_PARENTHESES.VIM
+" ******************************************************************************
+
+" initializes rainbow_parenthesis
+augroup startRainbow
+  autocmd!
+  autocmd VimEnter * RainbowParenthesesToggle
+augroup end
+
+" loads the matchers
+autocmd BufEnter * RainbowParenthesesLoadRound
+autocmd BufEnter * RainbowParenthesesLoadSquare
+autocmd BufEnter * RainbowParenthesesLoadBraces
+
+" set number of colors
+let g:rbpt_max = 14
+
+" custom colors
+let g:rbpt_colorpairs = [
+    \ ['darkred',     'firebrick3'],
+    \ ['lightblue',    'DarkOrchid3'],
+    \ ['darkgray',        'firebrick3'],
+    \ ['darkcyan',    'DarkOrchid3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['brown',       'RoyalBlue3'],
+    \ ['darkmagenta', 'SeaGreen3'],
+    \ ]
 
 " ******************************************************************************
 " SIMPLENOTE.VIM
