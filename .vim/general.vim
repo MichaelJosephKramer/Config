@@ -99,7 +99,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " ignore from completion
-set wildignore=*.git,bundle,node_modules,bower_components
+set wildignore=*.git,bundle
 
 " ******************************************************************************
 " CURSOR
@@ -130,9 +130,9 @@ set ignorecase
 " search is case-insensitive if lowercase, case-sensitive otherwise
 set smartcase
 
-"*******************************************************************************
+" ******************************************************************************
 " STATUS LINE
-"*******************************************************************************
+" ******************************************************************************
 
 " show the status line
 set laststatus=2
