@@ -13,6 +13,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'honza/vim-snippets'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mrtazz/simplenote.vim'
 Plugin 'majutsushi/tagbar'
@@ -20,6 +21,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips.git'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-cucumber'
@@ -150,6 +152,15 @@ let g:tagbar_show_linenumbers = 0
 
 " Maps to more succient command
 :command Trim TrailerTrim
+
+" ******************************************************************************
+" ULTISNIPS
+" ******************************************************************************
+
+" trigger mappings
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-l>"
 
 " ******************************************************************************
 " VIM-AIRLINE
