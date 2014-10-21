@@ -86,13 +86,13 @@ let g:rbpt_max = 14
 
 " custom colors
 let g:rbpt_colorpairs = [
-    \ ['darkred',     'firebrick3'],
-    \ ['lightblue',    'DarkOrchid3'],
-    \ ['darkgray',        'firebrick3'],
-    \ ['darkcyan',    'DarkOrchid3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['brown',       'RoyalBlue3'],
-    \ ['darkmagenta', 'SeaGreen3'],
+    \ ['darkred'  , ''] ,
+    \ ['lightblue', ''] ,
+    \ ['darkgray' , ''] ,
+    \ ['darkcyan' , ''] ,
+    \ ['darkgreen', ''] ,
+    \ ['brown'    , ''] ,
+    \ ['magenta'  , ''] ,
     \ ]
 
 " ******************************************************************************
