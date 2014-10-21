@@ -46,7 +46,7 @@ let g:CommandTSelectPrevMap = '<ESC>OA'
 " show hidden files
 let g:CommandTScanDotDirectories = 1
 
-" set defaults to smaller numbers because performance
+" set defaults to smaller numbers for performance reasons
 let g:CommandTMaxFiles = 10000
 let g:CommandTMaxDepth = 10
 
@@ -164,6 +164,8 @@ vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 " ******************************************************************************
 " VIM-RSPEC
 " ******************************************************************************
+
+" mappings for the test runner, saving everything before executing
 nnoremap <localleader>t :wa<cr>:call RunCurrentSpecFile()<CR>
 nnoremap <localleader>s :wa<cr>:call RunNearestSpec()<CR>
 nnoremap <localleader>l :wa<cr>:call RunLastSpec()<CR>
