@@ -73,6 +73,9 @@ set showmatch
 " vim is terrible without this - no beeps
 set visualbell
 
+" set the shell - this works for zsh
+set shell=sh
+
 " ******************************************************************************
 " BACKUP FILES
 "
