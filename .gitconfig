@@ -7,14 +7,15 @@
   sha   = !git rev-parse HEAD | tr -d \"\n\" | pbcopy
   br    = !git name-rev HEAD --name-only | tr -d \"\n\" | pbcopy
   flush = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
+  me    = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --date=short --author=michael@sagehou.se
 [color]
   ui = true
 [user]
   name  = Michael Joseph Kramer
   email = michael@sagehou.se
 [core]
-  editor = /usr/local/bin/vim
-  pager  = less -F -X
+  editor       = /usr/local/bin/vim
+  pager        = less -F -X
   excludesfile = ~/.gitignore-global
 [merge]
   tool       = p4merge
