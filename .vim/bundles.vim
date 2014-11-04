@@ -152,7 +152,7 @@ let g:tagbar_show_linenumbers = 0
 " ******************************************************************************
 
 " Maps to more succient command
-:command Trim TrailerTrim
+:command! Trim TrailerTrim
 
 " ******************************************************************************
 " ULTISNIPS
