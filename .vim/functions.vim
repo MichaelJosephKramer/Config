@@ -11,3 +11,14 @@ function! ToggleColor()
 
   highlight cursorline cterm=bold
 endfunc
+
+" ******************************************************************************
+" RainbowParenthesesToggleAllAndLoad
+" ******************************************************************************
+
+function! RainbowParenthesesToggleAllAndLoad()
+  RainbowParenthesesToggleAll
+  RainbowParenthesesLoadRound
+  RainbowParenthesesLoadSquare
+  RainbowParenthesesLoadBraces
+endfunc

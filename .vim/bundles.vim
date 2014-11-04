@@ -76,12 +76,10 @@ let NERDTreeIgnore = ['node_modules$[[dir]]']
 augroup startRainbow
   autocmd!
   autocmd VimEnter * RainbowParenthesesToggle
+  autocmd BufEnter * RainbowParenthesesLoadRound
+  autocmd BufEnter * RainbowParenthesesLoadSquare
+  autocmd BufEnter * RainbowParenthesesLoadBraces
 augroup end
-
-" loads the matchers
-autocmd BufEnter * RainbowParenthesesLoadRound
-autocmd BufEnter * RainbowParenthesesLoadSquare
-autocmd BufEnter * RainbowParenthesesLoadBraces
 
 " set number of colors
 let g:rbpt_max = 14
@@ -96,6 +94,9 @@ let g:rbpt_colorpairs = [
     \ ['brown'    , ''] ,
     \ ['magenta'  , ''] ,
     \ ]
+
+" toggle rainbow_parenthesis
+nnoremap <silent> <leader>r :call RainbowParenthesesToggleAllAndLoad()<cr>
 
 " ******************************************************************************
 " SIMPLENOTE.VIM
