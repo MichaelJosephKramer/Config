@@ -159,9 +159,10 @@ let g:tagbar_show_linenumbers = 0
 " ******************************************************************************
 
 " trigger mappings
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsListSnippets        = "<c-l>"
 
 " ******************************************************************************
 " VIM-AIRLINE
