@@ -48,6 +48,9 @@ let g:CommandTSelectPrevMap = '<ESC>OA'
 " show hidden files
 let g:CommandTScanDotDirectories = 1
 
+" set the max height
+let g:CommandTMaxHeight = 20
+
 " set defaults to smaller numbers for performance reasons
 let g:CommandTMaxFiles = 10000
 let g:CommandTMaxDepth = 10
