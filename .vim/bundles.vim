@@ -41,7 +41,7 @@ call vundle#end()
 " ******************************************************************************
 
 " basic mapping to use the window
-let g:CommandTCancelMap = '<ESC>'
+let g:CommandTCancelMap     = '<ESC>'
 let g:CommandTSelectNextMap = '<ESC>OB'
 let g:CommandTSelectPrevMap = '<ESC>OA'
 
@@ -128,7 +128,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 
 " set active/passive filetypes
-let g:syntastic_mode_map= {
+let g:syntastic_mode_map = {
   \ 'mode': 'active',
   \ 'active_filetypes'  : [],
   \ 'passive_filetypes' : ['html']
@@ -169,10 +169,10 @@ let g:UltiSnipsListSnippets        = "<c-l>"
 " ******************************************************************************
 
 " add fancy glyphs -- requires a powerline font
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
 
 " set the airline theme
-let g:airline_theme='light'
+let g:airline_theme = 'light'
 
 " ******************************************************************************
 " VIM-COFFEE-SCRIPT
