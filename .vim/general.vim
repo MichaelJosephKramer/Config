@@ -76,6 +76,9 @@ set visualbell
 " set the shell - this works for zsh
 set shell=sh
 
+" use the legacy regex engine - improves ruby syntax highlighting performance
+set regexpengine=1
+
 " ******************************************************************************
 " BACKUP FILES
 "
