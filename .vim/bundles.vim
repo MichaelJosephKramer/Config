@@ -86,13 +86,13 @@ let g:rbpt_max = 14
 
 " custom colors
 let g:rbpt_colorpairs = [
-    \ ['darkred'  , ''] ,
-    \ ['lightblue', ''] ,
-    \ ['darkgray' , ''] ,
-    \ ['darkcyan' , ''] ,
-    \ ['darkgreen', ''] ,
-    \ ['brown'    , ''] ,
     \ ['magenta'  , ''] ,
+    \ ['brown'    , ''] ,
+    \ ['darkgreen', ''] ,
+    \ ['darkcyan' , ''] ,
+    \ ['darkgray' , ''] ,
+    \ ['lightblue', ''] ,
+    \ ['darkred'  , ''] ,
     \ ]
 
 " toggle rainbow_parenthesis
