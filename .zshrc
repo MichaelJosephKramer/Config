@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler git rails tmuxinator)
+plugins=(brew bundler chruby git rails tmuxinator zeus)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,9 +43,3 @@ alias clean_gems='for i in `gem list --no-versions`; do gem uninstall -aIx $i; d
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-# Load chruby if present
-if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-fi
