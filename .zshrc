@@ -51,5 +51,4 @@ export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
 if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
-  chruby ruby-2.1.4
 fi
