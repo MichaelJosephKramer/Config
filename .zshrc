@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler chruby git rails tmuxinator zeus)
+plugins=(brew bundler chruby git nvm rails tmuxinator zeus)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,3 +43,6 @@ alias clean_gems='for i in `gem list --no-versions`; do gem uninstall -aIx $i; d
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export NVM_DIR="/Volumes/Documents/Users/Michael/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
