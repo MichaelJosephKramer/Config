@@ -14,6 +14,7 @@ Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
+Plugin 'janko-m/vim-test'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'majutsushi/tagbar'
 Plugin 'mrtazz/simplenote.vim'
@@ -22,7 +23,6 @@ Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips.git'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-fugitive'
@@ -175,16 +175,6 @@ let g:airline_theme = 'light'
 vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 
 " ******************************************************************************
-" VIM-RSPEC
-" ******************************************************************************
-
-" mappings for the test runner, saving everything before executing
-nnoremap <localleader>t :wa<cr>:call RunCurrentSpecFile()<CR>
-nnoremap <localleader>s :wa<cr>:call RunNearestSpec()<CR>
-nnoremap <localleader>l :wa<cr>:call RunLastSpec()<CR>
-nnoremap <localleader>a :wa<cr>:call RunAllSpecs()<CR>
-
-" ******************************************************************************
 " VIM-GITGUTTER
 " ******************************************************************************
 
@@ -196,3 +186,12 @@ nnoremap <silent> <leader>g :GitGutterToggle<CR>
 
 " toggle the git gutter highlights
 nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
+
+" ******************************************************************************
+" VIM-TEST
+" ******************************************************************************
+
+nnoremap <leader>n :wa<cr> :TestNearest<CR>
+nnoremap <leader>f :wa<cr> :TestFile<CR>
+nnoremap <leader>a :wa<cr> :TestSuite<CR>
+nnoremap <leader>l :wa<cr> :TestLast<CR>
