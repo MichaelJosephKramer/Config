@@ -41,7 +41,7 @@ set clipboard=unnamed
 set cursorline
 
 " current line highlight details
-highlight cursorline cterm = bold
+highlight cursorline cterm=none
 
 " highlight current column
 set cursorcolumn
