@@ -51,6 +51,9 @@ let g:CommandTScanDotDirectories = 1
 " set the max height
 let g:CommandTMaxHeight = 20
 
+" search once typing stops
+let g:CommandTInputDebounce = 200
+
 " set defaults to smaller numbers for performance reasons
 let g:CommandTMaxFiles = 10000
 let g:CommandTMaxDepth = 10
