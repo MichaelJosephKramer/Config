@@ -60,7 +60,13 @@ let g:CommandTMaxFiles = 10000
 let g:CommandTMaxDepth = 10
 
 " flush the contents of the bugger
-nnoremap <silent> <leader>f :CommandTFlush<CR>
+nnoremap <silent> <leader><S-f> :CommandTFlush<CR>
+
+" mapping for tags
+nnoremap <silent> <Leader>c :CommandTTag<CR>
+
+" show filenames when browsing tags
+let g:CommandTTagIncludeFilenames = 1
 
 " ******************************************************************************
 " NERDTREE
