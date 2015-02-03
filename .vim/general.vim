@@ -136,6 +136,9 @@ set ignorecase
 " search is case-insensitive if lowercase, case-sensitive otherwise
 set smartcase
 
+" set line substiution to global by default
+set gdefault
+
 " ******************************************************************************
 " STATUS LINE
 " ******************************************************************************
