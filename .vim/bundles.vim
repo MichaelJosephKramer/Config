@@ -60,7 +60,7 @@ let g:CommandTMaxFiles = 10000
 let g:CommandTMaxDepth = 10
 
 " flush the contents of the bugger
-nnoremap <silent> <leader><S-f> :CommandTFlush<CR>
+nnoremap <leader><S-f> :CommandTFlush<CR>
 
 " mapping for tags
 nnoremap <silent> <Leader>c :CommandTTag<CR>
