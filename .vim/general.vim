@@ -6,7 +6,6 @@ augroup syntax
   autocmd!
   autocmd BufNewFile,BufRead *.json setfiletype javascript
   autocmd BufNewFile,BufRead *.hbs setfiletype html
-  autocmd BufNewFile,BufRead {Gemfile,Guardfile,*.rabl} setfiletype ruby
 augroup end
 
 " correct terrible out-of-the-box html indentation
