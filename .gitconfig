@@ -18,17 +18,5 @@
   editor       = /usr/local/bin/vim
   pager        = less -F -X
   excludesfile = ~/.gitignore-global
-[merge]
-  tool       = p4merge
-  keepBackup = false
-[mergetool "p4merge"]
-  cmd             = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-  trustExitCode   = false
-  keepTemporaries = false
-  keepBackup      = false
-[difftool]
-  external = p4diff
-[mergetool]
-  keepBackup = false
 [heroku]
   account = sagehouse
