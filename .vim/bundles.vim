@@ -69,14 +69,13 @@ nnoremap <silent> <Leader>c :CommandTTag<CR>
 let g:CommandTTagIncludeFilenames = 1
 
 " ******************************************************************************
-" NERDTREE
+" VIM-FUGITIVE
 " ******************************************************************************
 
-" toggle NERDTree on and off
-nnoremap <silent> <F2> :NERDTreeToggle<CR>
-
-" close NERDTree when a file is selected
-let NERDTreeQuitOnOpen = 1
+augroup fugitive_quickfix
+  autocmd!
+  autocmd QuickFixCmdPost *grep* cwindow
+augroup end
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES.VIM
