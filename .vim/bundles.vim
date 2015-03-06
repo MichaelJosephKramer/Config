@@ -79,7 +79,7 @@ augroup end
 " ******************************************************************************
 
 " initializes rainbow_parenthesis
-augroup startRainbow
+augroup rainbow_parenthesis_initialize
   autocmd!
   autocmd VimEnter * RainbowParenthesesToggle
   autocmd BufEnter * RainbowParenthesesLoadRound
