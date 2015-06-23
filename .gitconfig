@@ -4,7 +4,7 @@
   last   = cat-file commit HEAD
   rmall  = !git ls-files --deleted | xargs git rm
   this   = !git init && git add . && git commit -m 'Initial commit'
-  sha    = !git rev-parse HEAD | tr -d \"\n\" | pbcopy
+  sha    = !git rev-parse HEAD | tr -d \"\n\" | cut -c -7 | pbcopy
   br     = !git name-rev HEAD --name-only | tr -d \"\n\" | pbcopy
   flush  = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
   flushd = !git branch --merged develop | grep -v develop | xargs git branch -d && git remote prune origin
