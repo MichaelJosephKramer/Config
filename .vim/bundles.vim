@@ -54,7 +54,7 @@ let g:CommandTInputDebounce = 200
 let g:CommandTMaxFiles = 10000
 let g:CommandTMaxDepth = 10
 
-" flush the contents of the bugger
+" flush the contents of the buffer
 nnoremap <leader><S-f> :CommandTFlush<CR>
 
 " mapping for tags
