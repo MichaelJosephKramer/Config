@@ -17,7 +17,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'janko-m/vim-test'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'majutsushi/tagbar'
-Plugin 'mrtazz/simplenote.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips.git'
@@ -101,16 +100,6 @@ let g:rbpt_colorpairs = [
 
 " toggle rainbow_parenthesis
 nnoremap <silent> <leader>r :call RainbowParenthesesToggleAllAndLoad()<cr>
-
-" ******************************************************************************
-" SIMPLENOTE.VIM
-" ******************************************************************************
-
-" source the simplenote config
-" not managed by git because of the password
-if filereadable(expand("\~/.simplenoterc"))
-  source \~/.simplenoterc
-endif
 
 " ******************************************************************************
 " SYNTASTIC
