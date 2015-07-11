@@ -17,6 +17,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'janko-m/vim-test'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'majutsushi/tagbar'
+Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'sirver/ultisnips.git'
@@ -179,6 +180,13 @@ nnoremap <silent> <leader>g :GitGutterToggle<CR>
 
 " toggle the git gutter highlights
 nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
+
+" ******************************************************************************
+" VIM-JSX
+" ******************************************************************************
+
+" allow jsx highlighting in files with a .js extension
+let g:jsx_ext_required = 0
 
 " ******************************************************************************
 " VIM-TEST
