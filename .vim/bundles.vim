@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'csexton/trailertrash.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'eapache/rainbow_parentheses.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
@@ -17,7 +18,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'janko-m/vim-test'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'majutsushi/tagbar'
-Plugin 'mxw/vim-jsx'
 Plugin 'ntpeters/vim-airline-colornum'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
@@ -63,6 +63,14 @@ nnoremap <silent> <Leader>c :CommandTTag<CR>
 
 " show filenames when browsing tags
 let g:CommandTTagIncludeFilenames = 1
+
+" ******************************************************************************
+" CTRLP
+" ******************************************************************************
+
+" show hidden files
+let g:ctrlp_show_hidden = 1
+
 
 " ******************************************************************************
 " VIM-FUGITIVE
