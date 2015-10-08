@@ -22,3 +22,5 @@
   account = sagehouse
 [pull]
   rebase = true
+[credential]
+  helper = osxkeychain
