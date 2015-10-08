@@ -1,0 +1,29 @@
+-- Don't display startup messages
+\set QUIET 1
+
+-- Nulls appear as (null) instead of a blank
+\pset null '(null)'
+
+-- Show query execution time
+\timing
+
+-- Show expanded output format
+\x auto
+
+-- Prompt configuration
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+\set PROMPT2 '[more] %R > '
+\set PROMPT1 '🍻  %M:%[%033[1;31m%]%>%[%033[0m%] %[%n%]@%/%R%# %x➤ '
+
+-- Verbose errors
+\set VERBOSITY verbose
+
+-- History setting
+\set HISTCONTROL ignoredups
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- Autocomoplete to uppercase
+\set COMP_KEYWORD_CASE upper
+
+-- Messages back to normal
+\set QUIET 0
