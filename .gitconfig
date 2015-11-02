@@ -7,7 +7,6 @@
   sha    = !git rev-parse HEAD | tr -d \"\n\" | cut -c -7 | pbcopy
   br     = !git name-rev HEAD --name-only | tr -d \"\n\" | pbcopy
   flush  = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
-  flushd = !git branch --merged develop | grep -v develop | xargs git branch -d && git remote prune origin
   me     = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --date=short --author=michael@sage.house
 [color]
   ui = true
