@@ -42,6 +42,9 @@ let g:CommandTCancelMap     = '<ESC>'
 let g:CommandTSelectNextMap = '<ESC>OB'
 let g:CommandTSelectPrevMap = '<ESC>OA'
 
+" show results at the top of the window
+let g:CommandTMatchWindowReverse = 0
+
 " show hidden files
 let g:CommandTScanDotDirectories = 1
 
