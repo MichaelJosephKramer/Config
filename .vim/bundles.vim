@@ -121,10 +121,10 @@ nnoremap <silent> <leader>r :call RainbowParenthesesToggleAllAndLoad()<cr>
 " set to check files when opened
 let g:syntastic_check_on_open = 1
 
-" set syntastic error symbol
+" set syntastic symbols
 let g:syntastic_error_symbol = '⛔'
-
-" set syntastic warning symbol
+let g:syntastic_style_error_symbol = '🚦'
+let g:syntastic_style_warning_symbol = '🚦'
 let g:syntastic_warning_symbol = '🚧'
 
 " set syntastic to always populate the loclist
