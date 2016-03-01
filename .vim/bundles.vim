@@ -6,7 +6,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
 Plugin 'csexton/trailertrash.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'eapache/rainbow_parentheses.vim'
@@ -28,6 +27,8 @@ Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vividchalk'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/summerfruit256.vim'
 Plugin 'wincent/command-t'
 
