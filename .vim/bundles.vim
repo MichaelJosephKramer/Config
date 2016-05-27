@@ -167,11 +167,13 @@ nnoremap <silent> <leader>g :GitGutterToggle<CR>
 nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
 
 " ******************************************************************************
-" VIM-JSX
+" VIM-FUGITIVE
 " ******************************************************************************
 
-" allow jsx highlighting in files with a .js extension
-let g:jsx_ext_required = 0
+augroup fugitive_quickfix
+  autocmd!
+  autocmd QuickFixCmdPost *grep* cwindow
+augroup end
 
 " ******************************************************************************
 " VIM-TEST
