@@ -8,13 +8,13 @@ call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'csexton/trailertrash.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'eapache/rainbow_parentheses.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
 Plugin 'janko-m/vim-test'
+Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'majutsushi/tagbar'
 Plugin 'ntpeters/vim-airline-colornum'
@@ -75,45 +75,17 @@ let g:CommandTTagIncludeFilenames = 1
 " show hidden files
 let g:ctrlp_show_hidden = 1
 
-
 " ******************************************************************************
-" VIM-FUGITIVE
-" ******************************************************************************
-
-augroup fugitive_quickfix
-  autocmd!
-  autocmd QuickFixCmdPost *grep* cwindow
-augroup end
-
-" ******************************************************************************
-" RAINBOW_PARENTHESES.VIM
+" CTRLP
 " ******************************************************************************
 
-" initializes rainbow_parenthesis
-augroup rainbow_parenthesis_initialize
-  autocmd!
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd BufEnter * RainbowParenthesesLoadRound
-  autocmd BufEnter * RainbowParenthesesLoadSquare
-  autocmd BufEnter * RainbowParenthesesLoadBraces
-augroup end
+set rtp+=/usr/local/opt/fzf
 
-" set number of colors
-let g:rbpt_max = 14
+" ******************************************************************************
+" RAINBOW_PARENTHESES
+" ******************************************************************************
 
-" custom colors
-let g:rbpt_colorpairs = [
-    \ ['magenta'  , ''] ,
-    \ ['brown'    , ''] ,
-    \ ['darkgreen', ''] ,
-    \ ['darkcyan' , ''] ,
-    \ ['darkgray' , ''] ,
-    \ ['lightblue', ''] ,
-    \ ['darkred'  , ''] ,
-    \ ]
-
-" toggle rainbow_parenthesis
-nnoremap <silent> <leader>r :call RainbowParenthesesToggleAllAndLoad()<cr>
+autocmd VimEnter * RainbowParentheses
 
 " ******************************************************************************
 " SYNTASTIC
