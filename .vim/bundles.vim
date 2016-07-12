@@ -79,7 +79,11 @@ let g:ctrlp_show_hidden = 1
 " RAINBOW_PARENTHESES
 " ******************************************************************************
 
+" activate immediately
 autocmd VimEnter * RainbowParentheses
+
+" add the [] and {}
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 " ******************************************************************************
 " SYNTASTIC
