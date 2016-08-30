@@ -107,6 +107,10 @@ let g:syntastic_auto_loc_list = 1
 " toggle the mode
 nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
 
+" turn the elixier checker on
+let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_enable_elixir_checker = 1
+
 " ******************************************************************************
 " TAGBAR
 " ******************************************************************************
