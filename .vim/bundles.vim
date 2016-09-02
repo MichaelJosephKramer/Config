@@ -7,7 +7,6 @@ call vundle#begin()
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'csexton/trailertrash.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
@@ -67,13 +66,6 @@ nnoremap <silent> <Leader>c :CommandTTag<CR>
 
 " show filenames when browsing tags
 let g:CommandTTagIncludeFilenames = 1
-
-" ******************************************************************************
-" CTRLP
-" ******************************************************************************
-
-" show hidden files
-let g:ctrlp_show_hidden = 1
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES
