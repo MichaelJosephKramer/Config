@@ -47,10 +47,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export NVM_DIR="/Volumes/Documents/Users/Michael/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Remote login aliases
-alias rlu='sudo systemsetup -f -setremotelogin on && sudo systemsetup -f -getremotelogin'
-alias rld='sudo systemsetup -f -setremotelogin off && sudo systemsetup -f -getremotelogin'
-alias rl='sudo systemsetup -f -getremotelogin'
-
 # An alias Zach Briggs thought I needed
 alias fucking=sudo
