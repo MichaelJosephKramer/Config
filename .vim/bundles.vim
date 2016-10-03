@@ -87,9 +87,15 @@ let g:syntastic_check_on_open = 1
 
 " set syntastic symbols
 let g:syntastic_error_symbol = '⛔'
-let g:syntastic_style_error_symbol = '🚦'
-let g:syntastic_style_warning_symbol = '🚦'
+let g:syntastic_style_error_symbol = '⚠️ '
+let g:syntastic_style_warning_symbol = '😱'
 let g:syntastic_warning_symbol = '🚧'
+
+" Update the background for the symbols
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " set syntastic to always populate the loclist
 let g:syntastic_always_populate_loc_list = 1
