@@ -21,6 +21,12 @@ colorscheme vividchalk
 " enable color syntax highlighting
 syntax on
 
+" change the background color of the autocomplete menu
+highlight Pmenu ctermbg=172 gui=bold
+
+" change the select backgroud color of the autocomplete menu
+highlight PmenuSel ctermbg=92 gui=bold
+
 " ******************************************************************************
 " BASICS
 "

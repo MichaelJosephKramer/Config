@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'csexton/trailertrash.vim'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'ervandew/supertab'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
@@ -27,6 +26,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vividchalk'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/summerfruit256.vim'
@@ -132,7 +132,7 @@ let g:tagbar_show_linenumbers = 0
 " ******************************************************************************
 
 " trigger mappings
-let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsExpandTrigger       = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsListSnippets        = "<c-l>"
@@ -184,3 +184,11 @@ nnoremap <leader>n :wa<cr> :TestNearest<CR>
 nnoremap <leader>f :wa<cr> :TestFile<CR>
 nnoremap <leader>a :wa<cr> :TestSuite<CR>
 nnoremap <leader>l :wa<cr> :TestLast<CR>
+
+
+" ******************************************************************************
+" YOUCOMPLETEME
+" ******************************************************************************
+
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
