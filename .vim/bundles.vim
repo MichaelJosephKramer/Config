@@ -167,6 +167,12 @@ nnoremap <silent> <leader>g :GitGutterToggle<CR>
 " toggle the git gutter highlights
 nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
 
+" gitgutter symbols
+let g:gitgutter_sign_added = '🔹'
+let g:gitgutter_sign_modified = '🔸'
+let g:gitgutter_sign_removed = '🔺'
+let g:gitgutter_sign_modified_removed = '💥'
+
 " ******************************************************************************
 " VIM-FUGITIVE
 " ******************************************************************************
@@ -190,5 +196,8 @@ nnoremap <leader>l :wa<cr> :TestLast<CR>
 " YOUCOMPLETEME
 " ******************************************************************************
 
+" add language keywords
 let g:ycm_seed_identifiers_with_syntax = 1
+
+" add tag files integration
 let g:ycm_collect_identifiers_from_tags_files = 1
