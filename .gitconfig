@@ -10,16 +10,22 @@
   me     = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --date=short --author=michael@sage.house
 [color]
   ui = true
-[user]
-  name  = Michael Joseph Kramer
-  email = michael@sage.house
 [core]
   editor       = /usr/local/bin/vim
   pager        = less -F -X
   excludesfile = ~/.gitignore-global
+[credential]
+  helper = osxkeychain
+[diff]
+  submodule = log
+[fetch]
+  recurseSubmodules = on-demand
 [heroku]
   account = sagehouse
 [pull]
   rebase = true
-[credential]
-  helper = osxkeychain
+[status]
+  submoduleSummary = true
+[user]
+  name  = Michael Joseph Kramer
+  email = michael@sage.house
