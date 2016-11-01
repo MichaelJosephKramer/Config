@@ -16,7 +16,7 @@ let g:html_indent_inctags = "html,body,head,tbody,script,li,p"
 " ******************************************************************************
 
 " the color sheme, dumbass
-colorscheme vividchalk
+silent! colorscheme vividchalk
 
 " enable color syntax highlighting
 syntax on

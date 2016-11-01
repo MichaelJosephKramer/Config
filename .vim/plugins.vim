@@ -1,38 +1,38 @@
 " ******************************************************************************
-" VUNDLE!
+" VIM-PLUG
 " ******************************************************************************
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'airblade/vim-gitgutter'
-Plugin 'csexton/trailertrash.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'honza/vim-snippets'
-Plugin 'janko-m/vim-test'
-Plugin 'junegunn/rainbow_parentheses.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'majutsushi/tagbar'
-Plugin 'ntpeters/vim-airline-colornum'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
-Plugin 'sirver/ultisnips.git'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-vividchalk'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/summerfruit256.vim'
-Plugin 'wincent/command-t'
-
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
+Plug 'csexton/trailertrash.vim'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'godlygeek/tabular'
+Plug 'janko-m/vim-test'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
+Plug 'majutsushi/tagbar'
+Plug 'ntpeters/vim-airline-colornum'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vividchalk'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/summerfruit256.vim'
+Plug 'wincent/command-t', { 'do': 'rake make' }
+call plug#end()
 
 " ******************************************************************************
 " COMMAND-T
@@ -73,7 +73,7 @@ let g:CommandTTagIncludeFilenames = 1
 " ******************************************************************************
 
 " activate immediately
-autocmd VimEnter * RainbowParentheses
+autocmd VimEnter * silent! RainbowParentheses
 
 " add the [] and {}
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
@@ -190,7 +190,6 @@ nnoremap <leader>n :wa<cr> :TestNearest<CR>
 nnoremap <leader>f :wa<cr> :TestFile<CR>
 nnoremap <leader>a :wa<cr> :TestSuite<CR>
 nnoremap <leader>l :wa<cr> :TestLast<CR>
-
 
 " ******************************************************************************
 " YOUCOMPLETEME

@@ -1,11 +1,10 @@
 require 'rubygems'
 require 'rake'
 
-desc "symlink all dot files and bin directory"
+desc "do all the setup!"
 task :default do
   symlink_to_home
   update_submodules
-  install_vundle
   update_vim_plugins
 end
 
@@ -14,22 +13,21 @@ task :symlink do
   symlink_to_home
 end
 
+desc "install vim plugins"
+task :install_plugins do
+  sh 'vim +PlugUpdate +qall'
+end
+
 def update_submodules
   sh 'git submodule update --init'
 end
 
-def install_vundle
-  clear_vundle_dir = 'rm -rf ~/.vim/bundle/Vundle'
-  clone_vundle = 'git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
-  sh "#{clear_vundle_dir} && #{clone_vundle}"
-end
-
 def update_vim_plugins
-  sh 'vim -u .vim/install.vim +PluginInstall +qall'
+  sh 'vim +PlugUpdate +qall'
 end
 
 def symlink_to_home
-  files = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.p4merge', '.gitignore']
+  files = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore']
   files.each do |file|
     case
       when file_identical?(file) then skip_identical_file(file)
