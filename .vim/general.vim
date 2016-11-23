@@ -1,17 +1,4 @@
 " ******************************************************************************
-" ADDITIONAL SYNTAX HIGHLIGHTING
-" ******************************************************************************
-
-augroup syntax
-  autocmd!
-  autocmd BufNewFile,BufRead *.json setfiletype javascript
-  autocmd BufNewFile,BufRead *.hbs setfiletype html
-augroup end
-
-" correct terrible out-of-the-box html indentation
-let g:html_indent_inctags = "html,body,head,tbody,script,li,p"
-
-" ******************************************************************************
 " COLORSCHEME
 " ******************************************************************************
 
