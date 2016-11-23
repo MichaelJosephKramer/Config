@@ -100,8 +100,8 @@ highlight link SyntasticStyleWarningSign SignColumn
 " set syntastic to always populate the loclist
 let g:syntastic_always_populate_loc_list = 1
 
-" open and close the loclist automatically
-let g:syntastic_auto_loc_list = 1
+" close the loclist automatically
+let g:syntastic_auto_loc_list = 2
 
 " toggle the mode
 nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
