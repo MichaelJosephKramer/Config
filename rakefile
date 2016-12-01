@@ -2,9 +2,7 @@ require 'rubygems'
 require 'rake'
 
 desc "do all the setup!"
-task :default do
-  install_homebrew
-  install_homebrew_packages
+task :default => [:install_homebrew, :install_homebrew_packages, :install_oh_my_zsh] do
   symlink_to_home
   update_vim_plugins
 end
@@ -18,6 +16,12 @@ desc 'Install Homebrew Packages'
 task :install_homebrew_packages do
   sh 'brew install chruby cmake ctags git ruby-install reattach-to-user-namespace tmux zsh'
   sh 'brew install vim --with-custom-ruby'
+end
+
+desc 'Install oh-my-zsh'
+task :install_oh_my_zsh do
+  sh 'curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh'
+  sh 'rm -f ~/.zshrc.pre-oh-my-zsh'
 end
 
 desc "symlink all dot files"
