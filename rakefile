@@ -5,6 +5,7 @@ desc "do all the setup!"
 task :default => [:install_homebrew, :install_homebrew_packages, :install_oh_my_zsh] do
   symlink_to_home
   update_vim_plugins
+  allow_italic_fonts
 end
 
 desc 'Install Homebrew'
@@ -27,6 +28,10 @@ end
 desc "symlink all dot files"
 task :symlink do
   symlink_to_home
+end
+
+def allow_italic_fonts
+  sh 'tic -x tmux-256color.terminfo'
 end
 
 def update_vim_plugins
