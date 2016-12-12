@@ -8,7 +8,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
+Plug 'airblade/vim-gitgutter'
 Plug 'csexton/trailertrash.vim'
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'godlygeek/tabular'
@@ -16,6 +16,7 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
 Plug 'majutsushi/tagbar'
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'ntpeters/vim-airline-colornum'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'scrooloose/syntastic'
@@ -59,9 +60,6 @@ let g:CommandTInputDebounce = 200
 let g:CommandTMaxFiles = 10000
 let g:CommandTMaxDepth = 10
 
-" flush the contents of the buffer
-nnoremap <leader><S-f> :CommandTFlush<CR>
-
 " mapping for tags
 nnoremap <silent> <Leader>c :CommandTTag<CR>
 
@@ -88,7 +86,7 @@ let g:syntastic_check_on_open = 1
 " set syntastic symbols
 let g:syntastic_error_symbol = '⛔'
 let g:syntastic_style_error_symbol = '⚠️ '
-let g:syntastic_style_warning_symbol = '😱'
+let g:syntastic_style_warning_symbol='😱'
 let g:syntastic_warning_symbol = '🚧'
 
 " Update the background for the symbols
@@ -96,6 +94,8 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+highlight clear SignColumn
+highlight SignColumn guibg=black ctermbg=black
 
 " set syntastic to always populate the loclist
 let g:syntastic_always_populate_loc_list = 1
@@ -157,9 +157,6 @@ vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 " ******************************************************************************
 " VIM-GITGUTTER
 " ******************************************************************************
-
-" start with git gutter off
-let g:gitgutter_enabled = 0
 
 " toggle the git gutter
 nnoremap <silent> <leader>g :GitGutterToggle<CR>

@@ -14,6 +14,9 @@ highlight Pmenu ctermbg=172 gui=bold
 " change the select backgroud color of the autocomplete menu
 highlight PmenuSel ctermbg=92 gui=bold
 
+" change the sign column backgroud color
+highlight SignColumn ctermbg=black
+
 " ******************************************************************************
 " BASICS
 "
@@ -52,6 +55,9 @@ set relativenumber
 
 " scroll buffer
 set scrolloff=10
+
+" set the sign column to be visible
+set signcolumn=yes
 
 "Remove splash screen
 set shortmess+=I
