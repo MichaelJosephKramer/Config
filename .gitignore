@@ -1,3 +1,5 @@
-.vim/plugged
 .netrwhist
 .vim/autoload
+.vim/plugged
+nvim/autoload
+nvim/plugged

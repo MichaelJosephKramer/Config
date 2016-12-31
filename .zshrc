@@ -49,3 +49,7 @@ export NVM_DIR="/Volumes/Documents/Users/Michael/.nvm"
 
 # An alias Zach Briggs thought I needed
 alias fucking=sudo
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export XDG_CONFIG_HOME="$HOME/.config"
