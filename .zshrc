@@ -49,7 +49,10 @@ export NVM_DIR="/Volumes/Documents/Users/Michael/.nvm"
 
 # An alias Zach Briggs thought I needed
 alias fucking=sudo
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Add XDG location
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# Export the custom term
+export TERM="tmux-256color"
