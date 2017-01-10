@@ -16,8 +16,11 @@ endfunc
 " Rubocop Linting
 " ******************************************************************************
 
-function! JobHandler(_job_id, _data, _event)
-  checktime
+function! JobHandler(job_id, data, event)
+  let rubocop_message = get(a:data, 0, 'default')
+  if rubocop_message =~ "[Corrected]"
+    e %
+  endif
 endfunction
 
 augroup rubocop_linting

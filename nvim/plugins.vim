@@ -45,6 +45,12 @@ call plug#end()
 let g:ale_sign_error = '😱'
 let g:ale_sign_warning = '🚧'
 
+" message format
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" always show the sign column
+let g:ale_sign_column_always = 1
+
 " reset sign column background colors
 highlight link ALEError SignColumn
 highlight link ALEWarning SignColumn
@@ -164,10 +170,10 @@ augroup end
 " ******************************************************************************
 
 " mappings
-nnoremap <leader>n :wa<cr> :TestNearest<CR>
-nnoremap <leader>f :wa<cr> :TestFile<CR>
-nnoremap <leader>a :wa<cr> :TestSuite<CR>
-nnoremap <leader>l :wa<cr> :TestLast<CR>
+nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR>
+nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>
+nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>
+nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>
 
 " strategy
 let test#strategy = 'neovim'
