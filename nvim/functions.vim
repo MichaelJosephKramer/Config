@@ -13,17 +13,6 @@ function! ToggleColor()
 endfunc
 
 " ******************************************************************************
-" RainbowParenthesesToggleAllAndLoad
-" ******************************************************************************
-
-function! RainbowParenthesesToggleAllAndLoad()
-  RainbowParenthesesToggleAll
-  RainbowParenthesesLoadRound
-  RainbowParenthesesLoadSquare
-  RainbowParenthesesLoadBraces
-endfunc
-
-" ******************************************************************************
 " Rubocop Linting
 " ******************************************************************************
 
