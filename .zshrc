@@ -44,11 +44,13 @@ alias clean_gems='for i in `gem list --no-versions`; do gem uninstall -aIx $i; d
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export NVM_DIR="/Volumes/Documents/Users/Michael/.nvm"
+export NVM_DIR="/Users/michael/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # An alias Zach Briggs thought I needed
 alias fucking=sudo
+
+# Add fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Add XDG location
