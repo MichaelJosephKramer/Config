@@ -170,10 +170,10 @@ augroup end
 " ******************************************************************************
 
 " mappings
-nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR>
-nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>
-nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>
-nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>
+nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR> | redraw!
+nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>    | redraw!
+nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>   | redraw!
+nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>    | redraw!
 
 " strategy
 let test#strategy = 'neovim'
