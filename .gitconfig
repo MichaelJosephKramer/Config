@@ -9,7 +9,7 @@
   me    = !git hist --author=michael@sage.house
   gpull = pull origin HEAD
   gpush = push origin HEAD
-  sha   = !git rev-parse HEAD | tr -d \"\n\" | cut -c -7 | pbcopy
+  sha   = !git rev-parse HEAD | cut -c -7 | tr -d '\n' | pbcopy
   st    = status
   this  = !git init && git add . && git commit -m 'Initial commit'
 [color]
@@ -20,16 +20,10 @@
   excludesfile = ~/.gitignore-global
 [credential]
   helper = osxkeychain
-[diff]
-  submodule = log
-[fetch]
-  recurseSubmodules = on-demand
 [heroku]
   account = sagehouse
 [pull]
   rebase = true
-[status]
-  submoduleSummary = true
 [user]
   name  = Michael Joseph Kramer
   email = michael@sage.house
