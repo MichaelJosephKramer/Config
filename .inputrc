@@ -1,3 +1,17 @@
 "\e[A":history-search-backward
 "\e[B":history-search-forward
+set colored-completion-prefix On
+set colored-stats On
 set completion-ignore-case On
+set editing-mode vi
+set mark-symlinked-directories On
+set menu-complete-display-prefix On
+set print-completions-horizontally On
+
+$if mode=vi
+  set keymap vi-command
+  Control-l: clear-screen
+
+  set keymap vi-insert
+  Control-l: clear-screen
+$endif
