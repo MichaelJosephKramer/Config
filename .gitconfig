@@ -4,7 +4,7 @@
   br          = branch
   branch-name = !git rev-parse --abbrev-ref HEAD
   brl         = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
-  ci          = commit
+  ci          = commit -v
   co          = checkout
   cob         = checkout -b
   flush       = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
