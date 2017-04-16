@@ -48,14 +48,14 @@ let g:ale_sign_warning = '🚧'
 " message format
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" always show the sign column
-let g:ale_sign_column_always = 1
-
 " reset sign column background colors
 highlight link ALEError SignColumn
 highlight link ALEWarning SignColumn
 highlight link ALEErrorSign SignColumn
 highlight link ALEWarningSign SignColumn
+
+" disable highlights
+let g:ale_set_highlights = 0
 
 " ******************************************************************************
 " DEOPLETE
@@ -141,14 +141,14 @@ vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 " VIM-GITGUTTER
 " ******************************************************************************
 
+" start with gitgutter off
+let g:gitgutter_enabled = 0
+
 " toggle the git gutter
 nnoremap <silent> <leader>g :GitGutterToggle<CR>
 
 " toggle the git gutter highlights
 nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
-
-" always show the sign column
-let g:gitgutter_sign_column_always = 1
 
 " gitgutter symbols
 let g:gitgutter_sign_added = '🔹'
@@ -174,6 +174,9 @@ nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR> | redraw!
 nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>    | redraw!
 nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>   | redraw!
 nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>    | redraw!
+
+" preseve the screen
+let g:test#preserve_screen = 1
 
 " strategy
 let test#strategy = 'neovim'

@@ -165,3 +165,13 @@ set exrc
 
 " prevent bad things in project-specific files
 set secure
+
+
+" ******************************************************************************
+" Sign Column Display
+" ******************************************************************************
+augroup sign_column
+  autocmd!
+  autocmd BufWinEnter * sign define mysign
+  autocmd BufWinEnter * exe "sign place 1337 line=1 name=mysign buffer=" . bufnr('%')
+augroup END
