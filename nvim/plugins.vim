@@ -12,16 +12,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'csexton/trailertrash.vim'
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
 Plug 'majutsushi/tagbar'
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'ntpeters/vim-airline-colornum'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'tpope/vim-commentary'
@@ -35,6 +35,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/summerfruit256.vim'
 Plug 'w0rp/ale'
+
+" mxw/vim-jsx depends on pangloss/vim-javascript
+Plug 'mxw/vim-jsx', { 'for': 'javascript'}
+
 call plug#end()
 
 " ******************************************************************************
@@ -164,6 +168,13 @@ augroup fugitive_quickfix
   autocmd!
   autocmd QuickFixCmdPost *grep* cwindow
 augroup end
+
+" ******************************************************************************
+" VIM-JSX
+" ******************************************************************************
+
+" don't requre the .jsx extension
+let g:jsx_ext_required = 0
 
 " ******************************************************************************
 " VIM-TEST
