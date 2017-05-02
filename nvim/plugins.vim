@@ -11,6 +11,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'csexton/trailertrash.vim'
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
@@ -73,6 +74,13 @@ set completeopt+=noinsert
 
 " add tab select
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" ******************************************************************************
+" ELM-VIM
+" ******************************************************************************
+
+" formats elm files on save
+let g:elm_format_autosave = 1
 
 " ******************************************************************************
 " FZF.VIM
