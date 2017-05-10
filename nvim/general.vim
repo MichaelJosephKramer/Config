@@ -17,9 +17,6 @@ highlight pmenusel ctermbg=92 gui=bold
 " Oh, behave...
 " ******************************************************************************
 
-" enable cursor changes by mode
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-
 " allow clipboard access
 set clipboard=unnamed
 
