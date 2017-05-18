@@ -109,6 +109,9 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 " map Files command
 nnoremap <silent> <Leader>t :Files<CR>
 
+" map Tags command
+nnoremap <silent> <Leader>c :Tags<CR>
+
 " ******************************************************************************
 " RAINBOW_PARENTHESES
 " ******************************************************************************
