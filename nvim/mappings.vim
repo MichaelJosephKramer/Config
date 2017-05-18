@@ -26,10 +26,4 @@ nnoremap <silent> <leader>0 :call ToggleColor()<cr>
 " QUICK SAVE
 " ******************************************************************************
 
-nnoremap <silent> <leader>w :wa<cr>
-
-" ******************************************************************************
-" SWITCH BETWEEN LAST TWO BUFFERS
-" ******************************************************************************
-
-nnoremap <leader><leader> <c-^>
+nnoremap <leader>w :wa<cr>
