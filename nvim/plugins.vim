@@ -24,6 +24,7 @@ Plug 'ntpeters/vim-airline-colornum'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'fishbullet/deoplete-ruby'
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -69,11 +70,24 @@ let g:ale_set_highlights = 0
 " use deoplete
 let g:deoplete#enable_at_startup = 1
 
-" add auto select
-set completeopt+=noinsert
+" set max list size
+let g:deoplete#max_list = 25
 
-" add tab select
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" set sources
+let g:deoplete#sources = get(g:, 'deoplete#sources', {})
+let g:deoplete#sources._ = [
+      \'around',
+      \'buffer',
+      \'file',
+      \'member',
+      \'syntax',
+      \'tag',
+      \'ultisnips'
+      \]
+let g:deoplete#sources.ruby = g:deoplete#sources._ + ['ruby']
+
+" increase default tag cache
+let deoplete#tag#cache_limit_size = 5000000
 
 " ******************************************************************************
 " ELM-VIM

@@ -20,6 +20,9 @@ highlight pmenusel ctermbg=92 gui=bold
 " allow clipboard access
 set clipboard=unnamed
 
+" add auto select
+set completeopt+=longest,preview,menuone
+
 " highlight current column
 set cursorcolumn
 
