@@ -26,3 +26,6 @@ alias mux=tmuxinator
 
 # Custom aliases
 alias lsa="ls -al"
+
+# Editor
+export EDITOR="/usr/local/bin/nvim"
