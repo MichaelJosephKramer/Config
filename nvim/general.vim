@@ -149,6 +149,9 @@ set shiftwidth=2
 " set number of spaces for tab
 set softtabstop=2
 
+" FileType exceptions
+autocmd Filetype elm setlocal tabstop=4 shiftwidth=4
+
 " ******************************************************************************
 " FOLDING
 " ******************************************************************************

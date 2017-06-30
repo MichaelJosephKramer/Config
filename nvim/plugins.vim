@@ -42,6 +42,7 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript'}
 
 " deoplete sources
 Plug 'fishbullet/deoplete-ruby'
+Plug 'pbogut/deoplete-elm'
 
 call plug#end()
 
@@ -98,6 +99,11 @@ let g:deoplete#sources._ = [
       \'ultisnips'
       \]
 let g:deoplete#sources.ruby = g:deoplete#sources._ + ['ruby']
+let g:deoplete#sources.elm = g:deoplete#sources._ + ['elm']
+
+
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.elm = '\.'
 
 " increase default tag cache
 let deoplete#tag#cache_limit_size = 5000000
