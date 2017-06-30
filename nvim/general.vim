@@ -33,7 +33,7 @@ set cursorline
 highlight cursorline cterm=none
 
 " higlight columns past 80
-execute "set colorcolumn=" . join(range(81,335), ',')
+let &colorcolumn="".join(range(81,999),",")
 
 " allow hidden buffers instead of closing
 set hidden
@@ -165,7 +165,6 @@ set exrc
 
 " prevent bad things in project-specific files
 set secure
-
 
 " ******************************************************************************
 " Sign Column Display

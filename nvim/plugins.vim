@@ -24,7 +24,6 @@ Plug 'ntpeters/vim-airline-colornum'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'fishbullet/deoplete-ruby'
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -41,11 +40,18 @@ Plug 'w0rp/ale'
 " mxw/vim-jsx depends on pangloss/vim-javascript
 Plug 'mxw/vim-jsx', { 'for': 'javascript'}
 
+" deoplete sources
+Plug 'fishbullet/deoplete-ruby'
+
 call plug#end()
 
 " ******************************************************************************
 " ALE
 " ******************************************************************************
+
+" reset sign column background colors
+highlight link ALEErrorSign SignColumn
+highlight link ALEWarningSign SignColumn
 
 " add sign column emoticons
 let g:ale_sign_error = '😱'
@@ -54,18 +60,26 @@ let g:ale_sign_warning = '🚧'
 " message format
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" reset sign column background colors
-highlight link ALEError SignColumn
-highlight link ALEWarning SignColumn
-highlight link ALEErrorSign SignColumn
-highlight link ALEWarningSign SignColumn
+" autofix
+let g:ale_fix_on_save = 1
 
-" disable highlights
+" ale fixers
+let g:ale_fixers = {
+      \  'javascript': [
+      \   'eslint',
+      \   'remove_trailing_lines',
+      \  ]
+      \}
+
+" turn off highlights
 let g:ale_set_highlights = 0
 
 " ******************************************************************************
 " DEOPLETE
 " ******************************************************************************
+
+" rank completion higher than other sources
+call deoplete#custom#set('ultisnips', 'rank', 200)
 
 " use deoplete
 let g:deoplete#enable_at_startup = 1
@@ -80,7 +94,6 @@ let g:deoplete#sources._ = [
       \'buffer',
       \'file',
       \'member',
-      \'syntax',
       \'tag',
       \'ultisnips'
       \]
@@ -206,10 +219,10 @@ let g:jsx_ext_required = 0
 " ******************************************************************************
 
 " mappings
-nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR> | redraw!
-nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>    | redraw!
-nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>   | redraw!
-nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>    | redraw!
+nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR>
+nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>
+nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>
+nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>
 
 " preseve the screen
 let g:test#preserve_screen = 1
