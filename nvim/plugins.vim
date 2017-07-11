@@ -236,6 +236,3 @@ nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>
 
 " preseve the screen
 let g:test#preserve_screen = 1
-
-" strategy
-let test#strategy = 'neovim'
