@@ -69,7 +69,11 @@ let g:ale_fixers = {
       \  'javascript': [
       \   'eslint',
       \   'remove_trailing_lines',
-      \  ]
+      \  ],
+      \  'ruby': [
+      \   'rubocop',
+      \   'remove_trailing_lines',
+      \  ],
       \}
 
 " turn off highlights
