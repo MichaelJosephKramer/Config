@@ -98,10 +98,10 @@ set wildignore=*.git,bundle
 " ******************************************************************************
 
 " italicize comments
-highlight comment cterm=italic
+highlight comment cterm=bold
 
 " italicize html arguments
-highlight htmlarg cterm=italic
+highlight htmlarg cterm=bold
 
 " ******************************************************************************
 " SEARCH
