@@ -102,15 +102,20 @@ let g:deoplete#sources._ = [
       \'tag',
       \'ultisnips'
       \]
+
+" ruby configuration
 let g:deoplete#sources.ruby = g:deoplete#sources._ + ['ruby']
+
+" elm configuration
 let g:deoplete#sources.elm = g:deoplete#sources._ + ['elm']
-
-
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.elm = '\.'
 
 " increase default tag cache
 let deoplete#tag#cache_limit_size = 5000000
+
+" add incremental refresh
+let g:deoplete#enable_refresh_always = 1
 
 " ******************************************************************************
 " ELM-VIM
