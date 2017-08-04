@@ -84,13 +84,13 @@ let g:ale_set_highlights = 0
 " ******************************************************************************
 
 " rank completion higher than other sources
-call deoplete#custom#set('ultisnips', 'rank', 200)
+call deoplete#custom#set('ultisnips', 'rank', 9999)
 
 " use deoplete
 let g:deoplete#enable_at_startup = 1
 
 " set max list size
-let g:deoplete#max_list = 25
+let g:deoplete#max_list = 10
 
 " set sources
 let g:deoplete#sources = get(g:, 'deoplete#sources', {})

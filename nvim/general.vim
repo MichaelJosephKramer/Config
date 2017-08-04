@@ -172,6 +172,7 @@ set secure
 " ******************************************************************************
 " Sign Column Display
 " ******************************************************************************
+
 augroup sign_column
   autocmd!
   autocmd BufWinEnter * sign define mysign
