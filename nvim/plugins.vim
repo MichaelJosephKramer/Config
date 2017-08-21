@@ -136,6 +136,9 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 " map Files command
 nnoremap <silent> <Leader>t :GFiles<CR>
 
+" map Snippets command
+nnoremap <silent> <Leader>s :Snippets<CR>
+
 " map Tags command
 nnoremap <silent> <Leader>c :Tags<CR>
 
