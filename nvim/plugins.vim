@@ -167,16 +167,6 @@ let g:tagbar_show_linenumbers = 0
 :command! Trim TrailerTrim
 
 " ******************************************************************************
-" ULTISNIPS
-" ******************************************************************************
-
-" trigger mappings
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsListSnippets        = "<c-l>"
-
-" ******************************************************************************
 " VIM-AIRLINE
 " ******************************************************************************
 

@@ -21,7 +21,7 @@ highlight pmenusel ctermbg=92 gui=bold
 set clipboard=unnamed
 
 " add auto select
-set completeopt+=longest,preview,menuone
+set completeopt=noinsert,preview,menuone
 
 " highlight current column
 set cursorcolumn
