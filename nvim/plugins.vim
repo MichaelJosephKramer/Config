@@ -130,14 +130,11 @@ let g:elm_format_autosave = 1
 " FZF.VIM
 " ******************************************************************************
 
-" show hidden files
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-
 " map Buffers command
 nnoremap <silent> <Leader>b :Buffers<CR>
 
 " map Files command
-nnoremap <silent> <Leader>t :Files<CR>
+nnoremap <silent> <Leader>t :GFiles<CR>
 
 " map Tags command
 nnoremap <silent> <Leader>c :Tags<CR>
