@@ -7,6 +7,7 @@
   ci          = commit -v
   co          = checkout
   cob         = checkout -b
+  com         = checkout master
   flush       = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
   new         = !git pull origin $(git branch-name)
   pub         = !git push origin $(git branch-name)
