@@ -18,7 +18,6 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
 Plug 'majutsushi/tagbar'
 Plug 'ntpeters/vim-airline-colornum'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -178,13 +177,6 @@ let g:airline_powerline_fonts = 1
 
 " set the airline theme
 let g:airline_theme = 'light'
-
-" ******************************************************************************
-" VIM-COFFEE-SCRIPT
-" ******************************************************************************
-
-" compile CoffeeScript in a new buffer
-vnoremap <silent> <localleader>c :CoffeeCompile<CR>
 
 " ******************************************************************************
 " VIM-GITGUTTER
