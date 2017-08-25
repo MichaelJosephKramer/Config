@@ -10,6 +10,6 @@ let g:mapleader = ","
 " IMPORTS
 " ******************************************************************************
 
-for config in ['plugins.vim', 'functions.vim', 'general.vim', 'mappings.vim']
+for config in ['plugins.vim', 'general.vim', 'mappings.vim']
   execute 'source ' . $XDG_CONFIG_HOME . '/nvim/' . config
 endfor

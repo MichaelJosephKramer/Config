@@ -33,7 +33,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vividchalk'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/summerfruit256.vim'
 Plug 'w0rp/ale'
 
 " mxw/vim-jsx depends on pangloss/vim-javascript
