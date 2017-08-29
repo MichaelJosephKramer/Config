@@ -223,3 +223,9 @@ nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>
 
 " preseve the screen
 let g:test#preserve_screen = 1
+
+" set the default strategy
+let test#strategy = "neovim"
+
+" switch to the neovim testing terminal
+tnoremap <C-o> <C-\><C-n>
