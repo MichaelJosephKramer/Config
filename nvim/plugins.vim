@@ -108,6 +108,7 @@ let g:deoplete#sources.elm = g:deoplete#sources._ + ['elm']
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.elm = '\.'
 
+" elixir configuration
 let g:deoplete#sources.elixir = g:deoplete#sources._ + ['alchemist']
 
 " increase default tag cache
