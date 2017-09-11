@@ -178,3 +178,16 @@ augroup sign_column
   autocmd BufWinEnter * sign define mysign
   autocmd BufWinEnter * exe "sign place 1337 line=1 name=mysign buffer=" . bufnr('%')
 augroup END
+
+" ******************************************************************************
+" netrw Configuration
+" ******************************************************************************
+
+" don't set netrw as the altfile
+let g:netrw_altfile = 1
+
+" hide the banner because it's useless
+let g:netrw_banner = 0
+
+" set list style
+let g:netrw_liststyle = 3
