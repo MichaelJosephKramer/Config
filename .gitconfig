@@ -33,3 +33,7 @@
 [user]
   name  = Michael Joseph Kramer
   email = michael@sage.house
+[grep]
+  lineNumber = true
+  extendRegexp = true
+  fullName = true
