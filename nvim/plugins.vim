@@ -117,6 +117,9 @@ let deoplete#tag#cache_limit_size = 5000000
 " add incremental refresh
 let g:deoplete#enable_refresh_always = 1
 
+" remove complete delay
+let g:deoplete#auto_complete_delay = 0
+
 " ******************************************************************************
 " ELM-VIM
 " ******************************************************************************
