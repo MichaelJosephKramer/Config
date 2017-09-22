@@ -1,13 +1,32 @@
+# Use arrow keys to cycle through history
 "\e[A":history-search-backward
 "\e[B":history-search-forward
+
+# Display completions in a different color
 set colored-completion-prefix On
+
+# Display file types in a different color
 set colored-stats On
+
+# Ignore case when completing
 set completion-ignore-case On
+
+# Set editing mode to vi
 set editing-mode vi
+
+# Indicate symlinked directories
 set mark-symlinked-directories On
+
+# Displays the common prefix for completions
 set menu-complete-display-prefix On
+
+# Displays matches horizontally
 set print-completions-horizontally On
 
+# Shows completion options immediately
+set show-all-if-ambiguous on
+
+# Clear the screen in vi mode
 $if mode=vi
   set keymap vi-command
   Control-l: clear-screen
