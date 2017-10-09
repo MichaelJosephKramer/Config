@@ -69,6 +69,6 @@ THEME_GIT_PROMPT_STASHED="\[\e[1m\]\[\e[35m\]○\[\e[m\]\[\e[0m\]"
 
 # Re-evaulate prompt functions each time
 set_bash_prompt(){
-  PS1="$THEME_PREFIX ${PROMPT_HOST} \[\e[32m\]\W\[\e[m\] $(my_git_prompt)\[\e[33m\]▷ \[\e[m\]"
+  PS1="$THEME_PREFIX ${PROMPT_HOST} \[\e[32m\]\W\[\e[m\] $(my_git_prompt)\[\e[33m\]|>\[\e[m\]"
 }
 PROMPT_COMMAND=set_bash_prompt

@@ -24,10 +24,10 @@ set clipboard=unnamed
 set completeopt=noinsert,preview,menuone
 
 " highlight current column
-set cursorcolumn
+" set cursorcolumn
 
 " highlight current line
-set cursorline
+" set cursorline
 
 " current line highlight details
 highlight cursorline cterm=none
@@ -97,10 +97,10 @@ set wildignore=*.git,bundle
 " FONT
 " ******************************************************************************
 
-" italicize comments
+" bold comments
 highlight comment cterm=bold
 
-" italicize html arguments
+" bold html arguments
 highlight htmlarg cterm=bold
 
 " ******************************************************************************

@@ -3,3 +3,4 @@
 .vim/plugged
 nvim/autoload
 nvim/plugged
+.DS_Store
