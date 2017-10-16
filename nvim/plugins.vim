@@ -66,10 +66,12 @@ let g:ale_fixers = {
       \  'javascript': [
       \   'eslint',
       \   'remove_trailing_lines',
+      \   'trim_whitespace',
       \  ],
       \  'ruby': [
       \   'rubocop',
       \   'remove_trailing_lines',
+      \   'trim_whitespace',
       \  ],
       \}
 
