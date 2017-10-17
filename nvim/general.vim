@@ -23,12 +23,6 @@ set clipboard=unnamed
 " add auto select
 set completeopt=noinsert,preview,menuone
 
-" highlight current column
-" set cursorcolumn
-
-" highlight current line
-" set cursorline
-
 " current line highlight details
 highlight cursorline cterm=none
 
