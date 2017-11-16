@@ -73,10 +73,18 @@ let g:ale_fixers = {
       \   'remove_trailing_lines',
       \   'trim_whitespace',
       \  ],
+      \  'elixir': [
+      \   'mix_format',
+      \   'remove_trailing_lines',
+      \   'trim_whitespace',
+      \  ],
       \}
 
 " turn off highlights
 let g:ale_set_highlights = 0
+
+" turn off the delay
+let g:deoplete#auto_complete_delay = 0
 
 " ******************************************************************************
 " DEOPLETE
