@@ -63,6 +63,11 @@ let g:ale_fix_on_save = 1
 
 " ale fixers
 let g:ale_fixers = {
+      \  'elixir': [
+      \   'mix_format',
+      \   'remove_trailing_lines',
+      \   'trim_whitespace',
+      \  ],
       \  'javascript': [
       \   'eslint',
       \   'remove_trailing_lines',
@@ -70,11 +75,6 @@ let g:ale_fixers = {
       \  ],
       \  'ruby': [
       \   'rubocop',
-      \   'remove_trailing_lines',
-      \   'trim_whitespace',
-      \  ],
-      \  'elixir': [
-      \   'mix_format',
       \   'remove_trailing_lines',
       \   'trim_whitespace',
       \  ],
@@ -86,6 +86,9 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEError ctermbg=88
   autocmd ColorScheme * highlight ALEWarning ctermbg=8
 augroup end
+
+" turn off the delay
+let g:deoplete#auto_complete_delay = 0
 
 " turn off the delay
 let g:deoplete#auto_complete_delay = 0
