@@ -80,8 +80,12 @@ let g:ale_fixers = {
       \  ],
       \}
 
-" turn off highlights
-let g:ale_set_highlights = 0
+" ale colors for highlights
+augroup ale_highlights
+  autocmd!
+  autocmd ColorScheme * highlight ALEError ctermbg=88
+  autocmd ColorScheme * highlight ALEWarning ctermbg=8
+augroup end
 
 " turn off the delay
 let g:deoplete#auto_complete_delay = 0
