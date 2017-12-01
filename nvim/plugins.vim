@@ -151,8 +151,11 @@ let g:elm_format_autosave = 1
 " map Buffers command
 nnoremap <silent> <Leader>b :Buffers<CR>
 
-" map Files command
+" map GFiles command
 nnoremap <silent> <Leader>t :GFiles<CR>
+
+" map Files command
+nnoremap <silent> <Leader>F :Files<CR>
 
 " map Snippets command
 nnoremap <silent> <Leader>s :Snippets<CR>
@@ -241,9 +244,6 @@ nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR>
 nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>
 nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>
 nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>
-
-" preseve the screen
-let g:test#preserve_screen = 1
 
 " set the default strategy
 let test#strategy = "neovim"
