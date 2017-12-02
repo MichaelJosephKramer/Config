@@ -87,11 +87,11 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarning ctermbg=8
 augroup end
 
-" turn off the delay
-let g:deoplete#auto_complete_delay = 0
-
-" turn off the delay
-let g:deoplete#auto_complete_delay = 0
+" cleanup for emoji bug
+augroup ale_cleanup
+    autocmd!
+    autocmd User ALELint :redraw!
+augroup END
 
 " ******************************************************************************
 " DEOPLETE
