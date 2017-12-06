@@ -87,12 +87,6 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarning ctermbg=8
 augroup end
 
-" cleanup for emoji bug
-augroup ale_cleanup
-    autocmd!
-    autocmd User ALELint :redraw!
-augroup END
-
 " ******************************************************************************
 " DEOPLETE
 " ******************************************************************************
