@@ -234,10 +234,10 @@ let g:jsx_ext_required = 0
 " ******************************************************************************
 
 " mappings
-nnoremap <leader>n :noautocmd wa<cr> :TestNearest<CR>
-nnoremap <leader>f :noautocmd wa<cr> :TestFile<CR>
-nnoremap <leader>a :noautocmd wa<cr> :TestSuite<CR>
-nnoremap <leader>l :noautocmd wa<cr> :TestLast<CR>
+nnoremap <silent> t<C-n> :noautocmd wa<cr> :TestNearest<CR>
+nnoremap <silent> t<C-f> :noautocmd wa<cr> :TestFile<CR>
+nnoremap <silent> t<C-a> :noautocmd wa<cr> :TestSuite<CR>
+nnoremap <silent> t<C-l> :noautocmd wa<cr> :TestLast<CR>
 
 " set the default strategy
 let test#strategy = "neovim"
