@@ -87,6 +87,11 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarning ctermbg=8
 augroup end
 
+" does this do anything?
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = 'ERROR:'
+let g:airline#extensions#ale#warning_symbol = 'WARNING:'
+
 " ******************************************************************************
 " DEOPLETE
 " ******************************************************************************
@@ -190,6 +195,9 @@ let g:tagbar_show_linenumbers = 0
 
 " add fancy glyphs -- requires a powerline font
 let g:airline_powerline_fonts = 1
+
+" skip empty sections
+let g:airline_skip_empty_sections = 1
 
 " set the airline theme
 let g:airline_theme = 'light'
