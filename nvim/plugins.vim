@@ -154,7 +154,10 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>t :GFiles<CR>
 
 " map Files command
-nnoremap <silent> <Leader>F :Files<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+
+" map Lines command
+nnoremap <silent> <Leader>l :Lines<CR>
 
 " map Snippets command
 nnoremap <silent> <Leader>s :Snippets<CR>
