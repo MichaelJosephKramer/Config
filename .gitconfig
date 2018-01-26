@@ -3,7 +3,7 @@
   amend       = commit -a --amend --no-edit
   br          = branch
   branch-name = !git rev-parse --abbrev-ref HEAD
-  brl         = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  brl         = !git for-each-ref --color=always --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:red)%(objectname:short)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|'
   ci          = commit -v
   co          = checkout
   cob         = checkout -b
