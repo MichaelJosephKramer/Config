@@ -33,6 +33,7 @@ Plug 'tpope/vim-vividchalk'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
+Plug 'Yggdroot/indentLine'
 
 " mxw/vim-jsx depends on pangloss/vim-javascript
 Plug 'mxw/vim-jsx', { 'for': 'javascript'}
@@ -164,6 +165,15 @@ nnoremap <silent> <Leader>s :Snippets<CR>
 
 " map Tags command
 nnoremap <silent> <Leader>c :Tags<CR>
+
+" ******************************************************************************
+" INDENTLINE
+" ******************************************************************************
+
+" changes the indent line character
+let g:indentLine_char = '┊'
+let g:indentLine_concealcursor=0
+let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES
