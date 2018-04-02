@@ -29,3 +29,6 @@ alias lsa="ls -al"
 
 # Editor
 export EDITOR="/usr/local/bin/nvim"
+
+#IEx
+export ERL_AFLAGS="-kernel shell_history enabled"
