@@ -10,8 +10,6 @@ endif
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'csexton/trailertrash.vim'
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
@@ -20,10 +18,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ntpeters/vim-airline-colornum'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
@@ -34,9 +32,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
-
-" mxw/vim-jsx depends on pangloss/vim-javascript
-Plug 'mxw/vim-jsx', { 'for': 'javascript'}
 
 " deoplete sources
 Plug 'fishbullet/deoplete-ruby'
