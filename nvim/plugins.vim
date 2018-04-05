@@ -43,13 +43,9 @@ call plug#end()
 " ALE
 " ******************************************************************************
 
-" reset sign column background colors
-highlight link ALEErrorSign SignColumn
-highlight link ALEWarningSign SignColumn
-
 " add sign column emoticons
-let g:ale_sign_error = '😱'
-let g:ale_sign_warning = '🚧'
+let g:ale_sign_warning = "➜"
+let g:ale_sign_error = "✘"
 
 " message format
 let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
@@ -80,13 +76,10 @@ let g:ale_fixers = {
 augroup ale_highlights
   autocmd!
   autocmd ColorScheme * highlight ALEError ctermbg=88
+  autocmd ColorScheme * highlight ALEErrorSign ctermfg=196
   autocmd ColorScheme * highlight ALEWarning ctermbg=8
+  autocmd ColorScheme * highlight ALEWarningSign ctermfg=226
 augroup end
-
-" does this do anything?
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#ale#error_symbol = 'ERROR:'
-let g:airline#extensions#ale#warning_symbol = 'WARNING:'
 
 " ******************************************************************************
 " DEOPLETE
