@@ -10,20 +10,17 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'csexton/trailertrash.vim'
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'ntpeters/vim-airline-colornum'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'tpope/vim-surround'
@@ -32,40 +29,89 @@ Plug 'tpope/vim-vividchalk'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/summerfruit256.vim'
-Plug 'wincent/command-t', { 'do': 'rake make' }
+Plug 'w0rp/ale'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " ******************************************************************************
-" COMMAND-T
+" ALE
 " ******************************************************************************
 
-" basic mapping to use the window
-let g:CommandTCancelMap     = '<ESC>'
-let g:CommandTSelectNextMap = '<ESC>OB'
-let g:CommandTSelectPrevMap = '<ESC>OA'
+" add sign column emoticons
+let g:ale_sign_warning = '😱'
+let g:ale_sign_error = '⛔'
 
-" show results at the top of the window
-let g:CommandTMatchWindowReverse = 0
+" message format
+let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
 
-" show hidden files
-let g:CommandTScanDotDirectories = 1
+" autofix
+let g:ale_fix_on_save = 1
 
-" set the max height
-let g:CommandTMaxHeight = 20
+" ale fixers
+let g:ale_fixers = {
+      \  'elixir': [
+      \   'mix_format',
+      \   'remove_trailing_lines',
+      \   'trim_whitespace',
+      \  ],
+      \  'javascript': [
+      \   'eslint',
+      \   'remove_trailing_lines',
+      \   'trim_whitespace',
+      \  ],
+      \  'ruby': [
+      \   'rubocop',
+      \   'remove_trailing_lines',
+      \   'trim_whitespace',
+      \  ],
+      \}
 
-" search once typing stops
-let g:CommandTInputDebounce = 200
+" ale colors for highlights
+augroup ale_highlights
+  autocmd!
+  autocmd ColorScheme * highlight ALEError ctermbg=88
+  autocmd ColorScheme * highlight ALEErrorSign ctermfg=196
+  autocmd ColorScheme * highlight ALEWarning ctermbg=8
+  autocmd ColorScheme * highlight ALEWarningSign ctermfg=226
+augroup end
 
-" set defaults to smaller numbers for performance reasons
-let g:CommandTMaxFiles = 10000
-let g:CommandTMaxDepth = 10
+" ******************************************************************************
+" ELM-VIM
+" ******************************************************************************
 
-" mapping for tags
-nnoremap <silent> <Leader>c :CommandTTag<CR>
+" formats elm files on save
+let g:elm_format_autosave = 1
 
-" show filenames when browsing tags
-let g:CommandTTagIncludeFilenames = 1
+" ******************************************************************************
+" FZF.VIM
+" ******************************************************************************
+
+" map Buffers command
+nnoremap <silent> <Leader>b :Buffers<CR>
+
+" map GFiles command
+nnoremap <silent> <Leader>t :GFiles<CR>
+
+" map Files command
+nnoremap <silent> <Leader>f :Files<CR>
+
+" map Lines command
+nnoremap <silent> <Leader>l :Lines<CR>
+
+" map Snippets command
+nnoremap <silent> <Leader>s :Snippets<CR>
+
+" map Tags command
+nnoremap <silent> <Leader>c :Tags<CR>
+
+" ******************************************************************************
+" INDENTLINE
+" ******************************************************************************
+
+" changes the indent line character
+let g:indentLine_char = '┊'
+let g:indentLine_concealcursor=0
+let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES
@@ -76,40 +122,6 @@ autocmd VimEnter * silent! RainbowParentheses
 
 " add the [] and {}
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-
-" ******************************************************************************
-" SYNTASTIC
-" ******************************************************************************
-
-" set to check files when opened
-let g:syntastic_check_on_open = 1
-
-" set syntastic symbols
-let g:syntastic_error_symbol = '⛔'
-let g:syntastic_style_error_symbol = '⚠️ '
-let g:syntastic_style_warning_symbol='😱'
-let g:syntastic_warning_symbol = '🚧'
-
-" Update the background for the symbols
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-highlight clear SignColumn
-highlight SignColumn guibg=black ctermbg=black
-
-" set syntastic to always populate the loclist
-let g:syntastic_always_populate_loc_list = 1
-
-" close the loclist automatically
-let g:syntastic_auto_loc_list = 2
-
-" toggle the mode
-nnoremap <silent> <leader>s :SyntasticToggleMode<CR>
-
-" turn the elixir checker on
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_enable_elixir_checker = 1
 
 " ******************************************************************************
 " TAGBAR
@@ -149,13 +161,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'light'
 
 " ******************************************************************************
-" VIM-COFFEE-SCRIPT
-" ******************************************************************************
-
-" compile CoffeeScript in a new buffer
-vnoremap <silent> <localleader>c :CoffeeCompile<CR>
-
-" ******************************************************************************
 " VIM-GITGUTTER
 " ******************************************************************************
 
@@ -184,10 +189,14 @@ augroup end
 " VIM-TEST
 " ******************************************************************************
 
-nnoremap <leader>n :wa<cr> :TestNearest<CR>
-nnoremap <leader>f :wa<cr> :TestFile<CR>
-nnoremap <leader>a :wa<cr> :TestSuite<CR>
-nnoremap <leader>l :wa<cr> :TestLast<CR>
+" mappings
+nnoremap <silent> t<C-n> :noautocmd wa<cr> :TestNearest<CR>
+nnoremap <silent> t<C-f> :noautocmd wa<cr> :TestFile<CR>
+nnoremap <silent> t<C-a> :noautocmd wa<cr> :TestSuite<CR>
+nnoremap <silent> t<C-l> :noautocmd wa<cr> :TestLast<CR>
+
+" set the default strategy
+let test#strategy = "vimterminal"
 
 " ******************************************************************************
 " YOUCOMPLETEME

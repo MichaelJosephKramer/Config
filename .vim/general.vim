@@ -119,8 +119,11 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " FONT
 " ******************************************************************************
 
-highlight htmlarg cterm=italic
-highlight comment cterm=italic
+" bold comments
+highlight htmlarg cterm=bold
+
+" bold html arguments
+highlight comment cterm=bold
 
 " ******************************************************************************
 " SEARCH
@@ -196,3 +199,30 @@ set exrc
 
 " prevent bad things in project-specific files
 set secure
+
+" ******************************************************************************
+" NETRW CONFIGURATION
+" ******************************************************************************
+
+" don't set netrw as the altfile
+let g:netrw_altfile = 1
+
+" hide the banner because it's useless
+let g:netrw_banner = 0
+
+" set list style
+let g:netrw_liststyle = 3
+
+
+" ******************************************************************************
+" TERMINAL CONFIGURATION
+" ******************************************************************************
+
+augroup terminal
+  autocmd!
+  autocmd BufWinEnter *
+        \ if &buftype == 'terminal' |
+        \   setlocal nonumber norelativenumber |
+        \ endif
+augroup end
+
