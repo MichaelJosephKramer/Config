@@ -8,8 +8,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'airblade/vim-gitgutter'
-Plug 'csexton/trailertrash.vim'
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -110,7 +108,8 @@ nnoremap <silent> <Leader>c :Tags<CR>
 
 " changes the indent line character
 let g:indentLine_char = '┊'
-let g:indentLine_concealcursor=0
+
+" exclude json and sh files
 let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 " ******************************************************************************
@@ -134,13 +133,6 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 let g:tagbar_show_linenumbers = 0
 
 " ******************************************************************************
-" TRAILERTRASH
-" ******************************************************************************
-
-" Maps to more succient command
-:command! Trim TrailerTrim
-
-" ******************************************************************************
 " ULTISNIPS
 " ******************************************************************************
 
@@ -159,22 +151,6 @@ let g:airline_powerline_fonts = 1
 
 " set the airline theme
 let g:airline_theme = 'light'
-
-" ******************************************************************************
-" VIM-GITGUTTER
-" ******************************************************************************
-
-" toggle the git gutter
-nnoremap <silent> <leader>g :GitGutterToggle<CR>
-
-" toggle the git gutter highlights
-nnoremap <silent> <leader>h :GitGutterLineHighlightsToggle<CR>
-
-" gitgutter symbols
-let g:gitgutter_sign_added = '🔹'
-let g:gitgutter_sign_modified = '🔸'
-let g:gitgutter_sign_removed = '🔺'
-let g:gitgutter_sign_modified_removed = '💥'
 
 " ******************************************************************************
 " VIM-FUGITIVE
@@ -207,3 +183,6 @@ let g:ycm_seed_identifiers_with_syntax = 1
 
 " add tag files integration
 let g:ycm_collect_identifiers_from_tags_files = 1
+
+" add preview
+let g:ycm_add_preview_to_completeopt = 1

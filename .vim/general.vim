@@ -32,14 +32,8 @@ set backspace=indent,eol,start
 " allow clipboard access
 set clipboard=unnamed
 
-" highlight current line
-set cursorline
-
 " current line highlight details
 highlight cursorline cterm=none
-
-" highlight current column
-set cursorcolumn
 
 " higlight columns past 80
 execute "set colorcolumn=" . join(range(81,335), ',')

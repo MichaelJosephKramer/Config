@@ -22,7 +22,7 @@
 [color]
   ui = true
 [core]
-  editor       = /usr/local/bin/nvim
+  editor       = /usr/local/bin/vim
   pager        = less -F -X
   excludesfile = ~/.gitignore-global
 [credential]
