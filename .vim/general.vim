@@ -32,6 +32,9 @@ set backspace=indent,eol,start
 " allow clipboard access
 set clipboard=unnamed
 
+" add auto select
+set completeopt=noinsert,preview,menuone
+
 " current line highlight details
 highlight cursorline cterm=none
 
@@ -44,6 +47,12 @@ set hidden
 " show the line number
 set number
 
+" set omnifunc
+set omnifunc=syntaxcomplete#Complete
+
+" use the legacy regex engine - improves ruby syntax highlighting performance
+set regexpengine=1
+
 " show the relative line number
 set relativenumber
 
@@ -52,6 +61,9 @@ set scrolloff=10
 
 " set the sign column to be visible
 set signcolumn=yes
+
+" set the shell - this works for bash
+set shell=/bin/bash
 
 "Remove splash screen
 set shortmess+=I
@@ -64,12 +76,6 @@ set showmatch
 
 " vim is terrible without this - no beeps
 set visualbell
-
-" set the shell - this works for zsh
-set shell=sh
-
-" use the legacy regex engine - improves ruby syntax highlighting performance
-set regexpengine=1
 
 " ******************************************************************************
 " BACKUP FILES
@@ -207,7 +213,6 @@ let g:netrw_banner = 0
 " set list style
 let g:netrw_liststyle = 3
 
-
 " ******************************************************************************
 " TERMINAL CONFIGURATION
 " ******************************************************************************
@@ -219,4 +224,3 @@ augroup terminal
         \   setlocal nonumber norelativenumber |
         \ endif
 augroup end
-
