@@ -10,20 +10,20 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar'
 Plug 'ntpeters/vim-airline-colornum'
+Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vividchalk'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
@@ -72,6 +72,9 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarningSign ctermfg=226
 augroup end
 
+" add vim-airline integration
+let g:airline#extensions#ale#enabled = 1
+
 " ******************************************************************************
 " ELM-VIM
 " ******************************************************************************
@@ -112,6 +115,24 @@ let g:indentLine_char = '┊'
 let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 " ******************************************************************************
+" MUCOMPLETE
+" ******************************************************************************
+
+" cycle with tab instead of selection
+let g:mucomplete#cycle_with_trigger = 1
+
+" add completion chain
+let g:mucomplete#chains = {
+      \ 'default' : [
+      \    'ulti',
+      \    'omni',
+      \    'incl',
+      \    'tags',
+      \    'line',
+      \   ],
+      \ }
+
+" ******************************************************************************
 " RAINBOW_PARENTHESES
 " ******************************************************************************
 
@@ -139,7 +160,6 @@ let g:tagbar_show_linenumbers = 0
 let g:UltiSnipsExpandTrigger       = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsListSnippets        = "<c-l>"
 
 " ******************************************************************************
 " VIM-AIRLINE
@@ -147,6 +167,9 @@ let g:UltiSnipsListSnippets        = "<c-l>"
 
 " add fancy glyphs -- requires a powerline font
 let g:airline_powerline_fonts = 1
+
+" hide empty trailing sections
+let g:airline_skip_empty_sections = 1
 
 " set the airline theme
 let g:airline_theme = 'light'
@@ -172,16 +195,3 @@ nnoremap <silent> t<C-l> :noautocmd wa<cr> :TestLast<CR>
 
 " set the default strategy
 let test#strategy = "vimterminal"
-
-" ******************************************************************************
-" YOUCOMPLETEME
-" ******************************************************************************
-
-" add language keywords
-let g:ycm_seed_identifiers_with_syntax = 1
-
-" add tag files integration
-let g:ycm_collect_identifiers_from_tags_files = 1
-
-" add preview
-let g:ycm_add_preview_to_completeopt = 1
