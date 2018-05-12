@@ -8,20 +8,21 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'SirVer/ultisnips'
+Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'csexton/trailertrash.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'janko-m/vim-test'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ntpeters/vim-airline-colornum'
-Plug 'SirVer/ultisnips'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'sheerun/vim-polyglot'
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
@@ -31,7 +32,6 @@ Plug 'tpope/vim-vividchalk'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
-Plug 'Yggdroot/indentLine'
 
 " deoplete sources
 Plug 'fishbullet/deoplete-ruby'
@@ -115,12 +115,13 @@ let g:deoplete#omni_patterns.elm = '\.'
 
 " elixir configuration
 let g:deoplete#sources.elixir = g:deoplete#sources._ + ['alchemist']
+" call deoplete#custom#source('alchemist', 'rank', 9999)
 
 " increase default tag cache
 let deoplete#tag#cache_limit_size = 5000000
 
 " add incremental refresh
-let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_refresh_always = 0
 
 " remove complete delay
 let g:deoplete#auto_complete_delay = 0

@@ -42,7 +42,7 @@ set hidden
 set inccommand=split
 
 " update redraw settings
-set nolazyredraw
+" set nolazyredraw
 
 " show the line number
 set number
@@ -170,7 +170,7 @@ set exrc
 set secure
 
 " ******************************************************************************
-" Sign Column Display
+" SIGN COLUMN DISPLAY
 " ******************************************************************************
 
 augroup sign_column
@@ -180,7 +180,7 @@ augroup sign_column
 augroup END
 
 " ******************************************************************************
-" netrw Configuration
+" NETRW CONFIGURATION
 " ******************************************************************************
 
 " don't set netrw as the altfile
@@ -191,3 +191,12 @@ let g:netrw_banner = 0
 
 " set list style
 let g:netrw_liststyle = 3
+
+" ******************************************************************************
+" NEOVIM TERMINAL CONFIGURATION
+" ******************************************************************************
+
+augroup neovim_terminal_open
+  autocmd!
+  autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
