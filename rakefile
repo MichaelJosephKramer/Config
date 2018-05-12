@@ -2,36 +2,20 @@ require 'rubygems'
 require 'rake'
 
 desc "do all the setup!"
-task :default => [:install_homebrew, :install_homebrew_packages, :install_oh_my_zsh] do
+task :default => [:install_homebrew_packages] do
   symlink_to_home
   update_vim_plugins
-  allow_italic_fonts
-end
-
-desc 'Install Homebrew'
-task :install_homebrew do
-  sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
 end
 
 desc 'Install Homebrew Packages'
 task :install_homebrew_packages do
-  sh 'brew install chruby cmake ctags git ruby-install reattach-to-user-namespace tmux zsh'
+  sh 'brew install chruby cmake ctags git ripgrep ruby-install reattach-to-user-namespace tmux vim'
   sh 'brew install vim --with-custom-ruby'
-end
-
-desc 'Install oh-my-zsh'
-task :install_oh_my_zsh do
-  sh 'curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh'
-  sh 'rm -f ~/.zshrc.pre-oh-my-zsh'
 end
 
 desc "symlink all dot files"
 task :symlink do
   symlink_to_home
-end
-
-def allow_italic_fonts
-  sh 'tic -x tmux-256color.terminfo'
 end
 
 def update_vim_plugins
