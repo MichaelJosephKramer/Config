@@ -13,7 +13,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Export the custom term
-export TERM="tmux-256color"
+export TERM="xterm-256color"
 
 # Tmuxinator configuration
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
