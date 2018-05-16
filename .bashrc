@@ -30,5 +30,8 @@ alias lsa="ls -al"
 # Editor
 export EDITOR="/usr/local/bin/vim"
 
-#IEx
+# IEx
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Source Elixir
+[[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
