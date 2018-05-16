@@ -28,7 +28,7 @@ alias mux=tmuxinator
 alias lsa="ls -al"
 
 # Editor
-export EDITOR="/usr/local/bin/nvim"
+export EDITOR="/usr/local/bin/vim"
 
 #IEx
 export ERL_AFLAGS="-kernel shell_history enabled"
