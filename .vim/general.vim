@@ -29,6 +29,9 @@ set autoread
 " allow backspacing in insert mode
 set backspace=indent,eol,start
 
+" turn off the error bells
+set belloff=all
+
 " allow clipboard access
 set clipboard=unnamed
 
@@ -73,9 +76,6 @@ set showcmd
 
 " jumps to matching brackets
 set showmatch
-
-" vim is terrible without this - no beeps
-set visualbell
 
 " ******************************************************************************
 " BACKUP FILES
@@ -129,23 +129,20 @@ highlight comment cterm=bold
 " SEARCH
 " ******************************************************************************
 
+" set line substiution to global by default
+set gdefault
+
 " highlight search matches
 set hlsearch
-
-" underline search matches
-hi Search cterm=underline
-
-" show matches as you type the search pattern
-set incsearch
 
 " ignore case when searching
 set ignorecase
 
+" underline search matches
+hi Search cterm=underline
+
 " search is case-insensitive if lowercase, case-sensitive otherwise
 set smartcase
-
-" set line substiution to global by default
-set gdefault
 
 " ******************************************************************************
 " STATUS LINE
@@ -188,6 +185,7 @@ set softtabstop=2
 " FOLDING
 " ******************************************************************************
 
+" turn off folding
 set nofoldenable
 
 " ******************************************************************************
