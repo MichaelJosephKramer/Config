@@ -115,14 +115,20 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 " cycle with tab instead of selection
 let g:mucomplete#cycle_with_trigger = 1
 
+imap <right> <plug>(MUcompleteExtendFwd)
+
 " add completion chain
 let g:mucomplete#chains = {
       \ 'default' : [
       \    'ulti',
+      \    "c-p",
+      \    "c-n",
       \    'omni',
-      \    'incl',
       \    'tags',
+      \    'incl',
       \    'line',
+      \    'file',
+      \    'path',
       \   ],
       \ }
 
