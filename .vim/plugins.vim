@@ -47,20 +47,18 @@ let g:ale_fix_on_save = 1
 
 " ale fixers
 let g:ale_fixers = {
-      \  'elixir': [
-      \   'mix_format',
+      \  '*': [
       \   'remove_trailing_lines',
       \   'trim_whitespace',
+      \  ],
+      \  'elixir': [
+      \   'mix_format',
       \  ],
       \  'javascript': [
       \   'eslint',
-      \   'remove_trailing_lines',
-      \   'trim_whitespace',
       \  ],
       \  'ruby': [
       \   'rubocop',
-      \   'remove_trailing_lines',
-      \   'trim_whitespace',
       \  ],
       \}
 
