@@ -110,6 +110,9 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 " MUCOMPLETE
 " ******************************************************************************
 
+" use the global completeopt
+let g:mucomplete#always_use_completeopt = 0
+
 " cycle with tab instead of selection
 let g:mucomplete#cycle_with_trigger = 1
 
