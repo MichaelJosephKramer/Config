@@ -17,6 +17,7 @@ Plug 'honza/vim-snippets'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-airline-colornum'
+Plug 'rizzatti/dash.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips' 
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
