@@ -9,7 +9,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular', { 'on': 'Tab' }
-Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestLast', 'TestLast', 'TestSuite'] }
+Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
