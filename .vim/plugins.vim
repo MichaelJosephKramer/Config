@@ -97,6 +97,17 @@ nnoremap <silent> <Leader>s :Snippets<CR>
 " map Tags command
 nnoremap <silent> <Leader>c :Tags<CR>
 
+" map custom Rg command
+nnoremap <silent> <Leader>r :Rg<CR>
+
+" use ripgrep
+command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \   <bang>0)
+
 " ******************************************************************************
 " INDENTLINE
 " ******************************************************************************
