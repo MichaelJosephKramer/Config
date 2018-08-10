@@ -33,7 +33,7 @@ set cursorline
 highlight cursorline cterm=none
 
 " higlight columns past 80
-let &colorcolumn="".join(range(81,999),",")
+let &colorcolumn="".join(range(121,999),",")
 
 " allow hidden buffers instead of closing
 set hidden

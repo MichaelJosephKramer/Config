@@ -42,7 +42,7 @@ set completeopt=noinsert,preview,menuone
 highlight cursorline cterm=none
 
 " higlight columns past 80
-execute "set colorcolumn=" . join(range(81,335), ',')
+execute "set colorcolumn=" . join(range(121,335), ',')
 
 " allow hidden buffers instead of closing
 set hidden
