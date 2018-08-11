@@ -108,6 +108,12 @@ command! -bang -nargs=* Rg
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
 
+inoremap <expr> <c-x><c-l> fzf#vim#complete(fzf#wrap({
+  \ 'prefix': '^.*$',
+  \ 'source': 'rg -n ^ --color always',
+  \ 'options': '--ansi --delimiter : --nth 3..',
+  \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }}))
+
 " ******************************************************************************
 " INDENTLINE
 " ******************************************************************************
