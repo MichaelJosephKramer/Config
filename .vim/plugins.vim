@@ -100,7 +100,7 @@ nnoremap <silent> <Leader>c :Tags<CR>
 " map custom Rg command
 nnoremap <silent> <Leader>r :Rg<CR>
 
-" use ripgrep
+" use ripgrep for search
 command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
     \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
@@ -108,6 +108,7 @@ command! -bang -nargs=* Rg
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
 
+" use ripgrep for full-line completion
 inoremap <expr> <c-x><c-l> fzf#vim#complete(fzf#wrap({
   \ 'prefix': '^.*$',
   \ 'source': 'rg -n ^ --color always',
@@ -134,7 +135,8 @@ let g:mucomplete#always_use_completeopt = 0
 " cycle with tab instead of selection
 let g:mucomplete#cycle_with_trigger = 1
 
-imap <right> <plug>(MUcompleteExtendFwd)
+" extend current completion
+imap <expr> <down> mucomplete#extend_fwd("\<down>")
 
 " add completion chain
 let g:mucomplete#chains = {
@@ -142,10 +144,9 @@ let g:mucomplete#chains = {
       \    'ulti',
       \    "c-p",
       \    "c-n",
-      \    'omni',
       \    'tags',
+      \    'omni',
       \    'incl',
-      \    'line',
       \    'file',
       \    'path',
       \   ],
