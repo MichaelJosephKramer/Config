@@ -109,11 +109,12 @@ command! -bang -nargs=* Rg
     \   <bang>0)
 
 " use ripgrep for full-line completion
-inoremap <expr> <c-x><c-l> fzf#vim#complete(fzf#wrap({
+inoremap <expr> <c-x><c-h> fzf#vim#complete(fzf#wrap({
   \ 'prefix': '^.*$',
   \ 'source': 'rg -n ^ --color always',
   \ 'options': '--ansi --delimiter : --nth 3..',
-  \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }}))
+  \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }
+  \ }))
 
 " ******************************************************************************
 " INDENTLINE
@@ -146,6 +147,7 @@ let g:mucomplete#chains = {
       \    "c-n",
       \    'tags',
       \    'omni',
+      \    'line',
       \    'incl',
       \    'file',
       \    'path',
