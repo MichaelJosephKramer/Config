@@ -80,25 +80,25 @@ let g:airline#extensions#ale#enabled = 1
 " ******************************************************************************
 
 " map Buffers command
-nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 
 " map GFiles command
-nnoremap <silent> <Leader>t :GFiles<CR>
+nnoremap <silent> <leader>t :GFiles<CR>
 
 " map Files command
-nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <leader>f :Files<CR>
 
 " map Lines command
-nnoremap <silent> <Leader>l :Lines<CR>
+nnoremap <silent> <leader>l :Lines<CR>
 
 " map Snippets command
-nnoremap <silent> <Leader>s :Snippets<CR>
+nnoremap <silent> <leader>s :Snippets<CR>
 
 " map Tags command
-nnoremap <silent> <Leader>c :Tags<CR>
+nnoremap <silent> <leader>c :Tags<CR>
 
 " map custom Rg command
-nnoremap <silent> <Leader>r :Rg<CR>
+nnoremap <silent> <leader>r :Rg<CR>
 
 " use ripgrep for search
 command! -bang -nargs=* Rg
