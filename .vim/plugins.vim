@@ -200,10 +200,14 @@ let g:airline_theme = 'light'
 " VIM-FUGITIVE
 " ******************************************************************************
 
+" Adds git grep results to the Quickfix window
 augroup fugitive_quickfix
   autocmd!
   autocmd QuickFixCmdPost *grep* cwindow
 augroup end
+
+" Fires git grep on the word under cursor
+nnoremap <silent> <leader>gw :Ggrep <cword><CR>
 
 " ******************************************************************************
 " VIM-TEST
