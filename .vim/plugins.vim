@@ -154,6 +154,22 @@ let g:mucomplete#chains = {
       \   ],
       \ }
 
+fun! MyExpandSnippet()
+  if get(v:completed_item, 'menu', '') =~# '[snip]'
+    return UltiSnips#ExpandSnippet()
+  endif
+  return ""  " Or "\<cr>" if you always want to start a new line
+endf
+
+fun! s:my_cr()
+  return pumvisible()
+        \ ? "\<c-y>\<c-r>=MyExpandSnippet()\<cr>"
+        \ : "\<cr>"
+endf
+
+inoremap <silent> <expr> <plug>(MyCR) <sid>my_cr()
+imap <cr> <plug>(MyCR)
+
 " ******************************************************************************
 " RAINBOW_PARENTHESES
 " ******************************************************************************
@@ -179,9 +195,8 @@ let g:tagbar_show_linenumbers = 0
 " ******************************************************************************
 
 " trigger mappings
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsExpandTrigger       = "<f5>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
 
 " ******************************************************************************
 " VIM-AIRLINE
@@ -207,7 +222,7 @@ augroup fugitive_quickfix
 augroup end
 
 " Fires git grep on the word under cursor
-nnoremap <silent> <leader>gw :Ggrep <cword><CR>
+nnoremap <silent> <leader>g :Ggrep <cword><CR>
 
 " ******************************************************************************
 " VIM-TEST
