@@ -12,9 +12,6 @@ source /usr/local/share/chruby/auto.sh
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-# Export the custom term
-export TERM="xterm-256color"
-
 # Tmuxinator configuration
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
@@ -35,3 +32,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Source Elixir
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
