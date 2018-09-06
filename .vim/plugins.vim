@@ -154,21 +154,7 @@ let g:mucomplete#chains = {
       \   ],
       \ }
 
-fun! MyExpandSnippet()
-  if get(v:completed_item, 'menu', '') =~# '[snip]'
-    return UltiSnips#ExpandSnippet()
-  endif
-  return ""  " Or "\<cr>" if you always want to start a new line
-endf
-
-fun! s:my_cr()
-  return pumvisible()
-        \ ? "\<c-y>\<c-r>=MyExpandSnippet()\<cr>"
-        \ : "\<cr>"
-endf
-
-inoremap <silent> <expr> <plug>(MyCR) <sid>my_cr()
-imap <cr> <plug>(MyCR)
+inoremap <silent> <expr> <cr> mucomplete#ultisnips#expand_snippet("\<cr>")
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES
