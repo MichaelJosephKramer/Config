@@ -74,6 +74,8 @@ augroup end
 
 " add vim-airline integration
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#warning_symbol = "➜  "
+let g:airline#extensions#ale#error_symbol = "✘  "
 
 " ******************************************************************************
 " FZF.VIM
@@ -189,7 +191,7 @@ let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
 " ******************************************************************************
 
 " add fancy glyphs -- requires a powerline font
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " hide empty trailing sections
 let g:airline_skip_empty_sections = 1
