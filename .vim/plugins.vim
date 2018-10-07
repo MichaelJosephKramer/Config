@@ -19,7 +19,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'ntpeters/vim-airline-colornum'
 Plug 'rizzatti/dash.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips' 
+Plug 'SirVer/ultisnips'
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
