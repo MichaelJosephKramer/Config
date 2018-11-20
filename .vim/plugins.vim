@@ -102,14 +102,6 @@ nnoremap <silent> <leader>c :Tags<CR>
 " map custom Rg command
 nnoremap <silent> <leader>r :Rg<CR>
 
-" use ripgrep for search
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \ 'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-      \   <bang>0 ? fzf#vim#with_preview('up:60%')
-      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \   <bang>0)
-
 " use ripgrep for full-line completion
 inoremap <expr> <c-x><c-h> fzf#vim#complete(fzf#wrap({
       \ 'prefix': '^.*$',
@@ -117,6 +109,12 @@ inoremap <expr> <c-x><c-h> fzf#vim#complete(fzf#wrap({
       \ 'options': '--ansi --delimiter : --nth 3..',
       \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }
       \ }))
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=? -complete=dir GFiles
+  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " ******************************************************************************
 " INDENTLINE
