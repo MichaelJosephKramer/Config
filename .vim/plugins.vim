@@ -1,6 +1,7 @@
 " ******************************************************************************
 " VIM-PLUG
 " ******************************************************************************
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -93,14 +94,17 @@ nnoremap <silent> <leader>f :Files<CR>
 " map Lines command
 nnoremap <silent> <leader>l :Lines<CR>
 
+" map Marks command
+nnoremap <silent> <leader>m :Marks<CR>
+
 " map Snippets command
 nnoremap <silent> <leader>s :Snippets<CR>
 
+" map Rg command
+nnoremap <silent> <leader>r :Rg<CR>
+
 " map Tags command
 nnoremap <silent> <leader>c :Tags<CR>
-
-" map custom Rg command
-nnoremap <silent> <leader>r :Rg<CR>
 
 " use ripgrep for full-line completion
 inoremap <expr> <c-x><c-h> fzf#vim#complete(fzf#wrap({
