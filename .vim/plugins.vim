@@ -158,6 +158,15 @@ let g:mucomplete#chains = {
       \   ],
       \ }
 
+let g:mucomplete#wordlist = {
+      \   'javascript.jsx': [
+      \     'console.log',
+      \   ],
+      \   'ruby': [
+      \     'binding.pry',
+      \   ],
+      \ }
+
 inoremap <silent> <expr> <cr> mucomplete#ultisnips#expand_snippet("\<cr>")
 
 " ******************************************************************************
