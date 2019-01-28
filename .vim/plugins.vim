@@ -74,6 +74,9 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarningSign ctermfg=226
 augroup end
 
+" ale linting configuration
+let g:ale_lint_on_enter = 0
+
 " ******************************************************************************
 " FZF.VIM
 " ******************************************************************************
