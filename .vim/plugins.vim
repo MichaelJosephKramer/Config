@@ -178,7 +178,7 @@ augroup END
 " ******************************************************************************
 
 " use the global completeopt
-let g:mucomplete#always_use_completeopt = 0
+let g:mucomplete#always_use_completeopt = 1
 
 " cycle with tab instead of selection
 let g:mucomplete#cycle_with_trigger = 1
@@ -190,10 +190,8 @@ imap <expr> <down> mucomplete#extend_fwd("\<down>")
 let g:mucomplete#chains = {
       \ 'default' : [
       \    'ulti',
-      \    "c-p",
-      \    "c-n",
+      \    'list',
       \    'tags',
-      \    'omni',
       \    'line',
       \    'incl',
       \    'file',

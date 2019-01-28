@@ -41,7 +41,10 @@ set belloff=all
 set clipboard=unnamed
 
 " add auto select
-set completeopt=noinsert,preview,menuone
+set completeopt=preview,menuone,longest
+
+" remove file paths from completion, for performance
+set complete-=i
 
 " remove path from complete, for performance
 set complete-=i
