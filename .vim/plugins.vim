@@ -57,6 +57,9 @@ let g:ale_fixers = {
       \  'javascript': [
       \   'eslint',
       \  ],
+      \  'javascript.jsx': [
+      \   'eslint',
+      \  ],
       \  'ruby': [
       \   'rubocop',
       \  ],
