@@ -159,6 +159,9 @@ set smartcase
 " show the status line
 set laststatus=2
 
+" set noshowmode, since we see the information from the statusline
+set noshowmode
+
 " ******************************************************************************
 " LISTCHARS
 " ******************************************************************************
