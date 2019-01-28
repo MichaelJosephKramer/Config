@@ -43,6 +43,9 @@ set clipboard=unnamed
 " add auto select
 set completeopt=noinsert,preview,menuone
 
+" remove path from complete, for performance
+set complete-=i
+
 " current line highlight details
 highlight cursorline cterm=none
 
