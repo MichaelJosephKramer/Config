@@ -18,6 +18,7 @@ Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'maximbaz/lightline-ale'
 Plug 'rizzatti/dash.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
@@ -135,49 +136,35 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 let g:lightline = {
 \ 'active': {
-\   'left': [['mode', 'paste'], ['filename', 'modified']],
-\   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\   'left': [['mode', 'paste'], ['branch', 'filename', 'modified']],
+\   'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'lineinfo'], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+\ },
+\ 'component_function': {
+\   'branch': 'fugitive#head'
 \ },
 \ 'component_expand': {
-\   'linter_warnings': 'LightlineLinterWarnings',
-\   'linter_errors': 'LightlineLinterErrors',
-\   'linter_ok': 'LightlineLinterOK'
+\  'linter_checking': 'lightline#ale#checking',
+\  'linter_warnings': 'lightline#ale#warnings',
+\  'linter_errors': 'lightline#ale#errors',
+\  'linter_ok': 'lightline#ale#ok',
 \ },
 \ 'component_type': {
-\   'readonly': 'error',
-\   'linter_warnings': 'warning',
-\   'linter_errors': 'error'
+\     'linter_checking': 'left',
+\     'linter_warnings': 'warning',
+\     'linter_errors': 'error',
+\     'linter_ok': 'left',
 \ },
 \ }
 
-function! LightlineLinterWarnings() abort
-  :echom 'here'
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ➜ ', all_non_errors)
-endfunction
+" ******************************************************************************
+" LIGHTLINE-ALE
+" ******************************************************************************
 
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
-endfunction
-
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '✓ ' : ''
-endfunction
-
-augroup _lightline
-  autocmd!
-  autocmd User ALEJobStarted call lightline#update()
-  autocmd User ALELintPost call lightline#update()
-  autocmd User ALEFixPost call lightline#update()
-augroup END
+" set the indicators
+let g:lightline#ale#indicator_warnings = "➜  "
+let g:lightline#ale#indicator_errors = "✘  "
+let g:lightline#ale#indicator_checking = "❁ "
+let g:lightline#ale#indicator_ok = "✔︎ "
 
 " ******************************************************************************
 " MUCOMPLETE
