@@ -37,8 +37,8 @@ call plug#end()
 " ******************************************************************************
 
 " add sign column emoticons
-let g:ale_sign_warning = "➜"
-let g:ale_sign_error = "✘"
+let g:ale_sign_warning = "\u279c"
+let g:ale_sign_error = "\u2718"
 
 " message format
 let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
@@ -137,7 +137,7 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 let g:lightline = {
 \ 'active': {
 \   'left': [['mode', 'paste'], ['branch', 'filename', 'modified']],
-\   'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'lineinfo'], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+\   'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'lineinfo'], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
 \ },
 \ 'component_function': {
 \   'branch': 'fugitive#head'
@@ -161,10 +161,11 @@ let g:lightline = {
 " ******************************************************************************
 
 " set the indicators
-let g:lightline#ale#indicator_warnings = "➜  "
-let g:lightline#ale#indicator_errors = "✘  "
-let g:lightline#ale#indicator_checking = "❁ "
-let g:lightline#ale#indicator_ok = "✔︎ "
+let g:lightline#ale#indicator_ok = "\u2714 "
+let g:lightline#ale#indicator_warnings = "\u279c "
+let g:lightline#ale#indicator_errors = "\u2718 "
+let g:lightline#ale#indicator_checking = "\u29D7 "
+
 
 " ******************************************************************************
 " MUCOMPLETE
