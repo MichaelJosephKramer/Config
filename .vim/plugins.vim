@@ -136,8 +136,8 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 let g:lightline = {
 \ 'active': {
-\   'left': [['mode', 'paste'], ['branch', 'filename', 'modified']],
-\   'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], [ 'lineinfo'], [ 'percent' ], [ 'fileformat', 'fileencoding', 'filetype' ]]
+\   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ],
+\   'right': [['lineinfo'], ['percent'], ['modified', 'fileformat', 'fileencoding', 'filetype'] ],
 \ },
 \ 'component_function': {
 \   'branch': 'fugitive#head'
