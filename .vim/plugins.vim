@@ -166,13 +166,9 @@ let g:lightline#ale#indicator_warnings = "\u279c "
 let g:lightline#ale#indicator_errors = "\u2718 "
 let g:lightline#ale#indicator_checking = "\u29D7 "
 
-
 " ******************************************************************************
 " MUCOMPLETE
 " ******************************************************************************
-
-" use the global completeopt
-let g:mucomplete#always_use_completeopt = 1
 
 " cycle with tab instead of selection
 let g:mucomplete#cycle_with_trigger = 1
