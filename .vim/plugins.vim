@@ -173,12 +173,17 @@ let g:lightline#ale#indicator_checking = "\u29D7 "
 " cycle with tab instead of selection
 let g:mucomplete#cycle_with_trigger = 1
 
+" enables auto-completion while typing
+let g:mucomplete#enable_auto_at_startup = 1
+
 " extend current completion
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
 
 " add completion chain
 let g:mucomplete#chains = {
       \ 'default' : [
+      \    'c-p',
+      \    'c-n',
       \    'ulti',
       \    'list',
       \    'tags',
