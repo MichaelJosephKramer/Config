@@ -78,6 +78,9 @@ augroup end
 " ale linting configuration
 let g:ale_lint_on_enter = 0
 
+" add a mapping for completion
+imap <C-_> <Plug>(ale_complete)
+
 " ******************************************************************************
 " FZF.VIM
 " ******************************************************************************
@@ -174,7 +177,7 @@ let g:lightline#ale#indicator_checking = "\u29D7 "
 let g:mucomplete#cycle_with_trigger = 1
 
 " enables auto-completion while typing
-let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#enable_auto_at_startup = 0
 
 " extend current completion
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
