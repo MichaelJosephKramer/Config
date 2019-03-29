@@ -237,19 +237,6 @@ let g:UltiSnipsExpandTrigger       = "<f5>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
 
 " ******************************************************************************
-" VIM-AIRLINE
-" ******************************************************************************
-
-" add fancy glyphs -- requires a powerline font
-let g:airline_powerline_fonts = 0
-
-" hide empty trailing sections
-let g:airline_skip_empty_sections = 1
-
-" set the airline theme
-let g:airline_theme = 'light'
-
-" ******************************************************************************
 " VIM-FUGITIVE
 " ******************************************************************************
 
