@@ -19,10 +19,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'rizzatti/dash.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -36,12 +36,11 @@ call plug#end()
 " ALE
 " ******************************************************************************
 
-" add sign column emoticons
-let g:ale_sign_warning = "\u279c"
-let g:ale_sign_error = "\u2718"
-
 " message format
 let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
+
+" enable credo strict mode
+let g:ale_elixir_credo_strict = 1
 
 " autofix
 let g:ale_fix_on_save = 1
@@ -66,6 +65,13 @@ let g:ale_fixers = {
       \  ],
       \}
 
+" ale linting configuration
+let g:ale_lint_on_enter = 0
+
+" add sign column emoticons
+let g:ale_sign_warning = "\u279c"
+let g:ale_sign_error = "\u2718"
+
 " ale colors for highlights
 augroup ale_highlights
   autocmd!
@@ -74,12 +80,6 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarning ctermbg=8
   autocmd ColorScheme * highlight ALEWarningSign ctermfg=226
 augroup end
-
-" ale linting configuration
-let g:ale_lint_on_enter = 0
-
-" add a mapping for completion
-imap <C-_> <Plug>(ale_complete)
 
 " ******************************************************************************
 " FZF.VIM

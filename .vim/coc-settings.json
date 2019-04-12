@@ -1,0 +1,12 @@
+{
+  "languageserver": {
+    "elixirLS": {
+      "command": "/Users/Michael/code/oss/elixir-ls/rel/language_server.sh",
+      "filetypes": ["elixir", "eelixir"]
+    }
+  },
+  "suggest.autoTrigger": "always",
+  "suggest.minTriggerInputLength": 3,
+  "suggest.maxCompleteItemCount": 10,
+  "suggest.timeout": 5000
+}
