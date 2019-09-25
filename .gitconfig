@@ -19,7 +19,7 @@
   sha         = !git rev-parse HEAD | cut -c -8 | tr -d '\n' | pbcopy
   st          = status
   this        = !git init && git add . && git commit -m 'Initial commit'
-  wip         = commit -am "Crack that WIP!"
+  wip         = commit -am 'WIP'
 [color]
   ui = true
 [core]
