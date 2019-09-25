@@ -6,10 +6,16 @@
 silent! colorscheme vividchalk
 
 " change the background color of the autocomplete menu
-highlight pmenu ctermbg=172 gui=bold
+highlight Pmenu guibg=#d78700 ctermbg=172
 
 " change the select backgroud color of the autocomplete menu
-highlight pmenusel ctermbg=92 gui=bold
+highlight PmenuSel guibg=#8700d7 ctermbg=92
+
+" change the sign column backgroud color
+highlight SignColumn guibg=black ctermbg=black
+
+" set the max number of columns for syntax highlighting
+set synmaxcol=256
 
 " ******************************************************************************
 " BASICS
@@ -22,12 +28,6 @@ set clipboard=unnamed
 
 " add auto select
 set completeopt=noinsert,preview,menuone
-
-" highlight current column
-set cursorcolumn
-
-" highlight current line
-set cursorline
 
 " current line highlight details
 highlight cursorline cterm=none
