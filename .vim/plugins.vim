@@ -9,6 +9,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'godlygeek/tabular', { 'on': 'Tab' }
 Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -134,6 +135,19 @@ let g:indentLine_char = '┊'
 let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 " ******************************************************************************
+" LANGUAGECLIENT-NEOVIM
+" ******************************************************************************
+
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" ******************************************************************************
 " LIGHTLINE
 " ******************************************************************************
 
@@ -185,8 +199,7 @@ imap <expr> <down> mucomplete#extend_fwd("\<down>")
 " add completion chain
 let g:mucomplete#chains = {
       \ 'default' : [
-      \    'c-p',
-      \    'c-n',
+      \    'omni',
       \    'ulti',
       \    'list',
       \    'tags',
