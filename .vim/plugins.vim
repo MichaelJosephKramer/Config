@@ -9,7 +9,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'godlygeek/tabular', { 'on': 'Tab' }
 Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -20,8 +19,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'rizzatti/dash.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
@@ -48,6 +45,7 @@ let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
 \  'elixir': ['elixir-ls'],
+\  'ruby': ['rubocop', 'solargraph'],
 \  'rust': ['rls'],
 \}
 
@@ -141,19 +139,6 @@ let g:indentLine_char = '┊'
 
 " exclude json and sh files
 let g:indentLine_fileTypeExclude = ['json', 'sh']
-
-" ******************************************************************************
-" LANGUAGECLIENT-NEOVIM
-" ******************************************************************************
-
-let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " ******************************************************************************
 " LIGHTLINE
