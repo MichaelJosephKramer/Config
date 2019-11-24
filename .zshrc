@@ -55,3 +55,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # Export the custom term
 export TERM="tmux-256color"
+
+# Export the fd as the fzf default command
+export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hidden --follow --exclude .git)'
