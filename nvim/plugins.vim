@@ -93,6 +93,12 @@ augroup end
 " FZF.VIM
 " ******************************************************************************
 
+" set default FZF options for VIM
+let $FZF_DEFAULT_OPTS='--border --layout=reverse --margin=1,4'
+
+" set the default layout for the floating window
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
 " map Buffers command
 nnoremap <silent> <leader>b :Buffers<CR>
 
@@ -122,14 +128,37 @@ inoremap <expr> <c-x><c-h> fzf#vim#complete(fzf#wrap({
       \ 'prefix': '^.*$',
       \ 'source': 'rg -n ^ --color always',
       \ 'options': '--ansi --delimiter : --nth 3..',
-      \ 'reducer': { lines -> join(split(lines[0], ':\zs')[2:], '') }
+      \ 'reducer': { lines -> join(split(lines[-1], ':\zs')[2:], '') }
       \ }))
 
+" add preview for Files command
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:70%'), <bang>0)
 
+" add preview for GFiles command
 command! -bang -nargs=? -complete=dir GFiles
-  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:70%'), <bang>0)
+
+" floating window function
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+
+  let height = float2nr(&lines * 0.7)
+  let width = float2nr(&columns * 0.80)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 1
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
 
 " ******************************************************************************
 " INDENTLINE

@@ -1,4 +1,4 @@
-ZSH_THEME_PREFIX='🍺'
+ZSH_THEME_PREFIX='🥃'
 
 function my_git_prompt() {
   tester=$(git rev-parse --git-dir 2> /dev/null) || return

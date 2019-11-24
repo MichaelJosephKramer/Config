@@ -5,6 +5,9 @@
 " the color scheme, dumbass
 silent! colorscheme vividchalk
 
+" change the background color for the floating window
+highlight NormalFloat ctermbg=236
+
 " change the background color of the autocomplete menu
 highlight Pmenu guibg=#d78700 ctermbg=172
 
