@@ -82,10 +82,10 @@ let g:ale_sign_error = "\u2718"
 " ale colors for highlights
 augroup ale_highlights
   autocmd!
-  autocmd ColorScheme * highlight ALEError ctermbg=88
-  autocmd ColorScheme * highlight ALEErrorSign ctermfg=196
-  autocmd ColorScheme * highlight ALEWarning ctermbg=8
-  autocmd ColorScheme * highlight ALEWarningSign ctermfg=226
+  autocmd ColorScheme * highlight ALEError ctermbg=88 guibg=#870000
+  autocmd ColorScheme * highlight ALEErrorSign ctermfg=196 guifg=#ff0000
+  autocmd ColorScheme * highlight ALEWarning ctermbg=8 guibg=#808080
+  autocmd ColorScheme * highlight ALEWarningSign ctermfg=226 guifg=#ffff00
 augroup end
 
 
@@ -133,11 +133,11 @@ inoremap <expr> <c-x><c-h> fzf#vim#complete(fzf#wrap({
 
 " add preview for Files command
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:70%'), <bang>0)
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:60%'), <bang>0)
 
 " add preview for GFiles command
 command! -bang -nargs=? -complete=dir GFiles
-  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:70%'), <bang>0)
+  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:60%'), <bang>0)
 
 " floating window function
 function! FloatingFZF()
