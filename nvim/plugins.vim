@@ -94,7 +94,7 @@ augroup end
 " ******************************************************************************
 
 " set default FZF options for VIM
-let $FZF_DEFAULT_OPTS='--border --layout=reverse --margin=1,4'
+let $FZF_DEFAULT_OPTS='--color=border:#8700d7 --border --layout=reverse --margin=1,4'
 
 " set the default layout for the floating window
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
