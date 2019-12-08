@@ -235,12 +235,12 @@ imap <expr> <down> mucomplete#extend_fwd("\<down>")
 " add completion chain
 let g:mucomplete#chains = {
       \ 'default' : [
+      \    'incl',
       \    'omni',
       \    'ulti',
       \    'list',
       \    'tags',
       \    'line',
-      \    'incl',
       \    'file',
       \    'path',
       \   ],
