@@ -53,7 +53,7 @@ else
     PROMPT_HOST=" %{$fg_bold[black]%}%M"
 fi
 
-PROMPT='$ZSH_THEME_PREFIX ${PROMPT_HOST}%{$fg[green]%} %c $(my_git_prompt)%{$fg[yellow]%}▷ %{$reset_color%}'
+PROMPT='$ZSH_THEME_PREFIX ${PROMPT_HOST}%{$fg[green]%} %c $(my_git_prompt)%{$fg[yellow]%}|> %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[white]%}( %{$reset_color%}%{$fg[cyan]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg_bold[white]%} ) %{$reset_color%}"
