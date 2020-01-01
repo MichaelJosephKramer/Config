@@ -49,9 +49,6 @@ set completeopt=preview,menuone,noinsert
 " remove file paths from completion, for performance
 set complete-=i
 
-" remove path from complete, for performance
-set complete-=i
-
 " current line highlight details
 highlight cursorline cterm=none
 

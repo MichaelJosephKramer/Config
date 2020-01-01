@@ -47,9 +47,6 @@ set hidden
 " live substiution
 set inccommand=split
 
-" update redraw settings
-" set nolazyredraw
-
 " show the line number
 set number
 
