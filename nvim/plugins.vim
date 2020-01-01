@@ -10,6 +10,8 @@ endif
 
 call plug#begin()
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'dense-analysis/ale'
+Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -26,7 +28,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vividchalk'
-Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -87,7 +88,6 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarning ctermbg=8 guibg=#808080
   autocmd ColorScheme * highlight ALEWarningSign ctermfg=226 guifg=#ffff00
 augroup end
-
 
 " ******************************************************************************
 " FZF.VIM
@@ -176,12 +176,18 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 let g:LanguageClient_serverCommands = {
     \ 'ruby': ['solargraph', 'stdio'],
+    \ 'elixir': ['/Users/michael/code/oss/elixir-lsp/rel/language_server.sh'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+augroup solargraph
+  autocmd!
+  autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+augroup end
 
 " ******************************************************************************
 " LIGHTLINE
