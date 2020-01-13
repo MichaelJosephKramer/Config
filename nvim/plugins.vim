@@ -46,7 +46,7 @@ let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
 \  'elixir': ['elixir-ls'],
-\  'ruby': ['rubocop', 'solargraph'],
+\  'ruby': ['rubocop'],
 \  'rust': ['rls'],
 \}
 
@@ -73,8 +73,8 @@ let g:ale_fixers = {
       \  ],
       \}
 
-" ale linting configuration
-let g:ale_lint_on_enter = 0
+" " ale linting configuration
+" let g:ale_lint_on_enter = 1
 
 " add sign column emoticons
 let g:ale_sign_warning = "\u279c"
@@ -193,13 +193,18 @@ augroup end
 " LIGHTLINE
 " ******************************************************************************
 
+function! Completion()
+  return get(g:mucomplete#msg#short_methods, get(g:, 'mucomplete_current_method', ''), '')
+endf
+
 let g:lightline = {
 \ 'active': {
-\   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ],
-\   'right': [['lineinfo'], ['percent'], ['modified', 'fileformat', 'fileencoding', 'filetype'] ],
+\   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]],
+\   'right': [['lineinfo'], ['percent'], ['completion', 'modified', 'fileformat', 'fileencoding', 'filetype']],
 \ },
 \ 'component_function': {
-\   'branch': 'fugitive#head'
+\   'branch': 'fugitive#head',
+\   'completion': 'Completion',
 \ },
 \ 'component_expand': {
 \  'linter_checking': 'lightline#ale#checking',
@@ -233,7 +238,7 @@ let g:lightline#ale#indicator_checking = "\u29D7 "
 let g:mucomplete#cycle_with_trigger = 1
 
 " enables auto-completion while typing
-let g:mucomplete#enable_auto_at_startup = 0
+let g:mucomplete#enable_auto_at_startup = 1
 
 " extend current completion
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
@@ -262,6 +267,9 @@ let g:mucomplete#wordlist = {
       \ }
 
 inoremap <silent> <expr> <cr> mucomplete#ultisnips#expand_snippet("\<cr>")
+
+" activate immediately
+autocmd VimEnter * silent! MUcompleteNotify 3
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES

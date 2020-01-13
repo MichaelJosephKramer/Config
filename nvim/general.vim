@@ -58,6 +58,7 @@ set scrolloff=10
 
 "Remove splash screen
 set shortmess+=I
+set shortmess+=c
 
 " shows selected lines
 set showcmd
