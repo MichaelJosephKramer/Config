@@ -9,7 +9,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'dense-analysis/ale'
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
@@ -38,17 +37,19 @@ call plug#end()
 " message format
 let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
 
-" enable credo strict mode
+" elixir-specific configuration
 let g:ale_elixir_credo_strict = 1
+let g:ale_elixir_elixir_ls_release = '/Users/michael/code/oss/elixir-ls/rel'
 
 " autofix
 let g:ale_fix_on_save = 1
 
+" ale linters
 let g:ale_linters = {
-\  'elixir': ['elixir-ls'],
-\  'ruby': ['rubocop'],
-\  'rust': ['rls'],
-\}
+      \  'elixir': ['credo', 'elixir-ls'],
+      \  'ruby': ['rubocop', 'solargraph'],
+      \  'rust': ['rls'],
+      \}
 
 " ale fixers
 let g:ale_fixers = {
@@ -56,25 +57,15 @@ let g:ale_fixers = {
       \   'remove_trailing_lines',
       \   'trim_whitespace',
       \  ],
-      \  'elixir': [
-      \   'mix_format',
-      \  ],
-      \  'javascript': [
-      \   'eslint',
-      \  ],
-      \  'javascript.jsx': [
-      \   'eslint',
-      \  ],
-      \  'ruby': [
-      \   'rubocop',
-      \  ],
-      \  'rust': [
-      \   'rustfmt',
-      \  ],
+      \  'elixir': [ 'mix_format' ],
+      \  'javascript': [ 'eslint' ],
+      \  'javascript.jsx': [ 'eslint' ],
+      \  'ruby': ['rubocop' ],
+      \  'rust': ['rustfmt'],
       \}
 
-" " ale linting configuration
-" let g:ale_lint_on_enter = 1
+" ale linting configuration
+let g:ale_lint_on_enter = 1
 
 " add sign column emoticons
 let g:ale_sign_warning = "\u279c"
@@ -88,6 +79,9 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarning ctermbg=8 guibg=#808080
   autocmd ColorScheme * highlight ALEWarningSign ctermfg=226 guifg=#ffff00
 augroup end
+
+" integrate ale completion with omnifunc
+set omnifunc=ale#completion#OmniFunc
 
 " ******************************************************************************
 " FZF.VIM
@@ -171,25 +165,6 @@ let g:indentLine_char = '┊'
 let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 " ******************************************************************************
-" LANGUAGECLIENT
-" ******************************************************************************
-
-let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['solargraph', 'stdio'],
-    \ 'elixir': ['/Users/michael/code/oss/elixir-lsp/rel/language_server.sh'],
-    \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-augroup solargraph
-  autocmd!
-  autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
-augroup end
-
-" ******************************************************************************
 " LIGHTLINE
 " ******************************************************************************
 
@@ -198,27 +173,27 @@ function! Completion()
 endf
 
 let g:lightline = {
-\ 'active': {
-\   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]],
-\   'right': [['lineinfo'], ['percent'], ['completion', 'modified', 'fileformat', 'fileencoding', 'filetype']],
-\ },
-\ 'component_function': {
-\   'branch': 'fugitive#head',
-\   'completion': 'Completion',
-\ },
-\ 'component_expand': {
-\  'linter_checking': 'lightline#ale#checking',
-\  'linter_warnings': 'lightline#ale#warnings',
-\  'linter_errors': 'lightline#ale#errors',
-\  'linter_ok': 'lightline#ale#ok',
-\ },
-\ 'component_type': {
-\     'linter_checking': 'left',
-\     'linter_warnings': 'warning',
-\     'linter_errors': 'error',
-\     'linter_ok': 'left',
-\ },
-\ }
+      \ 'active': {
+      \   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]],
+      \   'right': [['lineinfo'], ['percent'], ['completion', 'modified', 'fileformat', 'fileencoding', 'filetype']],
+      \ },
+      \ 'component_function': {
+      \   'branch': 'fugitive#head',
+      \   'completion': 'Completion',
+      \ },
+      \ 'component_expand': {
+      \   'linter_checking': 'lightline#ale#checking',
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok',
+      \ },
+      \ 'component_type': {
+      \   'linter_checking': 'left',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'left',
+      \ },
+      \ }
 
 " ******************************************************************************
 " LIGHTLINE-ALE
@@ -236,9 +211,6 @@ let g:lightline#ale#indicator_checking = "\u29D7 "
 
 " cycle with tab instead of selection
 let g:mucomplete#cycle_with_trigger = 1
-
-" enables auto-completion while typing
-let g:mucomplete#enable_auto_at_startup = 1
 
 " extend current completion
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
