@@ -42,6 +42,9 @@ let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
 let g:ale_elixir_credo_strict = 1
 let g:ale_elixir_elixir_ls_release = '/Users/michael/code/oss/elixir-ls/rel'
 
+
+let g:ale_rust_rls_config = { 'rust': { 'clippy_preference': 'on' } }
+
 " autofix
 let g:ale_fix_on_save = 1
 
