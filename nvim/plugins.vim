@@ -20,6 +20,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
+Plug 'neovim/nvim-lsp'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
@@ -40,17 +41,15 @@ let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
 
 " elixir-specific configuration
 let g:ale_elixir_credo_strict = 1
-let g:ale_elixir_elixir_ls_release = '/Users/michael/code/oss/elixir-ls/rel'
-
-
-let g:ale_rust_rls_config = { 'rust': { 'clippy_preference': 'on' } }
 
 " autofix
 let g:ale_fix_on_save = 1
 
 " ale linters
 let g:ale_linters = {
-      \  'elixir': ['credo', 'elixir-ls'],
+      \  'elixir': ['credo'],
+      \  'javascript': [ 'eslint' ],
+      \  'javascript.jsx': [ 'eslint' ],
       \  'ruby': ['rubocop', 'solargraph'],
       \  'rust': ['rls'],
       \}
@@ -83,9 +82,6 @@ augroup ale_highlights
   autocmd ColorScheme * highlight ALEWarning ctermbg=8 guibg=#808080
   autocmd ColorScheme * highlight ALEWarningSign ctermfg=226 guifg=#ffff00
 augroup end
-
-" integrate ale completion with omnifunc
-set omnifunc=ale#completion#OmniFunc
 
 " ******************************************************************************
 " FERRET
@@ -235,7 +231,6 @@ imap <expr> <down> mucomplete#extend_fwd("\<down>")
 " add completion chain
 let g:mucomplete#chains = {
       \ 'default' : [
-      \    'incl',
       \    'omni',
       \    'ulti',
       \    'list',
@@ -259,6 +254,24 @@ inoremap <silent> <expr> <cr> mucomplete#ultisnips#expand_snippet("\<cr>")
 
 " activate immediately
 autocmd VimEnter * silent! MUcompleteNotify 3
+
+" ******************************************************************************
+" NVIM-LSP
+" ******************************************************************************
+
+" lsp config, in lua
+lua << EOF
+  local nvim_lsp = require 'nvim_lsp'
+
+  nvim_lsp.elixirls.setup{}
+  nvim_lsp.rust_analyzer.setup{}
+EOF
+
+" Map omnifunc for the configured languages
+augroup omnicomplete
+  autocmd!
+  autocmd Filetype elixir,rust set omnifunc=v:lua.vim.lsp.omnifunc
+augroup end
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES
