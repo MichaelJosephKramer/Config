@@ -31,7 +31,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Tmuxinator configuration
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-export EDITOR=nvim
+export EDITOR=vim
 
 # Tmuxinator autocompletion
 alias mux=tmuxinator

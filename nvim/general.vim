@@ -33,7 +33,7 @@ set termguicolors
 set clipboard=unnamed
 
 " add auto select
-set completeopt=menuone,noinsert
+set completeopt=noinsert,menuone
 
 " current line highlight details
 highlight cursorline cterm=none
