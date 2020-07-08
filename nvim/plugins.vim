@@ -17,7 +17,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
-Plug 'lifepillar/vim-mucomplete'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
 Plug 'sheerun/vim-polyglot'
@@ -41,8 +40,13 @@ let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
 " elixir-specific configuration
 let g:ale_elixir_credo_strict = 1
 let g:ale_elixir_elixir_ls_release = '/Users/michael/code/oss/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_config = {
+\   'elixirLS': {
+\     'dialyzerEnabled': v:false,
+\   },
+\}
 
-
+" rust-specific configuration
 let g:ale_rust_rls_config = { 'rust': { 'clippy_preference': 'on' } }
 
 " autofix
@@ -51,6 +55,7 @@ let g:ale_fix_on_save = 1
 " ale linters
 let g:ale_linters = {
       \  'elixir': ['credo', 'elixir-ls'],
+      \  'python': ['pyls'],
       \  'ruby': ['rubocop', 'solargraph'],
       \  'rust': ['rls'],
       \}
@@ -64,6 +69,7 @@ let g:ale_fixers = {
       \  'elixir': [ 'mix_format' ],
       \  'javascript': [ 'eslint' ],
       \  'javascript.jsx': [ 'eslint' ],
+      \  'python': ['yapf'],
       \  'ruby': ['rubocop' ],
       \  'rust': ['rustfmt'],
       \}
@@ -185,14 +191,10 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 " LIGHTLINE
 " ******************************************************************************
 
-function! Completion()
-  return get(g:mucomplete#msg#short_methods, get(g:, 'mucomplete_current_method', ''), '')
-endf
-
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]],
-      \   'right': [['lineinfo'], ['percent'], ['completion', 'modified', 'fileformat', 'fileencoding', 'filetype']],
+      \   'right': [['lineinfo'], ['percent'], ['modified', 'fileformat', 'fileencoding', 'filetype']],
       \ },
       \ 'component_function': {
       \   'branch': 'fugitive#head',
@@ -221,44 +223,6 @@ let g:lightline#ale#indicator_ok = "\u2714 "
 let g:lightline#ale#indicator_warnings = "\u279c "
 let g:lightline#ale#indicator_errors = "\u2718 "
 let g:lightline#ale#indicator_checking = "\u29D7 "
-
-" ******************************************************************************
-" MUCOMPLETE
-" ******************************************************************************
-
-" cycle with tab instead of selection
-let g:mucomplete#cycle_with_trigger = 1
-
-" extend current completion
-imap <expr> <down> mucomplete#extend_fwd("\<down>")
-
-" add completion chain
-let g:mucomplete#chains = {
-      \ 'default' : [
-      \    'incl',
-      \    'omni',
-      \    'ulti',
-      \    'list',
-      \    'tags',
-      \    'line',
-      \    'file',
-      \    'path',
-      \   ],
-      \ }
-
-let g:mucomplete#wordlist = {
-      \   'javascript.jsx': [
-      \     'console.log',
-      \   ],
-      \   'ruby': [
-      \     'binding.pry',
-      \   ],
-      \ }
-
-inoremap <silent> <expr> <cr> mucomplete#ultisnips#expand_snippet("\<cr>")
-
-" activate immediately
-autocmd VimEnter * silent! MUcompleteNotify 3
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES
