@@ -249,8 +249,9 @@ let g:tagbar_show_linenumbers = 0
 " ******************************************************************************
 
 " trigger mappings
-let g:UltiSnipsExpandTrigger       = "<f5>"
+let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
 " ******************************************************************************
 " VIM-FUGITIVE
