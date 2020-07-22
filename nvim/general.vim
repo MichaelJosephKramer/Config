@@ -205,4 +205,10 @@ augroup neovim_terminal_open
   autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
-let g:python3_host_prog='/usr/local/anaconda3/envs/pynvim/bin/python'
+" ******************************************************************************
+" PYTHON AND ANACONDA CONFIGURATION
+" ******************************************************************************
+
+if filereadable('/usr/local/anaconda3/envs/pynvim/bin/python')
+  let g:python3_host_prog='/usr/local/anaconda3/envs/pynvim/bin/python'
+endif
