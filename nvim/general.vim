@@ -177,11 +177,8 @@ set secure
 " SIGN COLUMN DISPLAY
 " ******************************************************************************
 
-augroup sign_column
-  autocmd!
-  autocmd BufWinEnter * sign define mysign
-  autocmd BufWinEnter * exe "sign place 1337 line=1 name=mysign buffer=" . bufnr('%')
-augroup END
+" always display the sign column
+set signcolumn=yes
 
 " ******************************************************************************
 " NETRW CONFIGURATION
