@@ -27,7 +27,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vividchalk'
 Plug 'Yggdroot/indentLine'
-Plug 'wincent/ferret'
 call plug#end()
 
 " ******************************************************************************
@@ -92,19 +91,6 @@ augroup end
 
 " integrate ale completion with omnifunc
 set omnifunc=ale#completion#OmniFunc
-
-" ******************************************************************************
-" FERRET
-" ******************************************************************************
-
-" word boundry as a default
-let g:FerretAckWordWord=1
-
-" do not lazy load
-let g:FerrerLazyInit=0
-
-" add search mapping for the word under the cursor
-nmap <leader>g <Plug>(FerretAckWord)
 
 " ******************************************************************************
 " FZF.VIM
