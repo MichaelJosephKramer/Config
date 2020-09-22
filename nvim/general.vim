@@ -102,10 +102,10 @@ set wildignore=*.git,bundle
 " ******************************************************************************
 
 " bold comments
-highlight comment cterm=bold
+highlight comment cterm=italic gui=italic
 
 " bold html arguments
-highlight htmlarg cterm=bold
+highlight htmlarg cterm=italic gui=italic
 
 " ******************************************************************************
 " SEARCH
