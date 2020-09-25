@@ -66,6 +66,9 @@ set showcmd
 " jumps to matching brackets
 set showmatch
 
+" the updatetime default is too slow
+set updatetime=300
+
 " vim is terrible without this - no beeps
 set visualbell
 

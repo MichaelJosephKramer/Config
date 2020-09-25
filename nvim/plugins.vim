@@ -19,6 +19,7 @@ Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
@@ -229,6 +230,23 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 
 " hide line numbers
 let g:tagbar_show_linenumbers = 0
+
+" ******************************************************************************
+" TREESITTER
+" ******************************************************************************
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  incremental_selection = { enable = true },
+  refactor = {
+    highlight_definitions = { enable = true },
+    navigation = { enable = true },
+    smart_rename = { enable = true },
+  },
+}
+EOF
 
 " ******************************************************************************
 " ULTISNIPS
