@@ -180,12 +180,13 @@ let g:indentLine_fileTypeExclude = ['json', 'sh']
 
 let g:lightline = {
       \ 'active': {
-      \   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]],
+      \   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], ['treesitter']],
       \   'right': [['lineinfo'], ['percent'], ['modified', 'fileformat', 'fileencoding', 'filetype']],
       \ },
       \ 'component_function': {
       \   'branch': 'fugitive#head',
       \   'completion': 'Completion',
+      \   'treesitter': 'TreesitterLightline'
       \ },
       \ 'component_expand': {
       \   'linter_checking': 'lightline#ale#checking',
@@ -200,6 +201,15 @@ let g:lightline = {
       \   'linter_ok': 'left',
       \ },
       \ }
+
+function! TreesitterLightline()
+  let l:status = nvim_treesitter#statusline(90)
+  if l:status == 'null'
+    return ''
+  else
+    return l:status
+  endif
+endfunction
 
 " ******************************************************************************
 " LIGHTLINE-ALE
@@ -237,7 +247,16 @@ let g:tagbar_show_linenumbers = 0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = {
+    "c",
+    "cpp",
+    "css",
+    "html",
+    "javascript",
+    "python",
+    "ruby",
+    "rust"
+   },
   highlight = { enable = true },
   incremental_selection = { enable = true },
   refactor = {
