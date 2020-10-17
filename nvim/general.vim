@@ -11,10 +11,10 @@ highlight NormalFloat guibg=#303030 ctermbg=236
 " change the background color of the autocomplete menu
 highlight Pmenu guibg=#d78700 ctermbg=172
 
-" change the select backgroud color of the autocomplete menu
+" change the select background color of the autocomplete menu
 highlight PmenuSel guibg=#8700d7 ctermbg=92
 
-" change the sign column backgroud color
+" change the sign column background color
 highlight SignColumn guibg=black ctermbg=black
 
 " set the max number of columns for syntax highlighting
@@ -41,13 +41,13 @@ set completeopt=noinsert,menuone
 " current line highlight details
 highlight cursorline cterm=none
 
-" higlight columns past 80
+" highlight columns past 80
 let &colorcolumn="".join(range(121,999),",")
 
 " allow hidden buffers instead of closing
 set hidden
 
-" live substiution
+" live substitution
 set inccommand=split
 
 " show the line number
@@ -120,7 +120,7 @@ highlight htmlarg cterm=italic gui=italic
 " underline search matches
 hi Search cterm=underline
 
-" set line substiution to global by default
+" set line substitution to global by default
 set gdefault
 
 " ignore case when searching
