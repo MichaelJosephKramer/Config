@@ -23,6 +23,9 @@ set synmaxcol=256
 " true colors
 set termguicolors
 
+" embedded lua highlighting, for lua, python, and ruby
+let g:vimsyn_embed = 'lPr'
+
 " ******************************************************************************
 " BASICS
 "
