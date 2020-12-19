@@ -1,3 +1,4 @@
+
 " ******************************************************************************
 " SIGNS
 " ******************************************************************************
@@ -26,11 +27,14 @@ Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSu
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'hrsh7th/nvim-compe'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
+Plug 'jacoborus/tender.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'romgrk/nvim-treesitter-context'
@@ -66,9 +70,9 @@ let g:ale_fix_on_save = 1
 
 " ale linters
 let g:ale_linters = {
-      \  'elixir': ['credo', 'elixir-ls'],
+      \  'elixir': ['credo'],
       \  'python': ['pyls'],
-      \  'ruby': ['rubocop', 'solargraph'],
+      \  'ruby': ['rubocop'],
       \  'rust': ['rls'],
       \}
 
@@ -82,7 +86,7 @@ let g:ale_fixers = {
       \  'javascript': ['eslint'],
       \  'javascript.jsx': ['eslint'],
       \  'python': ['yapf'],
-      \  'ruby': ['rubocop' ],
+      \  'ruby': ['rubocop'],
       \  'rust': ['rustfmt'],
       \}
 
@@ -303,3 +307,5 @@ let test#strategy = "neovim"
 
 " switch to the neovim testing terminal
 tnoremap <C-o> <C-\><C-n>
+
+:lua require('lsp')
