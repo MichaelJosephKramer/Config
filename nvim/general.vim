@@ -3,19 +3,7 @@
 " ******************************************************************************
 
 " the color scheme, dumbass
-silent! colorscheme vividchalk
-
-" change the background color for the floating window
-highlight NormalFloat guibg=#303030 ctermbg=236
-
-" change the background color of the autocomplete menu
-highlight Pmenu guibg=#d78700 ctermbg=172
-
-" change the select background color of the autocomplete menu
-highlight PmenuSel guibg=#8700d7 ctermbg=92
-
-" change the sign column background color
-highlight SignColumn guibg=black ctermbg=black
+silent! colorscheme tender
 
 " set the max number of columns for syntax highlighting
 set synmaxcol=256

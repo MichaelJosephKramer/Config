@@ -11,6 +11,7 @@ endif
 call plug#begin()
 Plug 'dense-analysis/ale'
 Plug 'godlygeek/tabular'
+Plug 'jacoborus/tender.vim'
 Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -27,7 +28,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vividchalk'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -158,6 +158,7 @@ let g:lightline = {
       \   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ], ['treesitter']],
       \   'right': [['lineinfo'], ['percent'], ['modified', 'fileformat', 'fileencoding', 'filetype']],
       \ },
+      \ 'colorscheme': 'tender',
       \ 'component_function': {
       \   'branch': 'fugitive#head',
       \   'completion': 'Completion',
