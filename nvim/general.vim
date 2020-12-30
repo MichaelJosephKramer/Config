@@ -2,9 +2,6 @@
 " COLORSCHEME
 " ******************************************************************************
 
-" the color scheme, dumbass
-silent! colorscheme tender
-
 " set the max number of columns for syntax highlighting
 set synmaxcol=256
 

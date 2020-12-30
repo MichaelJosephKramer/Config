@@ -99,7 +99,7 @@ set omnifunc=ale#completion#OmniFunc
 " ******************************************************************************
 
 " set default FZF options for VIM
-let $FZF_DEFAULT_OPTS='--color=border:#d78700 --border --layout=reverse --margin=1,4'
+let $FZF_DEFAULT_OPTS='--color=border:#b3deef --border --layout=reverse --margin=1,4'
 
 " configure the popup window
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
@@ -216,6 +216,13 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 
 " hide line numbers
 let g:tagbar_show_linenumbers = 0
+
+" ******************************************************************************
+" TENDER
+" ******************************************************************************
+
+" the color scheme, dumbass
+silent! colorscheme tender
 
 " ******************************************************************************
 " TREESITTER
