@@ -1,54 +1,50 @@
-# Path to your oh-my-zsh configuration.
+# ******************************************************************************
+# oh-my-zsh SETUP
+# ******************************************************************************
+
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh_customizations
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="kramer"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
+COMPLETION_WAITING_DOTS="true"
+DISABLE_AUTO_TITLE="true"
 DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(bundler chruby git rails tmuxinator rake)
 
 source $ZSH/oh-my-zsh.sh
 
-# Tmuxinator configuration
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-export EDITOR=vim
+# ******************************************************************************
+# SOURCE FILES
+# ******************************************************************************
 
-# Tmuxinator autocompletion
-alias mux=tmuxinator
+# chruby
+source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
+source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
 
-# Aliases
-alias trash='sudo rm -Rf ~/.Trash/*'
-alias speedup='sudo rm -rf /private/var/log/asl/*.asl'
-alias clean_gems='for i in `gem list --no-versions`; do gem uninstall -aIx $i; done'
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# Add fzf
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Add XDG location
+# tmuxinator configuration
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+# ******************************************************************************
+# EXPORTS
+# ******************************************************************************
+
+# Export the XDG location
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Export the fd as the fzf default command
 export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hidden --follow --exclude .git)'
+
+# Export neovim as the editor
+# export EDITOR=/opt/homebrew/bin/nvim
+export EDITOR=vim
+
+# ******************************************************************************
+# ALIASES
+# ******************************************************************************
+
+# Tmuxinator autocompletion
+alias mux=tmuxinator
