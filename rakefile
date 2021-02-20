@@ -2,24 +2,8 @@ require 'rubygems'
 require 'rake'
 
 desc "do all the setup!"
-task :default => [:install_homebrew_packages] do
+task :default do
   symlink_to_home
-  update_vim_plugins
-end
-
-desc 'Install Homebrew Packages'
-task :install_homebrew_packages do
-  sh 'brew install chruby cmake ctags git ripgrep ruby-install reattach-to-user-namespace tmux vim'
-  sh 'brew install vim --with-custom-ruby'
-end
-
-desc "symlink all dot files"
-task :symlink do
-  symlink_to_home
-end
-
-def update_vim_plugins
-  sh 'vim +PlugUpdate +qall'
 end
 
 def symlink_to_home
