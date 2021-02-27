@@ -25,7 +25,6 @@
 [core]
   editor       = nvim
   pager        = less -F -X
-  excludesfile = ~/.gitignore-global
 [credential]
   helper = osxkeychain
 [heroku]
