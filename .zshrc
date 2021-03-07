@@ -32,15 +32,14 @@ source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
 # EXPORTS
 # ******************************************************************************
 
-# Export the XDG location
-export XDG_CONFIG_HOME="$HOME/.config"
+# Export neovim as the editor
+export EDITOR=nvim
 
 # Export the fd as the fzf default command
 export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hidden --follow --exclude .git)'
 
-# Export neovim as the editor
-# export EDITOR=/opt/homebrew/bin/nvim
-export EDITOR=vim
+# Export the XDG location
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # ******************************************************************************
 # ALIASES
