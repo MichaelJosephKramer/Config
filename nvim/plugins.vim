@@ -251,15 +251,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " ******************************************************************************
-" ULTISNIPS
-" ******************************************************************************
-
-" trigger mappings
-let g:UltiSnipsExpandTrigger       = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-
-" ******************************************************************************
 " VIM-FUGITIVE
 " ******************************************************************************
 
