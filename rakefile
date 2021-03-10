@@ -4,12 +4,14 @@ require 'rake'
 
 desc 'do all the setup!'
 task :default do
-  symlink_to_home
-  symlink_global_git_ignore
+  dotfiles = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore']
+  symlink_files(ENV['HOME'], dotfiles)
+  symlink_files("#{ENV['XDG_CONFIG_HOME']}/git", ['ignore'])
 end
 
-def symlink_to_home
-  files = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore']
+def symlink_files(destination, files)
+  @destination = destination
+
   files.each do |file|
     if file_identical?(file) then skip_identical_file(file)
     elsif replace_all_files?    then link_file(file)
@@ -19,18 +21,9 @@ def symlink_to_home
   end
 end
 
-def symlink_global_git_ignore
-  puts ' => symlinking global git ignore'
-  directory = File.dirname(__FILE__)
-  destination = "#{ENV['XDG_CONFIG_HOME']}/git"
-
-  sh("mkdir -p #{destination}")
-  sh("ln -s #{File.join(directory, 'ignore')} #{destination}/ignore")
-end
-
 # FILE CHECKS
 def file_exists?(file)
-  File.exist?("#{ENV['HOME']}/#{file}")
+  File.exist?("#{@destination}/#{file}")
 end
 
 def file_missing?(file)
@@ -38,7 +31,7 @@ def file_missing?(file)
 end
 
 def file_identical?(file)
-  File.identical? file, File.join(ENV['HOME'], file.to_s)
+  File.identical? file, File.join(@destination, file.to_s)
 end
 
 def replace_all_files?
@@ -59,11 +52,11 @@ end
 def link_file(file)
   puts " => symlinking #{file}"
   directory = File.dirname(__FILE__)
-  sh("ln -s #{File.join(directory, file)} #{ENV['HOME']}/#{file}")
+  sh("ln -s #{File.join(directory, file)} #{@destination}/#{file}")
 end
 
 def replace_file(file)
-  sh "rm -rf #{ENV['HOME']}/#{file}"
+  sh "rm -rf #{@destination}/#{file}"
   link_file(file)
 end
 
@@ -77,5 +70,5 @@ def skip_file(file)
 end
 
 def skip_identical_file(file)
-  puts " => skipping identical ~/#{file}"
+  puts " => skipping identical #{@destination}/#{file}"
 end
