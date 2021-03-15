@@ -1,4 +1,14 @@
 " ******************************************************************************
+" SIGNS
+" ******************************************************************************
+
+" default signs
+let g:vim_signs = extend({
+      \ 'error': "\u2718",
+      \ 'warning': "\u279c"
+      \ }, get(g:, 'vim_signs', {}))
+
+" ******************************************************************************
 " VIM-PLUG
 " ******************************************************************************
 
@@ -79,8 +89,8 @@ let g:ale_fixers = {
 let g:ale_lint_on_enter = 1
 
 " add sign column emoticons
-let g:ale_sign_warning = "\u279c"
-let g:ale_sign_error = "\u2718"
+let g:ale_sign_error = g:vim_signs.error
+let g:ale_sign_warning = g:vim_signs.warning
 
 " ale colors for highlights
 augroup ale_highlights
