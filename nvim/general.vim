@@ -23,9 +23,6 @@ set clipboard=unnamed
 " add auto select
 set completeopt=noinsert,menuone
 
-" current line highlight details
-highlight cursorline cterm=none
-
 " highlight columns past 80
 let &colorcolumn="".join(range(121,999),",")
 
@@ -92,10 +89,10 @@ set wildignore=*.git,bundle
 " FONT
 " ******************************************************************************
 
-" bold comments
+" italic comments
 highlight comment cterm=italic gui=italic
 
-" bold html arguments
+" italic html arguments
 highlight htmlarg cterm=italic gui=italic
 
 " ******************************************************************************
@@ -144,9 +141,6 @@ set shiftwidth=2
 " set number of spaces for tab
 set softtabstop=2
 
-" FileType exceptions
-autocmd Filetype elm setlocal tabstop=4 shiftwidth=4
-
 " ******************************************************************************
 " FOLDING
 " ******************************************************************************
@@ -169,7 +163,7 @@ set secure
 " ******************************************************************************
 
 " always display the sign column
-set signcolumn=yes
+set signcolumn=yes:2
 
 " ******************************************************************************
 " NETRW CONFIGURATION

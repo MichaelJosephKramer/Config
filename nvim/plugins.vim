@@ -14,7 +14,7 @@ let g:vim_signs = extend({
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -53,10 +53,10 @@ let g:ale_echo_msg_format = '[%linter%]: %s ( %severity% )'
 let g:ale_elixir_credo_strict = 1
 let g:ale_elixir_elixir_ls_release = '/Users/michael/code/oss/elixir-ls/rel'
 let g:ale_elixir_elixir_ls_config = {
-\   'elixirLS': {
-\     'dialyzerEnabled': v:false,
-\   },
-\}
+      \   'elixirLS': {
+      \     'dialyzerEnabled': v:false,
+      \   },
+      \}
 
 " rust-specific configuration
 let g:ale_rust_rls_config = { 'rust': { 'clippy_preference': 'on' } }
