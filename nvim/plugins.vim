@@ -217,8 +217,10 @@ nnoremap <C-n> :NvimTreeFindFile<CR>
 
 " settings
 let g:nvim_tree_auto_close = 1
+let g:nvim_tree_disable_netrw = 0
 let g:nvim_tree_follow = 1
-" let g:nvim_tree_git_hl = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_hijack_netrw = 0
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
 let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_quit_on_open = 1
@@ -263,6 +265,7 @@ require'nvim-treesitter.configs'.setup {
     "cpp",
     "css",
     "html",
+    "jsdoc",
     "javascript",
     "python",
     "ruby",
@@ -270,6 +273,7 @@ require'nvim-treesitter.configs'.setup {
    },
   highlight = { enable = true },
   incremental_selection = { enable = true },
+  indent = { enable = true },
   refactor = {
     highlight_definitions = { enable = true },
     navigation = { enable = true },
