@@ -20,6 +20,7 @@ endif
 
 call plug#begin()
 Plug 'dense-analysis/ale'
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'godlygeek/tabular'
 Plug 'jacoborus/tender.vim'
 Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
