@@ -175,6 +175,9 @@ let g:netrw_altfile = 1
 " hide the banner because it's useless
 let g:netrw_banner = 0
 
+" allow buffer deletion
+let g:netrw_fastbrowse = 0
+
 " set list style
 let g:netrw_liststyle = 3
 

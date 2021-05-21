@@ -29,7 +29,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
-Plug 'kyazdani42/nvim-tree.lua'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -40,6 +39,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -208,25 +208,6 @@ let g:lightline#ale#indicator_ok = "\u2714 "
 let g:lightline#ale#indicator_warnings = "\u279c "
 let g:lightline#ale#indicator_errors = "\u2718 "
 let g:lightline#ale#indicator_checking = "\u29D7 "
-
-" ******************************************************************************
-" NVIM-TREE
-" ******************************************************************************
-
-" add the hotkey
-nnoremap <C-n> :NvimTreeFindFile<CR>
-
-" settings
-let g:nvim_tree_auto_close = 1
-let g:nvim_tree_disable_netrw = 0
-let g:nvim_tree_follow = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_hijack_netrw = 0
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
-let g:nvim_tree_indent_markers = 1
-let g:nvim_tree_quit_on_open = 1
-let g:nvim_tree_show_icons = { 'git': 1 }
-let g:nvim_tree_width_allow_resize  = 1
 
 " ******************************************************************************
 " RAINBOW_PARENTHESES
