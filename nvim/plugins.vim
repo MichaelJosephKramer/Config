@@ -246,6 +246,7 @@ require'nvim-treesitter.configs'.setup {
     "c",
     "cpp",
     "css",
+    "elixir",
     "html",
     "jsdoc",
     "javascript",
