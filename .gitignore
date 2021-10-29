@@ -1,6 +1,7 @@
 .netrwhist
 .vim/autoload
 .vim/plugged
+.DS_Store
 nvim/autoload
 nvim/plugged
-.DS_Store
+nvim/plugin/packer_compiled.lua
