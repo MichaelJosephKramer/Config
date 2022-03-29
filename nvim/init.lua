@@ -135,6 +135,9 @@ return require('packer').startup(function(use)
     ]]
   }
   use {
+    'github/copilot.vim'
+  }
+  use {
     'janko-m/vim-test',
     config = function() require 'plugins.vim-test' end,
     keys = { 't<C-n>', 't<C-f>', 't<C-a>', 't<C-l>' }
