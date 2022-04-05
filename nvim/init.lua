@@ -132,6 +132,7 @@ return require('packer').startup(function(use)
       highlight comment cterm=italic gui=italic
       highlight htmlarg cterm=italic gui=italic
       hi Search cterm=underline
+      hi Normal ctermbg=NONE guibg=NONE
     ]]
   }
   use {
