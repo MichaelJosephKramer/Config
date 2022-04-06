@@ -129,10 +129,11 @@ return require('packer').startup(function(use)
     config = cmd [[
       let g:tokyonight_style = "night"
       colorscheme tokyonight
-      highlight comment cterm=italic gui=italic
-      highlight htmlarg cterm=italic gui=italic
-      hi Search cterm=underline
-      hi Normal ctermbg=NONE guibg=NONE
+      highlight Comment cterm=italic gui=italic
+      highlight Normal ctermbg=NONE guibg=NONE
+      highlight Search cterm=underline
+      highlight SignColumn ctermbg=NONE guibg=NONE
+      highlight htmlArg cterm=italic gui=italic
     ]]
   }
   use {
