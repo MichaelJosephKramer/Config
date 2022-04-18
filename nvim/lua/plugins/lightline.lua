@@ -46,7 +46,7 @@ cmd [[
 
 cmd [[
   function! TreesitterLightline()
-    let l:status = nvim_treesitter#statusline(90)
+    let l:status = nvim_treesitter#statusline({'indicator_size': 70})
     if l:status == 'null'
       return ''
     else
