@@ -18,7 +18,7 @@ g.lightline = {
   },
   colorscheme = 'tokyonight',
   component_function = {
-    branch = 'fugitive#head',
+    branch = 'FugitiveHead',
     completion = 'Completion',
     treesitter = 'TreesitterLightline'
   },
