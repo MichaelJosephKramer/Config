@@ -1,40 +1,42 @@
 [alias]
-  alias       = !git config -l | grep alias | cut -c 7- | sort
-  amend       = commit -a --amend --no-edit
-  br          = branch
-  branch-name = !git rev-parse --abbrev-ref HEAD
-  brl         = !git for-each-ref --color=always --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:red)%(objectname:short)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|'
-  ci          = commit -v
-  co          = checkout
-  cob         = checkout -b
-  com         = checkout main
-  fix         = "!f() { ${EDITOR} `git diff --name-only`; }; f"
-  flush       = !git branch --merged main | grep -v main | xargs git branch -d && git remote prune origin
-  new         = !git pull origin $(git branch-name)
-  pub         = !git push origin $(git branch-name)
-  hist        = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
-  last        = !git hist -1
-  lgrep       = grep --heading --break
-  me          = !git hist --author=michael@sage.house
-  sha         = !git rev-parse HEAD | cut -c -8 | tr -d '\n' | pbcopy
-  st          = status
-  this        = !git init && git add . && git commit -m 'Initial commit'
-  wip         = commit -am 'WIP'
+  alias        = !git config -l | grep alias | cut -c 7- | sort
+  amend        = commit -a --amend --no-edit
+  br           = branch
+  branch-name  = !git rev-parse --abbrev-ref HEAD
+  brl          = !git for-each-ref --color=always --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:red)%(objectname:short)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|'
+  ci           = commit -v
+  co           = checkout
+  cob          = checkout -b
+  com          = checkout main
+  fix          = "!f() { ${EDITOR} `git diff --name-only`; }; f"
+  flush        = !git branch --merged main | grep -v main | xargs git branch -d && git remote prune origin
+  flush-master = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
+  new          = !git pull origin $(git branch-name)
+  pub          = !git push origin $(git branch-name)
+  hist         = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
+  last         = !git hist -1
+  lgrep        = grep --heading --break
+  me           = !git hist --author=michael@sage.house
+  sha          = !git rev-parse HEAD | cut -c -8 | tr -d '\n' | pbcopy
+  st           = status
+  this         = !git init && git add . && git commit -m 'Initial commit'
+  wip          = commit -am 'WIP'
 [color]
-  ui = true
+  ui           = true
 [core]
+  autocrlf     = input
   editor       = nvim
   pager        = less -F -X
 [credential]
-  helper = osxkeychain
+  helper       = osxkeychain
 [heroku]
-  account = sagehouse
+  account      = sagehouse
 [pull]
-  rebase = true
+  rebase       = true
 [user]
   name  = Michael Joseph Kramer
   email = michael@sage.house
 [grep]
-  lineNumber = true
   extendRegexp = true
-  fullName = true
+  fullName     = true
+  lineNumber   = true
