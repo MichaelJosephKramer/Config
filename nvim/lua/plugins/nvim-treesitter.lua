@@ -1,9 +1,9 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ":TSUpdate",
-  dependencies = { 'nvim-treesitter/nvim-treesitter-refactor' },
   config = function ()
     require("nvim-treesitter.configs").setup({
+      additional_vim_regex_highlighting = false,
       ensure_installed = {
         "c",
         "cpp",
@@ -17,15 +17,12 @@ return {
         "rust",
         "vimdoc"
       },
-      highlight = { enable = true },
+      highlight = {
+        additional_vim_regex_highlighting = false,
+        enable = true
+      },
       incremental_selection = { enable = true },
       indent = { enable = true },
-      refactor = {
-        highlight_definitions = { enable = true },
-        navigation            = { enable = true },
-        smart_rename          = { enable = true },
-      },
-      sync_install = false,
     })
   end
 }
