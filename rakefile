@@ -13,10 +13,11 @@ def symlink_files(destination, files)
   @destination = destination
 
   files.each do |file|
-    if file_identical?(file) then skip_identical_file(file)
+    if file_identical?(file)    then skip_identical_file(file)
     elsif replace_all_files?    then link_file(file)
     elsif file_missing?(file)   then link_file(file)
-    else prompt_to_link_file(file)
+    else
+      prompt_to_link_file(file)
     end
   end
 end

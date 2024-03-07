@@ -34,8 +34,8 @@
 [pull]
   rebase       = true
 [user]
-  name  = Michael Joseph Kramer
-  email = michael@sage.house
+  name         = Michael Joseph Kramer
+  email        = michael@sage.house
 [grep]
   extendRegexp = true
   fullName     = true
