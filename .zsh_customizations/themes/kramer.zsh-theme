@@ -47,13 +47,19 @@ function my_current_branch() {
   echo $(current_branch || echo "(no branch)")
 }
 
+function virtualenv_info {
+  [ $VIRTUAL_ENV ] && echo "%{$fg[red]%}*`basename $VIRTUAL_ENV` ${reset_color%}"
+}
+
 if [[ -z $SSH_CLIENT ]]; then
     PROMPT_HOST=''
 else
     PROMPT_HOST=" %{$fg_bold[black]%}%M"
 fi
 
-PROMPT='$ZSH_THEME_PREFIX ${PROMPT_HOST}%{$fg[green]%} %c $(my_git_prompt)%{$fg[yellow]%}|> %{$reset_color%}'
+PROMPT='$ZSH_THEME_PREFIX ${PROMPT_HOST}%{$fg[green]%} %c $(virtualenv_info)$(my_git_prompt)%{$fg[green]%}|> %{$reset_color%}'
+
+GIT_SYMBOL=" "
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[white]%}( %{$reset_color%}%{$fg[cyan]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg_bold[white]%} ) %{$reset_color%}"

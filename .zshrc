@@ -10,7 +10,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_AUTO_TITLE="true"
 DISABLE_AUTO_UPDATE="true"
 
-plugins=(bundler chruby git rails tmuxinator rake)
+plugins=(bundler chruby git rails rake virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
