@@ -3,3 +3,5 @@ tags
 .vimrc
 .nvimrc
 .DS_Store
+
+**/.claude/settings.local.json

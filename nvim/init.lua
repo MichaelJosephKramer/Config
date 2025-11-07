@@ -68,17 +68,38 @@ augroup END
 -- DIAGNOSTICS
 --------------------------------------------------------------------------------
 
-local signs = {
-  Error = '󰅚 ',
-  Warn  = '󰀪 ',
-  Info  = '󰋽 ',
-  Hint  = '󰌶 ',
+local symbols = {
+  [vim.diagnostic.severity.ERROR] = '󰅚 ',
+  [vim.diagnostic.severity.WARN]  = '󰀪 ',
+  [vim.diagnostic.severity.INFO]  = '󰋽 ',
+  [vim.diagnostic.severity.HINT]  = '󰌶 ',
 }
-
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+vim.diagnostic.config({
+  float = {
+    enable = true,
+    border = "rounded",
+    format = function(diagnostic)
+      return string.format("%s: %s", symbols[diagnostic.severity], diagnostic.message)
+    end,
+    scope = "buffer",
+  },
+  severity_sort = true,
+  signs = {
+    enable = true,
+    text = symbols,
+  },
+  underline = {
+    enable = true,
+  },
+  update_in_insert = false,
+  virtual_text = {
+    enable = true,
+    prefix = function(diagnostic)
+      return string.format("%s:", symbols[diagnostic.severity])
+    end,
+  },
+})
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
 --------------------------------------------------------------------------------
 -- SEARCH

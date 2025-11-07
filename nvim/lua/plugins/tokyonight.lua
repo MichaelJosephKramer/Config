@@ -4,11 +4,17 @@ return {
   priority = 1000, -- make sure to load this before all the other start plugins
   config = function()
     require("tokyonight").setup({
-      transparent = true,
       on_colors = function(colors)
         colors.bg_statusline = colors.none
       end,
-      styles = { floats = "dark" }
+      on_highlights = function(highlights, colors)
+        highlights.DiagnosticVirtualTextError.bg = colors.none
+        highlights.DiagnosticVirtualTextHint.bg = colors.none
+        highlights.DiagnosticVirtualTextInfo.bg = colors.none
+        highlights.DiagnosticVirtualTextWarn.bg = colors.none
+      end,
+      styles = { floats = "dark" },
+      transparent = true,
     })
     vim.cmd[[ colorscheme tokyonight-night ]]
   end
