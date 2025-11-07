@@ -68,17 +68,55 @@ augroup END
 -- DIAGNOSTICS
 --------------------------------------------------------------------------------
 
-local signs = {
-  Error = '󰅚 ',
-  Warn  = '󰀪 ',
-  Info  = '󰋽 ',
-  Hint  = '󰌶 ',
-}
+-- local signs = {
+--   Error = '󰅚 ',
+--   Warn  = '󰀪 ',
+--   Info  = '󰋽 ',
+--   Hint  = '󰌶 ',
+-- }
+--
+-- for type, icon in pairs(signs) do
+--   local hl = "DiagnosticSign" .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+-- end
 
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+
+local severity = vim.diagnostic.severity
+local config = {
+  signs = {
+    enable = true,
+    text = {
+      [severity.ERROR] = "✘", -- U+2718 HEAVY BALLOT X
+      [severity.WARN]  = "", -- U+F06A EXCLAMATION TRIANGLE (FontAwesome)
+      [severity.INFO]  = "", -- U+F149 INFO CIRCLE (FontAwesome)
+      [severity.HINT]  = "💡", -- U+1F4A1 LIGHT BULB
+    },
+  },
+  underline = {
+    enable = true,
+  },
+  virtual_text = {
+    enable = true,
+    prefix = "●",
+    -- severity_limit = severity.WARN,
+  },
+  float = {
+    enable = true,
+    border = "rounded",
+    format = function(diagnostic)
+      -- Example: prepend the severity name to the message
+      local severity_name = vim.diagnostic.severity[diagnostic.severity]:upper()
+      return string.format("%s: %s", severity_name, diagnostic.message)
+    end,
+    scope = "buffer",
+  },
+
+  severity_sort = true,
+  update_in_insert = false,
+}
+vim.keymap.set('n', '<leader>3', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+-- Apply the configuration globally
+vim.diagnostic.config(config)
 
 --------------------------------------------------------------------------------
 -- SEARCH

@@ -1,4 +1,5 @@
 return {
+  'github/copilot.vim',
   'godlygeek/tabular',
   { 'tpope/vim-commentary', keys = { 'gcc' } },
   'tpope/vim-fugitive',
