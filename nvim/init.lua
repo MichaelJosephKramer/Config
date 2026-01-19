@@ -2,18 +2,17 @@
 -- ALIASES
 --------------------------------------------------------------------------------
 local g   = vim.g
-local map = vim.api.nvim_set_keymap
 local opt = vim.opt
 
 --------------------------------------------------------------------------------
 -- MAPPINGS
 --------------------------------------------------------------------------------
 
-g.mapleader = ',' -- leader
-map('n', '<F1>', '<Esc>',        { noremap = true }) -- disable help
-map('n', 'Q', '<Nop>',           { noremap = true }) -- disable ex mode
-map('n', '<leader>w', ':wa<cr>', { noremap = true }) -- save all
-map('i', 'kj', '<Esc>',          { noremap = true }) -- normal mode mapping
+g.mapleader = ','
+vim.keymap.set('n', '<F1>', '<Esc>')
+vim.keymap.set('n', 'Q', '<Nop>')
+vim.keymap.set('n', '<leader>w', ':wa<cr>')
+vim.keymap.set('i', 'kj', '<Esc>')
 
 --------------------------------------------------------------------------------
 -- UI
@@ -34,9 +33,7 @@ opt.softtabstop    = 2             -- width of the tab for tab
 opt.termguicolors  = true          -- true colors
 
 -- change colors past 120 characters
-vim.cmd [[
-let &colorcolumn="".join(range(121,999),",")
-]]
+opt.colorcolumn = table.concat(vim.fn.range(121, 999), ',')
 
 -- listchars characters
 opt.listchars = {
@@ -48,21 +45,24 @@ opt.listchars = {
 }
 
 -- turn off relativenumber in insert mode
-vim.cmd [[
-augroup numbering
-  autocmd!
-  autocmd InsertEnter * set norelativenumber
-  autocmd InsertLeave * set relativenumber
-augroup end
-]]
+local numbering = vim.api.nvim_create_augroup('numbering', { clear = true })
+vim.api.nvim_create_autocmd('InsertEnter', {
+  group = numbering,
+  callback = function() vim.opt_local.relativenumber = false end,
+})
+vim.api.nvim_create_autocmd('InsertLeave', {
+  group = numbering,
+  callback = function() vim.opt_local.relativenumber = true end,
+})
 
 -- remove line numbers on the terminal
-vim.cmd [[
-augroup neovim_terminal_open
-  autocmd!
-  autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
-]]
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('terminal_open', { clear = true }),
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end,
+})
 
 --------------------------------------------------------------------------------
 -- DIAGNOSTICS
@@ -136,7 +136,7 @@ opt.writebackup = false -- backup file
 --------------------------------------------------------------------------------
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
