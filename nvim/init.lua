@@ -33,7 +33,7 @@ opt.softtabstop    = 2             -- width of the tab for tab
 opt.termguicolors  = true          -- true colors
 
 -- change colors past 120 characters
-opt.colorcolumn = table.concat(vim.fn.range(121, 999), ',')
+opt.colorcolumn = '121'
 
 -- listchars characters
 opt.listchars = {

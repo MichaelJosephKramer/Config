@@ -29,8 +29,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # ******************************************************************************
 
 # chruby
-source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 
 # fzf -> source
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -45,13 +45,22 @@ alias mux=tmuxinator
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/michael/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
-# nvm Config
+# nvm Config (lazy-loaded for faster shell startup)
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+lazy_load_nvm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+}
+nvm() { lazy_load_nvm && nvm "$@"; }
+node() { lazy_load_nvm && node "$@"; }
+npm() { lazy_load_nvm && npm "$@"; }
+npx() { lazy_load_nvm && npx "$@"; }
 
 # GCP -> The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/mkramer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mkramer/google-cloud-sdk/path.zsh.inc'; fi
 
 # GCP -> The next line enables shell command completion for gcloud.
 if [ -f '/Users/mkramer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mkramer/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$HOME/.local/bin:$PATH"

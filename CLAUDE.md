@@ -10,10 +10,10 @@ This is a personal dotfiles repository containing configuration files for shell,
 
 ```bash
 # Install dotfiles by creating symlinks to home directory
-rake install
+rake
 ```
 
-The rakefile prompts before overwriting existing files and creates symlinks for all dotfiles to `~/.
+The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/` and the `ignore` file to `$XDG_CONFIG_HOME/git/`. It prompts before overwriting existing files (options: y/n/a/q). The `nvim/` directory must be separately symlinked to `~/.config/nvim/`.
 
 ## Key Configuration Files
 
