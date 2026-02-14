@@ -9,8 +9,7 @@
   cob          = checkout -b
   com          = checkout main
   fix          = "!f() { ${EDITOR} `git diff --name-only`; }; f"
-  flush        = !git branch --merged main | grep -v main | xargs git branch -d && git remote prune origin
-  flush-master = !git branch --merged master | grep -v master | xargs git branch -d && git remote prune origin
+  flush        = "!f() { default=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@') || default=main; git branch --merged $default | grep -v $default | xargs git branch -d && git remote prune origin; }; f"
   new          = !git pull origin $(git branch-name)
   pub          = !git push origin $(git branch-name)
   hist         = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
@@ -26,7 +25,7 @@
 [core]
   autocrlf     = input
   editor       = nvim
-  pager        = less -F -X
+  pager        = less -FRX
 [credential]
   helper       = osxkeychain
 [heroku]
