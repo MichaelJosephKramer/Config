@@ -32,11 +32,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 
-# fzf -> source
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# fzf -> Export the fd as the fzf default command
-export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || fd --type f --hidden --follow --exclude .git)'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS='--color=fg:#c0caf5,bg:#1a1b26,hl:#ff9e64 --color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a --border --layout=reverse'
 
 # tmuxinator configuration
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
