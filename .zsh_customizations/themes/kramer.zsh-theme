@@ -1,38 +1,44 @@
 ZSH_THEME_PREFIX='🥃'
 
 function my_git_prompt() {
-  tester=$(git rev-parse --git-dir 2> /dev/null) || return
+  local INDEX
+  INDEX=$(git status --branch --porcelain 2>/dev/null) || return
 
-  INDEX=$(git status --porcelain 2> /dev/null)
-  STATUS=""
+  local STATUS=""
 
-  # is branch ahead?
-  if $(echo "$(git log origin/$(current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
+  # parse branch name from header: "## branch...origin/branch [ahead N]"
+  local BRANCH="${INDEX%%$'\n'*}"  # first line only
+  BRANCH="${BRANCH#\#\# }"         # strip "## "
+  BRANCH="${BRANCH%%...*}"         # strip "...origin/branch"
+  BRANCH="${BRANCH%%\ \[*}"        # strip " [ahead N]"
+
+  # is branch ahead? (parsed from --branch porcelain header)
+  if [[ "$INDEX" =~ '\[ahead' ]]; then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD"
   fi
 
   # is anything staged?
-  if $(echo "$INDEX" | grep -E -e '^(D[ M]|[MARC][ MD]) ' &> /dev/null); then
+  if [[ "$INDEX" =~ $'\n'[DMARC][\ MD]\ ' ' ]]; then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED"
   fi
 
   # is anything unstaged?
-  if $(echo "$INDEX" | grep -E -e '^[ MARC][MD] ' &> /dev/null); then
+  if [[ "$INDEX" =~ $'\n'[\ MARC][MD]\ ' ' ]]; then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNSTAGED"
   fi
 
   # is anything untracked?
-  if $(echo "$INDEX" | grep '^?? ' &> /dev/null); then
+  if [[ "$INDEX" =~ $'\n''\\?\\? ' ]]; then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED"
   fi
 
   # is anything unmerged?
-  if $(echo "$INDEX" | grep -E -e '^(A[AU]|D[DU]|U[ADU]) ' &> /dev/null); then
+  if [[ "$INDEX" =~ $'\n'[ADU][ADU]\ ' ' ]]; then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNMERGED"
   fi
 
-  # is anything stashed?
-  if [ "$(git stash list 2>/dev/null)" != "" ]; then
+  # is anything stashed? (fast path for standard repos, --git-common-dir for worktrees)
+  if [[ -f ".git/refs/stash" ]] || [[ -f "$(git rev-parse --git-common-dir 2>/dev/null)/refs/stash" ]]; then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STASHED"
   fi
 
@@ -40,11 +46,7 @@ function my_git_prompt() {
     STATUS=" $STATUS"
   fi
 
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-function my_current_branch() {
-  echo $(current_branch || echo "(no branch)")
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${BRANCH:-'(no branch)'}$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function virtualenv_info {

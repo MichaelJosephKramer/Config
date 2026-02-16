@@ -57,10 +57,4 @@ node() { lazy_load_nvm && node "$@"; }
 npm() { lazy_load_nvm && npm "$@"; }
 npx() { lazy_load_nvm && npx "$@"; }
 
-# GCP -> The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mkramer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mkramer/google-cloud-sdk/path.zsh.inc'; fi
-
-# GCP -> The next line enables shell command completion for gcloud.
-if [ -f '/Users/mkramer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mkramer/google-cloud-sdk/completion.zsh.inc'; fi
-
 export PATH="$HOME/.local/bin:$PATH"
