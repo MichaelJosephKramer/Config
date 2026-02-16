@@ -7,7 +7,7 @@
   ci           = commit -v
   co           = checkout
   cob          = checkout -b
-  com          = checkout main
+  com          = "!f() { git checkout $(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo main); }; f"
   fix          = "!f() { ${EDITOR} `git diff --name-only`; }; f"
   flush        = "!f() { default=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@') || default=main; git branch --merged $default | grep -v $default | xargs git branch -d && git remote prune origin; }; f"
   new          = !git pull origin $(git branch-name)
