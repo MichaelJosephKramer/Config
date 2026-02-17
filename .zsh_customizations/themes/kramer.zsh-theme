@@ -1,52 +1,43 @@
 ZSH_THEME_PREFIX='🥃'
 
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[white]%}(  %{$reset_color%}%{$fg[cyan]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg_bold[white]%} ) %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[magenta]%}○"
+
 function my_git_prompt() {
-  local INDEX
-  INDEX=$(git status --branch --porcelain 2>/dev/null) || return
+  local output
+  output=$(git status --branch --porcelain 2>/dev/null) || return
 
-  local STATUS=""
+  # parse header: "## branch...origin/branch [ahead N]"
+  local header="${output%%$'\n'*}"
+  local branch="${header#\#\# }"
+  branch="${branch%%...*}"
+  branch="${branch%%\ \[*}"
 
-  # parse branch name from header: "## branch...origin/branch [ahead N]"
-  local BRANCH="${INDEX%%$'\n'*}"  # first line only
-  BRANCH="${BRANCH#\#\# }"         # strip "## "
-  BRANCH="${BRANCH%%...*}"         # strip "...origin/branch"
-  BRANCH="${BRANCH%%\ \[*}"        # strip " [ahead N]"
+  local indicators=""
+  [[ "$header" == *'[ahead'* ]] && indicators+="$ZSH_THEME_GIT_PROMPT_AHEAD"
 
-  # is branch ahead? (parsed from --branch porcelain header)
-  if [[ "$INDEX" =~ '\[ahead' ]]; then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD"
-  fi
+  # git status --porcelain shows each file as: XY PATH
+  #   X = staged status    (D=deleted, M=modified, A=added, R=renamed, C=copied)
+  #   Y = unstaged status  (M=modified, D=deleted)
+  #   ?? = untracked       [ADU][ADU] = unmerged
+  local nl=$'\n'
 
-  # is anything staged?
-  if [[ "$INDEX" =~ $'\n'[DMARC][\ MD]\ ' ' ]]; then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED"
-  fi
+  [[ "$output" =~ ${nl}[DMARC] ]]         && indicators+="$ZSH_THEME_GIT_PROMPT_STAGED"
+  [[ "$output" =~ ${nl}[\ MARC][MD] ]]    && indicators+="$ZSH_THEME_GIT_PROMPT_UNSTAGED"
+  [[ "$output" =~ ${nl}[?][?] ]]          && indicators+="$ZSH_THEME_GIT_PROMPT_UNTRACKED"
+  [[ "$output" =~ ${nl}[ADU][ADU] ]]      && indicators+="$ZSH_THEME_GIT_PROMPT_UNMERGED"
 
-  # is anything unstaged?
-  if [[ "$INDEX" =~ $'\n'[\ MARC][MD]\ ' ' ]]; then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNSTAGED"
-  fi
+  # rev-parse handles both loose and packed refs
+  git rev-parse --verify refs/stash &>/dev/null && indicators+="$ZSH_THEME_GIT_PROMPT_STASHED"
 
-  # is anything untracked?
-  if [[ "$INDEX" =~ $'\n''\\?\\? ' ]]; then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED"
-  fi
-
-  # is anything unmerged?
-  if [[ "$INDEX" =~ $'\n'[ADU][ADU]\ ' ' ]]; then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNMERGED"
-  fi
-
-  # is anything stashed? (fast path for standard repos, --git-common-dir for worktrees)
-  if [[ -f ".git/refs/stash" ]] || [[ -f "$(git rev-parse --git-common-dir 2>/dev/null)/refs/stash" ]]; then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STASHED"
-  fi
-
-  if [[ -n $STATUS ]]; then
-    STATUS=" $STATUS"
-  fi
-
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${BRANCH:-'(no branch)'}$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  [[ -n "$indicators" ]] && indicators=" $indicators"
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${branch:-'(no branch)'}$indicators$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function virtualenv_info {
@@ -60,15 +51,3 @@ else
 fi
 
 PROMPT='$ZSH_THEME_PREFIX ${PROMPT_HOST}%{$fg[green]%} %c $(virtualenv_info)$(my_git_prompt)%{$fg[green]%}|> %{$reset_color%}'
-
-GIT_SYMBOL=" "
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[white]%}( %{$reset_color%}%{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg_bold[white]%} ) %{$reset_color%}"
-
-ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
-ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[red]%}✕"
-ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[magenta]%}○"
