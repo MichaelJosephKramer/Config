@@ -1,19 +1,18 @@
 #!/bin/bash
-# Claude Code Status Line Script - matching kramer zsh theme
+# Claude Code Status Line Script - matching kramer zsh theme with Tokyo Night colors
 
-# ANSI Color Codes (matching kramer theme)
-GREEN=$'\033[32m'
-CYAN=$'\033[36m'
-WHITE=$'\033[37m'
-MAGENTA=$'\033[35m'
-RED=$'\033[31m'
+# Tokyo Night Color Palette (using 256-color ANSI codes for better compatibility)
+# These match the colors in your FZF_DEFAULT_OPTS and tmux config
+GREEN=$'\033[38;5;114m'      # #9ece6a - Tokyo Night green
+CYAN=$'\033[38;5;117m'       # #7dcfff - Tokyo Night cyan
+WHITE=$'\033[38;5;255m'      # #c0caf5 - Tokyo Night foreground
+MAGENTA=$'\033[38;5;170m'    # #bb9af7 - Tokyo Night magenta
+RED=$'\033[38;5;203m'        # #f7768e - Tokyo Night red
+ORANGE=$'\033[38;5;215m'     # #ff9e64 - Tokyo Night orange
+YELLOW=$'\033[38;5;222m'     # #e0af68 - Tokyo Night yellow
+BLUE=$'\033[38;5;111m'       # #7aa2f7 - Tokyo Night blue
 BOLD=$'\033[1m'
 RESET=$'\033[0m'
-
-# Additional colors for context/alerts
-ORANGE=$'\033[38;5;208m'
-YELLOW=$'\033[33m'
-PURPLE=$'\033[35m'
 
 # Read JSON input from stdin
 input=$(cat)
@@ -26,36 +25,52 @@ session_id=$(echo "$input" | jq -r '.session_id')
 # Get directory name
 dir_name=$(basename "$current_dir")
 
-# Git information (matching kramer theme colors)
+# Git information (matching kramer theme colors and logic)
 git_info=""
 if git rev-parse --git-dir >/dev/null 2>&1; then
-    branch=$(git branch --show-current 2>/dev/null || echo "(no branch)")
-    status=""
-
-    INDEX=$(git status --porcelain 2>/dev/null)
-
-    # Check for unpushed commits (bold magenta ↑)
-    if git log origin/"$branch"..HEAD 2>/dev/null | grep -q '^commit'; then
-        status="${status}${BOLD}${MAGENTA}↑${RESET}"
+    # Get branch name
+    branch=$(git branch --show-current 2>/dev/null)
+    if [ -z "$branch" ]; then
+        # Fallback for detached HEAD
+        branch=$(git describe --exact-match --tags 2>/dev/null || git rev-parse --short HEAD 2>/dev/null || echo "(no branch)")
     fi
 
-    # Check for staged changes (bold green ●)
-    if echo "$INDEX" | grep -E '^(D[ M]|[MARC][ MD]) ' >/dev/null 2>&1; then
+    status=""
+
+    # Get git status output (matching zsh theme logic)
+    INDEX=$(git status --porcelain 2>/dev/null)
+
+    # Check for ahead commits (bold magenta ↑) - more robust check
+    upstream=$(git rev-parse --abbrev-ref @{upstream} 2>/dev/null)
+    if [ -n "$upstream" ]; then
+        ahead=$(git rev-list --count "$upstream"..HEAD 2>/dev/null)
+        if [ -n "$ahead" ] && [ "$ahead" -gt 0 ]; then
+            status="${status}${BOLD}${MAGENTA}↑${RESET}"
+        fi
+    fi
+
+    # Check for staged changes (bold green ●) - matches zsh regex [DMARC]
+    if echo "$INDEX" | grep -qE '^[DMARC]'; then
         status="${status}${BOLD}${GREEN}●${RESET}"
     fi
 
-    # Check for unstaged changes (bold red ●)
-    if echo "$INDEX" | grep -E '^[ MARC][MD] ' >/dev/null 2>&1; then
+    # Check for unstaged changes (bold red ●) - matches zsh regex [ MARC][MD]
+    if echo "$INDEX" | grep -qE '^[ MARC][MD]'; then
         status="${status}${BOLD}${RED}●${RESET}"
     fi
 
     # Check for untracked files (bold white ●)
-    if echo "$INDEX" | grep '^?? ' >/dev/null 2>&1; then
+    if echo "$INDEX" | grep -q '^??'; then
         status="${status}${BOLD}${WHITE}●${RESET}"
     fi
 
+    # Check for unmerged files (bold red ✕) - matches zsh [ADU][ADU]
+    if echo "$INDEX" | grep -qE '^[ADU][ADU]'; then
+        status="${status}${BOLD}${RED}✕${RESET}"
+    fi
+
     # Check for stashed changes (bold magenta ○)
-    if [ "$(git stash list 2>/dev/null)" != "" ]; then
+    if git rev-parse --verify refs/stash &>/dev/null; then
         status="${status}${BOLD}${MAGENTA}○${RESET}"
     fi
 
@@ -64,10 +79,10 @@ if git rev-parse --git-dir >/dev/null 2>&1; then
     fi
 
     # Format: bold white ( + cyan branch + status + bold white )
-    git_info="${BOLD}${WHITE}( ${RESET}${CYAN}${branch}${status}${BOLD}${WHITE} )${RESET} "
+    git_info="${BOLD}${WHITE}( $(printf '\xee\x82\xa0') ${RESET}${CYAN}${branch}${status}${BOLD}${WHITE} )${RESET} "
 fi
 
-# Context window information
+# Context window information with Tokyo Night colors
 context_info=""
 remaining_pct=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
 total_input=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
@@ -85,9 +100,9 @@ if [ -n "$remaining_pct" ]; then
     fi
 
     # Calculate used percentage
-    used_pct=$(echo "scale=0; 100 - $remaining_pct" | bc)
+    used_pct=$(echo "scale=0; 100 - $remaining_pct" | bc 2>/dev/null || echo $((100 - ${remaining_pct%.*})))
 
-    # Choose color based on usage level
+    # Choose Tokyo Night color based on usage level
     if [ "${used_pct%.*}" -ge 80 ]; then
         context_color="${BOLD}${RED}"
     elif [ "${used_pct%.*}" -ge 60 ]; then
@@ -98,7 +113,7 @@ if [ -n "$remaining_pct" ]; then
         context_color="${GREEN}"
     fi
 
-    context_info=" ${GREEN}|>${RESET} ${context_color}${used_pct}%${RESET} ${PURPLE}${tokens_display}tok${RESET}"
+    context_info=" ${GREEN}|>${RESET} ${context_color}${used_pct}%${RESET} ${MAGENTA}${tokens_display}tok${RESET}"
 fi
 
 # Session duration tracking and alerts
