@@ -3,6 +3,7 @@ ZSH_THEME_PREFIX='🥃'
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[white]%}(  %{$reset_color%}%{$fg[cyan]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg_bold[white]%} ) %{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg_bold[magenta]%}↑"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg_bold[magenta]%}↓"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_bold[green]%}●"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg_bold[red]%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[white]%}●"
@@ -21,6 +22,7 @@ function my_git_prompt() {
 
   local indicators=""
   [[ "$header" == *'[ahead'* ]] && indicators+="$ZSH_THEME_GIT_PROMPT_AHEAD"
+  [[ "$header" == *'behind'* ]] && indicators+="$ZSH_THEME_GIT_PROMPT_BEHIND"
 
   # git status --porcelain shows each file as: XY PATH
   #   X = staged status    (D=deleted, M=modified, A=added, R=renamed, C=copied)
@@ -33,14 +35,14 @@ function my_git_prompt() {
   [[ "$output" =~ ${nl}[?][?] ]]          && indicators+="$ZSH_THEME_GIT_PROMPT_UNTRACKED"
   [[ "$output" =~ ${nl}[ADU][ADU] ]]      && indicators+="$ZSH_THEME_GIT_PROMPT_UNMERGED"
 
-  [[ -f "${GIT_DIR:-.git}/refs/stash" ]] && indicators+="$ZSH_THEME_GIT_PROMPT_STASHED"
+  git rev-parse --verify refs/stash &>/dev/null && indicators+="$ZSH_THEME_GIT_PROMPT_STASHED"
 
   [[ -n "$indicators" ]] && indicators=" $indicators"
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${branch:-'(no branch)'}$indicators$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function virtualenv_info {
-  [ $VIRTUAL_ENV ] && echo "%{$fg[red]%}*`basename $VIRTUAL_ENV`%{$reset_color%}"
+  [ "$VIRTUAL_ENV" ] && echo "%{$fg[red]%}*$(basename "$VIRTUAL_ENV")%{$reset_color%}"
 }
 
 if [[ -z $SSH_CLIENT ]]; then
