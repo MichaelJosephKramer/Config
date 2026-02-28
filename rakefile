@@ -55,11 +55,11 @@ def link_file(file)
   puts " => symlinking #{file}"
   directory = File.dirname(__FILE__)
   FileUtils.mkdir_p(@destination)
-  sh("ln -s #{File.join(directory, file)} #{@destination}/#{file}")
+  FileUtils.ln_s(File.join(directory, file), File.join(@destination, file))
 end
 
 def replace_file(file)
-  sh "rm -rf #{@destination}/#{file}"
+  FileUtils.rm_rf(File.join(@destination, file))
   link_file(file)
 end
 

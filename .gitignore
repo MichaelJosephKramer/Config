@@ -2,6 +2,6 @@
 .vim/autoload
 .vim/plugged
 .DS_Store
+tags
 nvim/autoload
 nvim/plugged
-nvim/plugin/packer_compiled.lua

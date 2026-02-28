@@ -15,7 +15,7 @@
   hist         = log --pretty=format:\"%Cred%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset %Cgreen(%cr)%Creset\" --graph --date=short
   last         = !git hist -1
   lgrep        = grep --heading --break
-  me           = !git hist --author=michael@sage.house
+  me           = !git hist --author=$(git config user.email)
   sha          = !git rev-parse HEAD | cut -c -8 | tr -d '\n' | pbcopy
   st           = status
   this         = !git init && git add . && git commit -m 'Initial commit'

@@ -52,8 +52,8 @@ set complete-=i
 " current line highlight details
 highlight cursorline cterm=none
 
-" higlight columns past 80
-execute "set colorcolumn=" . join(range(121,335), ',')
+" highlight columns past 120
+set colorcolumn=121
 
 " allow hidden buffers instead of closing
 set hidden

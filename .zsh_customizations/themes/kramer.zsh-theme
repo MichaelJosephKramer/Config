@@ -33,15 +33,14 @@ function my_git_prompt() {
   [[ "$output" =~ ${nl}[?][?] ]]          && indicators+="$ZSH_THEME_GIT_PROMPT_UNTRACKED"
   [[ "$output" =~ ${nl}[ADU][ADU] ]]      && indicators+="$ZSH_THEME_GIT_PROMPT_UNMERGED"
 
-  # rev-parse handles both loose and packed refs
-  git rev-parse --verify refs/stash &>/dev/null && indicators+="$ZSH_THEME_GIT_PROMPT_STASHED"
+  [[ -f "${GIT_DIR:-.git}/refs/stash" ]] && indicators+="$ZSH_THEME_GIT_PROMPT_STASHED"
 
   [[ -n "$indicators" ]] && indicators=" $indicators"
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${branch:-'(no branch)'}$indicators$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function virtualenv_info {
-  [ $VIRTUAL_ENV ] && echo "%{$fg[red]%}*`basename $VIRTUAL_ENV` ${reset_color%}"
+  [ $VIRTUAL_ENV ] && echo "%{$fg[red]%}*`basename $VIRTUAL_ENV`%{$reset_color%}"
 }
 
 if [[ -z $SSH_CLIENT ]]; then

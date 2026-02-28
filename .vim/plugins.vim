@@ -150,7 +150,7 @@ let g:lightline = {
 \   'right': [['lineinfo'], ['percent'], ['modified', 'fileformat', 'fileencoding', 'filetype'] ],
 \ },
 \ 'component_function': {
-\   'branch': 'FugativeHead'
+\   'branch': 'FugitiveHead'
 \ },
 \ 'component_expand': {
 \  'linter_checking': 'lightline#ale#checking',

@@ -42,7 +42,7 @@ export FZF_DEFAULT_OPTS='--color=fg:#c0caf5,bg:-1,hl:#ff9e64 --color=fg+:#c0caf5
 alias mux=tmuxinator
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/michael/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 
 # nvm Config (lazy-loaded for faster shell startup)
 export NVM_DIR="$HOME/.config/nvm"
