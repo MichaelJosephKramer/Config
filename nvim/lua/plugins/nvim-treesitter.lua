@@ -4,8 +4,10 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   opts = {
     ensure_installed = {
-      'c', 'cpp', 'css', 'html', 'javascript', 'jsdoc',
-      'lua', 'python', 'ruby', 'rust', 'vimdoc',
+      'bash', 'c', 'cpp', 'css', 'elixir', 'heex',
+      'html', 'javascript', 'jsdoc', 'json', 'lua',
+      'markdown', 'python', 'ruby', 'rust', 'toml',
+      'tsx', 'typescript', 'vimdoc', 'yaml',
     },
     highlight = {
       enable = true,

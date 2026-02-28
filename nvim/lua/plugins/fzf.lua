@@ -22,8 +22,6 @@ return {
     { '<leader>f', '<cmd>Files<cr>',    desc = 'FZF files' },
     { '<leader>l', '<cmd>Lines<cr>',    desc = 'FZF lines' },
     { '<leader>m', '<cmd>Marks<cr>',    desc = 'FZF marks' },
-    { '<leader>s', '<cmd>Snippets<cr>', desc = 'FZF snippets' },
     { '<leader>r', '<cmd>Rg<cr>',       desc = 'FZF ripgrep' },
-    { '<leader>c', '<cmd>Tags<cr>',     desc = 'FZF tags' },
   },
 }

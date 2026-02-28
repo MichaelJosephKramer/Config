@@ -1,5 +1,5 @@
 return {
-  'janko-m/vim-test',
+  'vim-test/vim-test',
   keys = {
     { 't<C-n>', '<cmd>noautocmd wa<cr><cmd>TestNearest<cr>', desc = 'Test nearest' },
     { 't<C-f>', '<cmd>noautocmd wa<cr><cmd>TestFile<cr>',    desc = 'Test file' },
