@@ -3,5 +3,3 @@
 .vim/plugged
 .DS_Store
 tags
-nvim/autoload
-nvim/plugged

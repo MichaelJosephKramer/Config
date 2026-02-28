@@ -8,7 +8,7 @@
   co           = checkout
   cob          = checkout -b
   com          = "!f() { git checkout $(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo main); }; f"
-  fix          = "!f() { ${EDITOR} `git diff --name-only`; }; f"
+  fix          = "!f() { ${EDITOR} $(git diff --name-only); }; f"
   flush        = "!f() { default=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@') || default=main; git branch --merged $default | grep -v $default | xargs git branch -d && git remote prune origin; }; f"
   new          = !git pull origin $(git branch-name)
   pub          = !git push origin $(git branch-name)
@@ -28,13 +28,13 @@
   pager        = less -FRX
 [credential]
   helper       = osxkeychain
-[heroku]
-  account      = sagehouse
 [pull]
   rebase       = true
 [user]
   name         = Michael Joseph Kramer
   email        = michael@sage.house
+[init]
+  defaultBranch = main
 [grep]
   extendRegexp = true
   fullName     = true
