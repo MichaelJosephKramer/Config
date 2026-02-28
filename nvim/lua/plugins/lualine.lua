@@ -5,10 +5,7 @@ return {
     require('lualine').setup {
       options = { theme = 'tokyonight' },
       sections = {
-        lualine_c = {
-          'filename',
-          { function() return vim.fn['nvim_treesitter#statusline'](90) or '' end },
-        },
+        lualine_c = { 'filename', 'diagnostics' },
       },
       extensions = { 'lazy' },
     }

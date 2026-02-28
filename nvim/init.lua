@@ -105,7 +105,6 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagn
 -- SEARCH
 --------------------------------------------------------------------------------
 
-opt.gdefault   = true    -- default to global
 opt.ignorecase = true    -- ignore case
 opt.signcolumn = 'yes:2' -- sign column width
 opt.smartcase  = true    -- use case if specified
