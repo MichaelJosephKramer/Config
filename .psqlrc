@@ -11,9 +11,8 @@
 \x auto
 
 -- Prompt configuration
-\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
-\set PROMPT2 '[more] %R > '
 \set PROMPT1 '🍻  %M:%[%033[1;31m%]%>%[%033[0m%] %[%n%]@%/%R%# %x➤ '
+\set PROMPT2 '[more] %R > '
 
 -- Verbose errors
 \set VERBOSITY verbose
@@ -22,7 +21,7 @@
 \set HISTCONTROL ignoredups
 \set HISTFILE ~/.psql_history- :DBNAME
 
--- Autocomoplete to uppercase
+-- Autocomplete to uppercase
 \set COMP_KEYWORD_CASE upper
 
 -- Messages back to normal

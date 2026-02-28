@@ -6,8 +6,9 @@ desc 'do all the setup!'
 task :default do
   dotfiles = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore']
   symlink_files(ENV['HOME'], dotfiles)
-  symlink_files(File.join(ENV['XDG_CONFIG_HOME'].to_s, 'git'), ['ignore'])
-  symlink_files(ENV['XDG_CONFIG_HOME'].to_s, ['nvim'])
+  xdg_config = ENV['XDG_CONFIG_HOME'] || File.join(ENV['HOME'], '.config')
+  symlink_files(File.join(xdg_config, 'git'), ['ignore'])
+  symlink_files(xdg_config, ['nvim'])
 end
 
 def symlink_files(destination, files)
