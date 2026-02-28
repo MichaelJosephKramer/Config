@@ -10,14 +10,14 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'godlygeek/tabular', { 'on': 'Tab' }
-Plug 'janko-m/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
+Plug 'vim-test/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-mucomplete'
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
@@ -26,7 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vividchalk'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -45,8 +45,8 @@ let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
 \  'elixir': ['elixir-ls'],
-\  'ruby': ['rubocop', 'solargraph'],
-\  'rust': ['rls'],
+\  'ruby': ['rubocop', 'ruby_lsp'],
+\  'rust': ['rust-analyzer'],
 \}
 
 " ale fixers

@@ -2,7 +2,7 @@
 " COLORSCHEME
 " ******************************************************************************
 
-" the color sheme, dumbass
+" colorscheme
 silent! colorscheme vividchalk
 
 " enable color syntax highlighting
@@ -11,10 +11,10 @@ syntax on
 " change the background color of the autocomplete menu
 highlight Pmenu guibg=#d78700 ctermbg=172
 
-" change the select backgroud color of the autocomplete menu
+" change the select background color of the autocomplete menu
 highlight PmenuSel guibg=#8700d7 ctermbg=92
 
-" change the sign column backgroud color
+" change the sign column background color
 highlight SignColumn guibg=black ctermbg=black
 
 " turn on true colors
@@ -41,7 +41,7 @@ set backspace=indent,eol,start
 set belloff=all
 
 " allow clipboard access
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " add auto select
 set completeopt=preview,menuone,noinsert
@@ -118,29 +118,27 @@ set wildignore=*.git,bundle
 
 " ******************************************************************************
 " CURSOR
-"
-" OSX iTerm2 Specific
 " ******************************************************************************
 
-" change the cursor shape in edit mode
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" change the cursor shape in edit mode (bar in insert, block in normal)
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 " ******************************************************************************
 " FONT
 " ******************************************************************************
 
-" italic comments
+" italic html arguments
 highlight htmlarg cterm=italic
 
-" italic html arguments
+" italic comments
 highlight comment cterm=italic
 
 " ******************************************************************************
 " SEARCH
 " ******************************************************************************
 
-" set line substiution to global by default
+" set line substitution to global by default
 set gdefault
 
 " highlight search matches
@@ -222,8 +220,8 @@ let g:netrw_altfile = 1
 " hide the banner because it's useless
 let g:netrw_banner = 0
 
-" set list style
-let g:netrw_liststyle = 3
+" disable netrw caching
+let g:netrw_fastbrowse = 0
 
 " ******************************************************************************
 " TERMINAL CONFIGURATION
