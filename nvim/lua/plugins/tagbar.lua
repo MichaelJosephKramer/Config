@@ -1,6 +1,6 @@
 return {
-  'preservim/tagbar',
+  "preservim/tagbar",
   keys = {
-    { '<F8>', '<cmd>TagbarToggle<cr>', desc = 'Toggle Tagbar' },
+    { "<F8>", "<cmd>TagbarToggle<cr>", desc = "Toggle Tagbar" },
   },
 }

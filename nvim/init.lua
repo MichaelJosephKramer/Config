@@ -1,67 +1,69 @@
 --------------------------------------------------------------------------------
 -- ALIASES
 --------------------------------------------------------------------------------
-local g   = vim.g
+local g = vim.g
 local opt = vim.opt
 
 --------------------------------------------------------------------------------
 -- MAPPINGS
 --------------------------------------------------------------------------------
 
-g.mapleader = ','
-vim.keymap.set('n', '<F1>', '<Esc>')
-vim.keymap.set('n', 'Q', '<Nop>')
-vim.keymap.set('n', '<leader>w', ':wa<cr>')
-vim.keymap.set('i', 'kj', '<Esc>')
-vim.keymap.set('t', '<C-o>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+g.mapleader = ","
+vim.keymap.set("n", "<F1>", "<Esc>")
+vim.keymap.set("n", "Q", "<Nop>")
+vim.keymap.set("n", "<leader>w", ":wa<cr>")
+vim.keymap.set("i", "kj", "<Esc>")
+vim.keymap.set("t", "<C-o>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 --------------------------------------------------------------------------------
 -- UI
 --------------------------------------------------------------------------------
 
-opt.shortmess:append "cI" -- startup screen
+opt.shortmess:append("cI") -- startup screen
 
-opt.clipboard      = 'unnamedplus' -- default clipboard access
-opt.expandtab      = true          -- spaces, not tabs
-opt.exrc           = true          -- look for local config files
-opt.number         = true          -- line numbers
-opt.relativenumber = true          -- relative numbers
-opt.scrolloff      = 10            -- scroll padding
-opt.secure         = true          -- this has got to be smart, right?
-opt.shiftwidth     = 2             -- width of the tab for indentation
-opt.showmatch      = true          -- matching pairs
-opt.softtabstop    = 2             -- width of the tab for tab
+opt.clipboard = "unnamedplus" -- default clipboard access
+opt.expandtab = true -- spaces, not tabs
+opt.exrc = true -- look for local config files
+opt.number = true -- line numbers
+opt.relativenumber = true -- relative numbers
+opt.scrolloff = 10 -- scroll padding
+opt.secure = true -- this has got to be smart, right?
+opt.shiftwidth = 2 -- width of the tab for indentation
+opt.showmatch = true -- matching pairs
+opt.softtabstop = 2 -- width of the tab for tab
 
 -- change colors past 120 characters
-opt.colorcolumn = '121'
+opt.colorcolumn = "121"
 
 -- listchars characters
 opt.listchars = {
-  eol      = '↲',
-  extends  = '»',
-  precedes = '«',
-  tab      = '▸▸',
-  trail    = '·',
+  eol = "↲",
+  extends = "»",
+  precedes = "«",
+  tab = "▸▸",
+  trail = "·",
 }
 
 -- turn off relativenumber in insert mode
-local numbering = vim.api.nvim_create_augroup('numbering', { clear = true })
-vim.api.nvim_create_autocmd('InsertEnter', {
-  group = numbering,
-  callback = function() vim.opt_local.relativenumber = false end,
-})
-vim.api.nvim_create_autocmd('InsertLeave', {
+local numbering = vim.api.nvim_create_augroup("numbering", { clear = true })
+vim.api.nvim_create_autocmd("InsertEnter", {
   group = numbering,
   callback = function()
-    if vim.bo.buftype ~= 'terminal' then
+    vim.opt_local.relativenumber = false
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = numbering,
+  callback = function()
+    if vim.bo.buftype ~= "terminal" then
       vim.opt_local.relativenumber = true
     end
   end,
 })
 
 -- remove line numbers on the terminal
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('terminal_open', { clear = true }),
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("terminal_open", { clear = true }),
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
@@ -73,10 +75,10 @@ vim.api.nvim_create_autocmd('TermOpen', {
 --------------------------------------------------------------------------------
 
 local symbols = {
-  [vim.diagnostic.severity.ERROR] = '󰅚 ',
-  [vim.diagnostic.severity.WARN]  = '󰀪 ',
-  [vim.diagnostic.severity.INFO]  = '󰋽 ',
-  [vim.diagnostic.severity.HINT]  = '󰌶 ',
+  [vim.diagnostic.severity.ERROR] = "󰅚 ",
+  [vim.diagnostic.severity.WARN] = "󰀪 ",
+  [vim.diagnostic.severity.INFO] = "󰋽 ",
+  [vim.diagnostic.severity.HINT] = "󰌶 ",
 }
 vim.diagnostic.config({
   float = {
@@ -98,34 +100,34 @@ vim.diagnostic.config({
     end,
   },
 })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
 --------------------------------------------------------------------------------
 -- SEARCH
 --------------------------------------------------------------------------------
 
-opt.ignorecase = true    -- ignore case
-opt.signcolumn = 'yes:2' -- sign column width
-opt.smartcase  = true    -- use case if specified
+opt.ignorecase = true -- ignore case
+opt.signcolumn = "yes:2" -- sign column width
+opt.smartcase = true -- use case if specified
 
 -- command line settings
-opt.wildignore = { '*/.git/*', '*/bundle/*' }
-opt.wildmode   = 'longest:full'
+opt.wildignore = { "*/.git/*", "*/bundle/*" }
+opt.wildmode = "longest:full"
 
 --------------------------------------------------------------------------------
 -- NETRW
 --------------------------------------------------------------------------------
 
-g.netrw_altfile    = 1
-g.netrw_banner     = 0
+g.netrw_altfile = 1
+g.netrw_banner = 0
 g.netrw_fastbrowse = 0
 
 --------------------------------------------------------------------------------
 -- DISABLE DEFAULTS
 --------------------------------------------------------------------------------
 
-opt.foldenable  = false -- folding
-opt.swapfile    = false -- swapfile
+opt.foldenable = false -- folding
+opt.swapfile = false -- swapfile
 opt.writebackup = false -- backup file
 
 --------------------------------------------------------------------------------
