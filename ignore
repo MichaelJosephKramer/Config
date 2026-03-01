@@ -1,5 +1,4 @@
 tags
-!/**/Config/.vimrc
 .vimrc
 .nvimrc
 .DS_Store

@@ -13,6 +13,7 @@ vim.keymap.set('n', '<F1>', '<Esc>')
 vim.keymap.set('n', 'Q', '<Nop>')
 vim.keymap.set('n', '<leader>w', ':wa<cr>')
 vim.keymap.set('i', 'kj', '<Esc>')
+vim.keymap.set('t', '<C-o>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 --------------------------------------------------------------------------------
 -- UI
@@ -52,7 +53,11 @@ vim.api.nvim_create_autocmd('InsertEnter', {
 })
 vim.api.nvim_create_autocmd('InsertLeave', {
   group = numbering,
-  callback = function() vim.opt_local.relativenumber = true end,
+  callback = function()
+    if vim.bo.buftype ~= 'terminal' then
+      vim.opt_local.relativenumber = true
+    end
+  end,
 })
 
 -- remove line numbers on the terminal
@@ -76,7 +81,6 @@ local symbols = {
 }
 vim.diagnostic.config({
   float = {
-    enable = true,
     border = "rounded",
     format = function(diagnostic)
       return string.format("%s: %s", symbols[diagnostic.severity], diagnostic.message)
@@ -85,15 +89,11 @@ vim.diagnostic.config({
   },
   severity_sort = true,
   signs = {
-    enable = true,
     text = symbols,
   },
-  underline = {
-    enable = true,
-  },
+  underline = true,
   update_in_insert = false,
   virtual_text = {
-    enable = true,
     prefix = function(diagnostic)
       return string.format("%s:", symbols[diagnostic.severity])
     end,
@@ -110,7 +110,7 @@ opt.signcolumn = 'yes:2' -- sign column width
 opt.smartcase  = true    -- use case if specified
 
 -- command line settings
-opt.wildignore = { '*.git', 'bundle' }
+opt.wildignore = { '*/.git/*', '*/bundle/*' }
 opt.wildmenu   = true
 opt.wildmode   = 'longest:full'
 

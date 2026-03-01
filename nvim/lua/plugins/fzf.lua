@@ -4,6 +4,8 @@ return {
   init = function()
     vim.g.fzf_layout = { window = { width = 0.8, height = 0.8 } }
     vim.g.fzf_preview_window = { 'right:60%', 'ctrl-/' }
+  end,
+  config = function()
     vim.keymap.set('i', '<c-x><c-h>', function()
       return vim.fn['fzf#vim#complete'](vim.fn['fzf#wrap']({
         prefix = '^.*$',

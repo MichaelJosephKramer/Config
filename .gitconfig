@@ -1,6 +1,6 @@
 [alias]
   alias        = !git config -l | grep alias | cut -c 7- | sort
-  amend        = commit -a --amend --no-edit
+  amend        = commit --amend --no-edit
   br           = branch
   branch-name  = !git rev-parse --abbrev-ref HEAD
   brl          = !git for-each-ref --color=always --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:red)%(objectname:short)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|'
