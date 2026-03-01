@@ -16,7 +16,7 @@
   last         = !git hist -1
   lgrep        = grep --heading --break
   me           = !git hist --author=$(git config user.email)
-  sha          = !git rev-parse HEAD | cut -c -8 | tr -d '\n' | pbcopy
+  sha          = !git rev-parse --short HEAD | tr -d '\n' | pbcopy
   st           = status
   this         = !git init && git add . && git commit -m 'Initial commit'
   wip          = commit -am 'WIP'
@@ -35,7 +35,21 @@
   email        = michael@sage.house
 [init]
   defaultBranch = main
+[branch]
+  sort         = -committerdate
+[diff]
+  algorithm    = histogram
+  colorMoved   = default
+[fetch]
+  prune        = true
 [grep]
   extendRegexp = true
   fullName     = true
   lineNumber   = true
+[merge]
+  conflictstyle = zdiff3
+[push]
+  autoSetupRemote = true
+[rebase]
+  autoSquash   = true
+  autoStash    = true
