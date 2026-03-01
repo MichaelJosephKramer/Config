@@ -1,5 +1,5 @@
 return {
-  'lewis6723/gitsigns.nvim',
+  'lewis6991/gitsigns.nvim',
   event = { 'BufReadPost', 'BufNewFile' },
   opts = {
     signs = {
