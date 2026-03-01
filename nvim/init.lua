@@ -31,7 +31,6 @@ opt.secure         = true          -- this has got to be smart, right?
 opt.shiftwidth     = 2             -- width of the tab for indentation
 opt.showmatch      = true          -- matching pairs
 opt.softtabstop    = 2             -- width of the tab for tab
-opt.termguicolors  = true          -- true colors
 
 -- change colors past 120 characters
 opt.colorcolumn = '121'
@@ -111,7 +110,6 @@ opt.smartcase  = true    -- use case if specified
 
 -- command line settings
 opt.wildignore = { '*/.git/*', '*/bundle/*' }
-opt.wildmenu   = true
 opt.wildmode   = 'longest:full'
 
 --------------------------------------------------------------------------------
