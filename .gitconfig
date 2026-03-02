@@ -42,6 +42,8 @@
   colorMoved   = default
 [fetch]
   prune        = true
+[includeIf "gitdir:~/Code/"]
+  path         = ~/.gitconfig-work
 [grep]
   extendRegexp = true
   fullName     = true

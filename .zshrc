@@ -10,7 +10,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_AUTO_TITLE="true"
 DISABLE_AUTO_UPDATE="true"
 
-plugins=(bundler git rails rake virtualenv)
+plugins=(bundler chruby git rails rake virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -48,7 +48,6 @@ export FZF_DEFAULT_OPTS='--color=fg:#c0caf5,bg:-1,hl:#ff9e64 --color=fg+:#c0caf5
 # tmuxinator
 alias mux=tmuxinator
 
-
 # nvm Config (lazy-loaded for faster shell startup)
 export NVM_DIR="$HOME/.config/nvm"
 lazy_load_nvm() {
@@ -60,3 +59,15 @@ nvm() { lazy_load_nvm && nvm "$@"; }
 node() { lazy_load_nvm && node "$@"; }
 npm() { lazy_load_nvm && npm "$@"; }
 npx() { lazy_load_nvm && npx "$@"; }
+
+# Docker CLI completions
+fpath=(/Users/mkramer/.docker/completions $fpath)
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+# Source secrets (not tracked in git)
+[ -f ~/.secrets ] && source ~/.secrets
