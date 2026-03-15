@@ -25,6 +25,9 @@ let g:tokyonight_enable_italic = 1
 silent! colorscheme tokyonight
 syntax on
 
+" built-in commenting (gc/gcc) - replaces vim-commentary
+packadd comment
+
 " --- Editor Settings ---
 
 set autoread

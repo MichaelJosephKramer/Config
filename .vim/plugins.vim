@@ -9,7 +9,7 @@ endif
 " --- Plugins ---
 
 call plug#begin('~/.vim/plugged')
-Plug 'godlygeek/tabular', { 'on': 'Tab' }
+Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'vim-test/vim-test', { 'on': ['TestFile', 'TestNearest', 'TestLast', 'TestSuite'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -21,7 +21,6 @@ Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
 Plug 'maximbaz/lightline-ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'

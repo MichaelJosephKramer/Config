@@ -21,6 +21,11 @@ nnoremap <silent> <F8> :TagbarToggle<CR>
 " hide line numbers
 let g:tagbar_show_linenumbers = 0
 
+" --- vim-easy-align ---
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " --- UltiSnips ---
 
 " trigger mappings
