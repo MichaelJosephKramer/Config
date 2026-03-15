@@ -1,6 +1,7 @@
 " --- Lightline ---
 
 let g:lightline = {
+\ 'colorscheme': 'tokyonight',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['branch'], ['relativepath'], [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ],
 \   'right': [['lineinfo'], ['percent'], ['modified', 'fileformat', 'fileencoding', 'filetype'] ],

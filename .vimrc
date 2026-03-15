@@ -15,17 +15,15 @@ source ~/.vim/plugins.vim
 
 " --- Colorscheme ---
 
-silent! colorscheme vividchalk
-syntax on
-
-highlight Pmenu guibg=#d78700 ctermbg=172
-highlight PmenuSel guibg=#8700d7 ctermbg=92
-highlight SignColumn guibg=black ctermbg=black
-
 " true colors
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
+
+let g:tokyonight_style = 'night'
+let g:tokyonight_enable_italic = 1
+silent! colorscheme tokyonight
+syntax on
 
 " --- Editor Settings ---
 
