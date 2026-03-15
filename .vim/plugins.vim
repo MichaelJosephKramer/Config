@@ -27,7 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vividchalk'
 Plug 'dense-analysis/ale'
-Plug 'Yggdroot/indentLine'
+Plug 'preservim/vim-indent-guides'
 call plug#end()
 
 " pre-load settings

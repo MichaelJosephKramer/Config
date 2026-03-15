@@ -1,10 +1,7 @@
-" --- indentLine ---
+" --- vim-indent-guides ---
 
-" changes the indent line character
-let g:indentLine_char = '┊'
-
-" exclude json and sh files
-let g:indentLine_fileTypeExclude = ['json', 'sh']
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'json', 'sh']
 
 " --- Rainbow Parentheses ---
 
