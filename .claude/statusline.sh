@@ -1,5 +1,6 @@
 #!/bin/bash
 # Claude Code Status Line Script - matching kramer zsh theme with Tokyo Night colors
+# Updated to mirror kramer prompt structure: 🥃  [green]dir ( branch indicators ) [green]|>
 
 # Tokyo Night Color Palette (using 256-color ANSI codes for better compatibility)
 # These match the colors in your FZF_DEFAULT_OPTS and tmux config
@@ -10,7 +11,6 @@ MAGENTA=$'\033[38;5;170m'    # #bb9af7 - Tokyo Night magenta
 RED=$'\033[38;5;203m'        # #f7768e - Tokyo Night red
 ORANGE=$'\033[38;5;215m'     # #ff9e64 - Tokyo Night orange
 YELLOW=$'\033[38;5;222m'     # #e0af68 - Tokyo Night yellow
-BLUE=$'\033[38;5;111m'       # #7aa2f7 - Tokyo Night blue
 BOLD=$'\033[1m'
 RESET=$'\033[0m'
 
@@ -22,64 +22,58 @@ current_dir=$(echo "$input" | jq -r '.workspace.current_dir // .cwd')
 model_name=$(echo "$input" | jq -r '.model.display_name')
 session_id=$(echo "$input" | jq -r '.session_id')
 
-# Get directory name
+# Get directory name (matching %c in kramer theme)
 dir_name=$(basename "$current_dir")
 
-# Git information (matching kramer theme colors and logic)
+# Git information (matching kramer theme colors and logic exactly)
 git_info=""
-if git rev-parse --git-dir >/dev/null 2>&1; then
+if git -C "$current_dir" rev-parse --git-dir >/dev/null 2>&1; then
     # Get branch name
-    branch=$(git branch --show-current 2>/dev/null)
+    branch=$(git -C "$current_dir" branch --show-current 2>/dev/null)
     if [ -z "$branch" ]; then
-        # Fallback for detached HEAD
-        branch=$(git describe --exact-match --tags 2>/dev/null || git rev-parse --short HEAD 2>/dev/null || echo "(no branch)")
+        branch=$(git -C "$current_dir" describe --exact-match --tags 2>/dev/null \
+            || git -C "$current_dir" rev-parse --short HEAD 2>/dev/null \
+            || echo "(no branch)")
     fi
 
-    status=""
+    indicators=""
 
-    # Get git status output (matching zsh theme logic)
-    INDEX=$(git status --porcelain 2>/dev/null)
+    # Use --branch --porcelain to get ahead/behind in header (matches zsh theme)
+    git_status_out=$(git -C "$current_dir" status --branch --porcelain 2>/dev/null)
+    header="${git_status_out%%$'\n'*}"
 
-    # Check for ahead commits (bold magenta ↑) - more robust check
-    upstream=$(git rev-parse --abbrev-ref @{upstream} 2>/dev/null)
-    if [ -n "$upstream" ]; then
-        ahead=$(git rev-list --count "$upstream"..HEAD 2>/dev/null)
-        if [ -n "$ahead" ] && [ "$ahead" -gt 0 ]; then
-            status="${status}${BOLD}${MAGENTA}↑${RESET}"
-        fi
-    fi
+    # ahead (bold magenta ↑) - matches zsh: [[ "$header" == *'[ahead'* ]]
+    echo "$header" | grep -q '\[ahead' && indicators="${indicators}${BOLD}${MAGENTA}↑${RESET}"
 
-    # Check for staged changes (bold green ●) - matches zsh regex [DMARC]
-    if echo "$INDEX" | grep -qE '^[DMARC]'; then
-        status="${status}${BOLD}${GREEN}●${RESET}"
-    fi
+    # behind (bold magenta ↓) - matches zsh: [[ "$header" == *'behind'* ]]
+    echo "$header" | grep -q 'behind' && indicators="${indicators}${BOLD}${MAGENTA}↓${RESET}"
 
-    # Check for unstaged changes (bold red ●) - matches zsh regex [ MARC][MD]
-    if echo "$INDEX" | grep -qE '^[ MARC][MD]'; then
-        status="${status}${BOLD}${RED}●${RESET}"
-    fi
+    # staged (bold green ●) - porcelain X column: D/M/A/R/C in first char
+    echo "$git_status_out" | grep -qE '^[DMARC]' \
+        && indicators="${indicators}${BOLD}${GREEN}●${RESET}"
 
-    # Check for untracked files (bold white ●)
-    if echo "$INDEX" | grep -q '^??'; then
-        status="${status}${BOLD}${WHITE}●${RESET}"
-    fi
+    # unstaged (bold red ●) - porcelain Y column: M or D in second char
+    echo "$git_status_out" | grep -qE '^[ MARC][MD]' \
+        && indicators="${indicators}${BOLD}${RED}●${RESET}"
 
-    # Check for unmerged files (bold red ✕) - matches zsh [ADU][ADU]
-    if echo "$INDEX" | grep -qE '^[ADU][ADU]'; then
-        status="${status}${BOLD}${RED}✕${RESET}"
-    fi
+    # untracked (bold white ●)
+    echo "$git_status_out" | grep -q '^??' \
+        && indicators="${indicators}${BOLD}${WHITE}●${RESET}"
 
-    # Check for stashed changes (bold magenta ○)
-    if git rev-parse --verify refs/stash &>/dev/null; then
-        status="${status}${BOLD}${MAGENTA}○${RESET}"
-    fi
+    # unmerged (bold red ✕) - both columns contain A/D/U
+    echo "$git_status_out" | grep -qE '^[ADU][ADU]' \
+        && indicators="${indicators}${BOLD}${RED}✕${RESET}"
 
-    if [[ -n $status ]]; then
-        status=" ${status}"
-    fi
+    # stashed (bold magenta ○)
+    git -C "$current_dir" rev-parse --verify refs/stash &>/dev/null \
+        && indicators="${indicators}${BOLD}${MAGENTA}○${RESET}"
 
-    # Format: bold white ( + cyan branch + status + bold white )
-    git_info="${BOLD}${WHITE}( $(printf '\xee\x82\xa0') ${RESET}${CYAN}${branch}${status}${BOLD}${WHITE} )${RESET} "
+    [ -n "$indicators" ] && indicators=" ${indicators}"
+
+    # Format mirrors kramer exactly:
+    #   bold white "( " + git icon + " " + cyan branch + indicators + bold white " ) "
+    git_icon=$'\xee\x82\xa0'  # U+E0A0 Powerline branch symbol
+    git_info="${BOLD}${WHITE}( ${git_icon} ${RESET}${CYAN}${branch}${indicators}${BOLD}${WHITE} )${RESET} "
 fi
 
 # Context window information with Tokyo Night colors
@@ -113,34 +107,17 @@ if [ -n "$remaining_pct" ]; then
         context_color="${GREEN}"
     fi
 
-    context_info=" ${GREEN}|>${RESET} ${context_color}${used_pct}%${RESET} ${MAGENTA}${tokens_display}tok${RESET}"
+    context_info="  ${context_color}${used_pct}%${RESET} ${MAGENTA}${tokens_display}tok${RESET}"
 fi
-
-# Session duration tracking and alerts
-alerts=""
-session_file="/tmp/claude-session-${session_id}"
-
-# Initialize session start time if not exists
-if [ ! -f "$session_file" ]; then
-    date +%s > "$session_file"
-fi
-
-# Calculate session duration
-start_time=$(cat "$session_file" 2>/dev/null || echo 0)
-current_time=$(date +%s)
-duration=$((current_time - start_time))
-hours=$((duration / 3600))
 
 # Alert for low context (below 20%)
+alerts=""
 if [ -n "$remaining_pct" ] && [ "${remaining_pct%.*}" -lt 20 ]; then
-    alerts="${alerts} ${BOLD}${RED}[LOW CONTEXT]${RESET}"
-fi
-
-# Alert for long session (2+ hours)
-if [ $hours -ge 2 ]; then
-    alerts="${alerts} ${BOLD}${MAGENTA}[${hours}h SESSION]${RESET}"
+    alerts=" ${BOLD}${RED}[LOW CTX]${RESET}"
 fi
 
 # Output the status line
-# Format: 🥃 [green]dir [git_info] model |> context alerts
-printf "🥃 ${GREEN}%s${RESET} %s${WHITE}%s${RESET}%s%s\n" "$dir_name" "$git_info" "$model_name" "$context_info" "$alerts"
+# Mirrors kramer prompt: 🥃  [green]dir [git_info][green]|>
+# Then appends: model name, context info, alerts
+printf "🥃  ${GREEN}%s${RESET} %s${GREEN}|>${RESET}  ${WHITE}%s${RESET}%s%s\n" \
+    "$dir_name" "$git_info" "$model_name" "$context_info" "$alerts"
