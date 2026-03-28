@@ -5,11 +5,11 @@ return {
     formatters_by_ft = {
       ["_"] = { "trim_whitespace", "trim_newlines" },
       lua = { "stylua" },
-      markdown = { "prettier" },
+      markdown = { "prettierd" },
       python = { "ruff_format" },
       javascript = { "eslint_d" },
       ruby = { "rubocop" },
-      yaml = { "prettier" },
+      yaml = { "prettierd" },
     },
     formatters = {
       stylua = {
