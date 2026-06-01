@@ -1,5 +1,24 @@
 return {
   "ibhagwan/fzf-lua",
+  opts = {
+    "fzf-native",
+    previewer = "builtin",
+    winopts = {
+      preview = { delay = 100 },
+    },
+    files = {
+      git_icons = false,
+      cmd = "fd --type f --hidden --exclude .git",
+      formatter = "path.filename_first",
+    },
+    git = {
+      files = {
+        git_icons = false,
+        cmd = "git ls-files --cached --others --exclude-standard",
+        formatter = "path.filename_first",
+      },
+    },
+  },
   keys = {
     { "<leader>b", "<cmd>FzfLua buffers<cr>", desc = "FzfLua buffers" },
     { "<leader>t", "<cmd>FzfLua git_files<cr>", desc = "FzfLua git files" },
