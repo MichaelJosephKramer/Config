@@ -3,12 +3,28 @@
 require 'rake'
 
 desc 'do all the setup!'
-task :default do
+task default: :brew do
   dotfiles = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore']
   symlink_files(ENV['HOME'], dotfiles)
   xdg_config = ENV['XDG_CONFIG_HOME'] || File.join(ENV['HOME'], '.config')
   symlink_files(File.join(xdg_config, 'git'), ['ignore'])
   symlink_files(xdg_config, ['nvim'])
+end
+
+desc 'install Homebrew dependencies from the Brewfile'
+task :brew do
+  install_brew_dependencies
+end
+
+def install_brew_dependencies
+  unless system('command -v brew > /dev/null 2>&1')
+    puts ' => skipping brew bundle (Homebrew not installed)'
+    return
+  end
+
+  brewfile = File.join(File.dirname(__FILE__), 'Brewfile')
+  puts ' => installing Homebrew dependencies'
+  system('brew', 'bundle', "--file=#{brewfile}") || abort('brew bundle failed')
 end
 
 def symlink_files(destination, files)
