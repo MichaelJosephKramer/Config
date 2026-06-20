@@ -1,3 +1,7 @@
+-- NOTE: the `main` branch compiles parsers from grammar, so the `tree-sitter`
+-- CLI must be on PATH (`brew install tree-sitter-cli`). Without it, builds fail
+-- silently and stale parsers trigger query errors like
+-- `Query error: Invalid field name "operator"`.
 return {
   "nvim-treesitter/nvim-treesitter",
   branch = "main",

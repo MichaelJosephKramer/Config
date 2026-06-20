@@ -26,6 +26,7 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 **Neovim (primary):**
 - `nvim/init.lua` - Main configuration using lazy.nvim plugin manager
 - `nvim/lua/plugins/` - Modular plugin configurations (conform, nvim-lint, fzf, treesitter, etc.)
+- Requires the `tree-sitter` CLI (`brew install tree-sitter-cli`): nvim-treesitter's `main` branch compiles parsers from grammar, so without the CLI parser builds fail and stale parsers cause query errors at startup.
 
 **Vim (legacy):**
 - `.vimrc` - Sources modular configs from `.vim/`
