@@ -1,6 +1,6 @@
 return {
   "mfussenegger/nvim-lint",
-  event = { "BufEnter", "BufWritePost", "InsertLeave" },
+  event = { "BufReadPost", "BufWritePost", "InsertLeave" },
   config = function()
     require("lint").linters.luacheck.args = {
       "--globals",
@@ -29,7 +29,7 @@ return {
       ruby = { "rubocop" },
       yaml = { "yamllint" },
     }
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
       group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
       callback = function()
         require("lint").try_lint()

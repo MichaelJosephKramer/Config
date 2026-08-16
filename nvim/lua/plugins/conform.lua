@@ -7,7 +7,7 @@ return {
       lua = { "stylua" },
       markdown = { "prettierd" },
       python = { "ruff_format" },
-      javascript = { "eslint_d" },
+      javascript = { "prettierd" },
       ruby = { "rubocop" },
       yaml = { "prettierd" },
     },
