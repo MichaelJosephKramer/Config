@@ -18,6 +18,11 @@ brew "fzf"                       # ,t / ,f / ,b pickers, shell fuzzy-find
 brew "fd"                        # fzf-lua file traversal
 brew "ripgrep"                   # ,r ripgrep search
 brew "bat"                       # syntax-highlighted previews
+brew "zoxide"                    # `z <dir>` frecent directory jumping (.zshrc)
+
+# --- Interactive shell (sourced from Homebrew in .zshrc) ---
+brew "zsh-autosuggestions"       # fish-style history suggestions (→ to accept)
+brew "zsh-syntax-highlighting"   # command-line syntax highlighting (sourced last)
 
 # --- Git ---
 brew "git"
