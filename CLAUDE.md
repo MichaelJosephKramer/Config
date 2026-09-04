@@ -18,22 +18,27 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 ## Key Configuration Files
 
 ### Shell (zsh)
+
 - `.zshrc` - Main shell configuration using oh-my-zsh
 - `.zprofile` - Adds Homebrew to PATH
 - `.zsh_customizations/themes/kramer.zsh-theme` - Custom prompt with git status and virtualenv indicators
 
 ### Editors
+
 **Neovim (primary):**
+
 - `nvim/init.lua` - Main configuration using lazy.nvim plugin manager
 - `nvim/lua/plugins/` - Modular plugin configurations (conform, nvim-lint, fzf, treesitter, etc.)
 - Requires the `tree-sitter` CLI (`brew install tree-sitter-cli`): nvim-treesitter's `main` branch compiles parsers from grammar, so without the CLI parser builds fail and stale parsers cause query errors at startup.
 
 **Vim (legacy):**
+
 - `.vimrc` - Sources modular configs from `.vim/`
 - `.vim/plugins.vim` - vim-plug based plugin definitions
 - `.vim/general.vim` - Core settings
 
 ### Other Tools
+
 - `.gitconfig` - Git aliases and settings
 - `.tmux.conf` - Tmux with Ctrl-A prefix and vi-style navigation
 - `.gemrc` - RubyGems configuration
@@ -46,6 +51,7 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 **Leader key:** `,` (comma)
 
 **Common mappings (Neovim/Vim):**
+
 - `kj` - Exit insert mode
 - `,w` - Save all files
 - `,t` - FZF git files
@@ -56,6 +62,7 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - `t<C-f>` - Run test file
 
 **Tmux prefix:** `Ctrl-A`
+
 - `|` - Vertical split
 - `-` - Horizontal split
 - `hjkl` - Navigate panes
