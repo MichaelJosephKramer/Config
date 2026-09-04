@@ -4,11 +4,16 @@ require 'rake'
 
 desc 'do all the setup!'
 task default: :brew do
-  dotfiles = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore']
+  # .claude is handled separately: ~/.claude also holds Claude Code runtime state
+  # (sessions/, projects/, history.jsonl), which a whole-directory link would rm -rf.
+  dotfiles = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore', '.claude']
   symlink_files(ENV['HOME'], dotfiles)
+  # Paths keep their '.claude/' prefix so they land inside the existing ~/.claude.
+  # Tracked files only, matching .gitignore: settings.local.json is per-checkout state.
+  symlink_files(ENV['HOME'], `git ls-files -z .claude`.split("\x00"))
   xdg_config = ENV['XDG_CONFIG_HOME'] || File.join(ENV['HOME'], '.config')
   symlink_files(File.join(xdg_config, 'git'), ['ignore'])
-  symlink_files(xdg_config, ['nvim'])
+  symlink_files(xdg_config, ['nvim', 'ghostty'])
 end
 
 desc 'install Homebrew dependencies from the Brewfile'
@@ -32,7 +37,7 @@ def symlink_files(destination, files)
 
   files.each do |file|
     if file_identical?(file)    then skip_identical_file(file)
-    elsif replace_all_files?    then link_file(file)
+    elsif replace_all_files?    then replace_file(file)
     elsif file_missing?(file)   then link_file(file)
     else
       prompt_to_link_file(file)
@@ -45,8 +50,10 @@ def file_exists?(file)
   File.exist?("#{@destination}/#{file}")
 end
 
+# File.exist? follows the link, so a symlink whose target moved away (repo renamed, file
+# deleted upstream) reads as missing and then ln_s aborts the task with EEXIST.
 def file_missing?(file)
-  !file_exists?(file)
+  !file_exists?(file) && !File.symlink?(File.join(@destination, file))
 end
 
 def file_identical?(file)
@@ -71,8 +78,9 @@ end
 def link_file(file)
   puts " => symlinking #{file}"
   directory = File.dirname(__FILE__)
-  FileUtils.mkdir_p(@destination)
-  FileUtils.ln_s(File.join(directory, file), File.join(@destination, file))
+  target = File.join(@destination, file)
+  FileUtils.mkdir_p(File.dirname(target))
+  FileUtils.ln_s(File.join(directory, file), target, force: true)
 end
 
 def replace_file(file)

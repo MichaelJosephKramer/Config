@@ -12,6 +12,8 @@ brew "neovim"                    # primary editor (nvim/)
 brew "tree-sitter-cli"           # REQUIRED by nvim-treesitter main branch to compile parsers
 brew "tmux"                      # .tmux.conf
 brew "reattach-to-user-namespace" # macOS clipboard support for tmux
+cask "ghostty"                   # terminal emulator (ghostty/config)
+cask "font-fantasque-sans-mono-nerd-font" # font both ghostty/config and iTerm2 use
 
 # --- Search & navigation (fzf-lua + shell) ---
 brew "fzf"                       # ,t / ,f / ,b pickers, shell fuzzy-find

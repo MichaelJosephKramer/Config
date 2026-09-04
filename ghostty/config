@@ -1,0 +1,84 @@
+# Ghostty config, translated from the iTerm2 "Default" profile
+# (com.googlecode.iterm2.plist, iTerm 3.6.11). Symlinked to
+# $XDG_CONFIG_HOME/ghostty/ by the rakefile.
+
+# --- Font ---
+# iTerm stored "FantasqueSansMNF-Regular 20" (a PostScript name); Ghostty
+# matches on the family name instead. Ligatures and antialiasing were both on
+# in the profile and are Ghostty defaults, so they need no directives here.
+font-family = FantasqueSansM Nerd Font
+font-size = 20
+
+# iTerm's "Use Bright Bold". Ghostty deprecated bold-is-bright in 1.2.0 and
+# folded it into bold-color.
+bold-color = bright
+
+# --- Colors ---
+# The profile's 16 ANSI colors, background, foreground and cursor are
+# byte-for-byte Ghostty's built-in TokyoNight Night. The two overrides below
+# are the only values where iTerm diverged from it, so they must stay after
+# the theme line to win.
+theme = TokyoNight Night
+cursor-text = #15161e
+selection-background = #33467c
+
+# --- Window ---
+# Ghostty has no inline comments: everything after `=` is the value, so these
+# annotations have to sit on their own lines.
+
+# iTerm Transparency 0.26.
+background-opacity = 0.74
+
+# iTerm Columns and Rows.
+# window-width = 80
+# window-height = 25
+
+# iTerm's "Prompt Before Closing" was off.
+confirm-close-surface = false
+
+cursor-style-blink = false
+
+# iTerm's Custom Directory was "No", i.e. every new session started in ~
+# rather than in the launching process's cwd.
+working-directory = home
+
+# --- Glyph fallback ---
+# ○ (U+25CB) and ✕ (U+2715) are absent from FantasqueSansM Nerd Font, so the
+# zsh prompt's stash and unmerged indicators get resolved from whatever font
+# Ghostty picks (JetBrains Mono), whose smaller, higher circle visibly failed
+# to line up with the ● indicators beside it. iTerm2 rescales fallback glyphs
+# into the cell and hid this. Menlo is the closest match on this machine: its
+# ○ sits 0.014em from ●'s optical centre, ~0.3px at this font size. Menlo's
+# italic faces lack U+2715, but the prompt only uses regular and bold.
+font-codepoint-map = U+25CB,U+2715=Menlo
+
+# --- Mouse ---
+# iTerm had Mouse Reporting off, so the mouse always drives selection rather
+# than being captured by whatever program is running.
+mouse-reporting = false
+
+# --- Bell ---
+# iTerm had the audible bell silenced with the visual bell on. Ghostty leaves
+# `system` and `audio` off by default; `border` is its closest equivalent to
+# iTerm's screen flash.
+bell-features = attention, title, border
+
+# --- Remote hosts ---
+# iTerm advertised TERM=xterm-256color so remote shells wouldn't choke on an
+# unknown terminfo entry. Setting term here would cost Ghostty its own
+# features, so let shell integration handle it per-connection: install the
+# terminfo entry when the host lacks it, and fall back to downgrading TERM.
+shell-integration-features = ssh-terminfo, ssh-env
+
+# --- Keybindings ---
+# The profile's sole GlobalKeyMap entry. Shift+Enter has to emit a bare
+# newline instead of submitting, for multi-line input in REPLs and Claude Code.
+keybind = shift+enter=text:\n
+
+# iTerm bound Cmd+U to View > "Use Transparency". This is the same toggle: it
+# flips between the background-opacity above and fully opaque. It is inert
+# unless background-opacity is below 1.
+keybind = super+u=toggle_background_opacity
+
+# Scrollback is deliberately left at Ghostty's default (10MB, far more than
+# iTerm's 1000 lines) to match the larger tmux history in .tmux.conf.
