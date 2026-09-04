@@ -8,7 +8,7 @@ task default: :brew do
   symlink_files(ENV['HOME'], dotfiles)
   xdg_config = ENV['XDG_CONFIG_HOME'] || File.join(ENV['HOME'], '.config')
   symlink_files(File.join(xdg_config, 'git'), ['ignore'])
-  symlink_files(xdg_config, ['nvim'])
+  symlink_files(xdg_config, ['nvim', 'ghostty'])
 end
 
 desc 'install Homebrew dependencies from the Brewfile'
