@@ -51,7 +51,10 @@ brew "markdownlint-cli"          # Markdown lint
 # --- Misc CLI ---
 brew "jq"                        # JSON wrangling
 
-# Tools referenced by the configs but NOT installed via Homebrew:
-#   prettierd, eslint_d  -> npm install -g @fsouza/prettierd eslint_d
-#   rubocop              -> gem install rubocop (or via bundler)
-#   nvm                  -> https://github.com/nvm-sh/nvm (node version manager)
+# Tools referenced by the configs but NOT installed via Homebrew.
+# These are managed by mise so they survive a Node/Ruby upgrade instead of
+# vanishing with the runtime they were installed under:
+#   mise use -g npm:eslint_d gem:rubocop npm:typescript@5
+# typescript@5 is what ts_ls falls back to for projects with no local copy;
+# it must stay on 5.x because TypeScript 7 no longer ships tsserver.js.
+# prettierd is still a plain global npm install under Homebrew's node prefix.
