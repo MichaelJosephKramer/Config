@@ -35,6 +35,13 @@ brew "glab"                      # GitLab CLI
 brew "chruby"
 brew "ruby-install"
 
+# --- Language servers (nvim/lua/plugins/lsp.lua) ---
+brew "lua-language-server"       # lua_ls
+brew "ruby-lsp"                  # ruby_lsp
+brew "typescript-language-server" # ts_ls (javascript + typescript)
+brew "basedpyright"              # basedpyright — types only; ruff owns lint/format
+brew "yaml-language-server"      # yamlls
+
 # --- Formatters & linters (conform.nvim + nvim-lint) ---
 brew "stylua"                    # Lua formatter
 brew "ruff"                      # Python format + lint

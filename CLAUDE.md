@@ -61,6 +61,19 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - `t<C-n>` - Run nearest test
 - `t<C-f>` - Run test file
 
+**LSP mappings** (active when a server attaches):
+
+- `gd` - Go to definition (fzf-lua)
+- `gD` - Go to declaration
+- `grr` / `gri` - References / implementations (fzf-lua)
+- `grn` / `gra` - Rename / code action (Neovim built-in defaults)
+- `K` - Hover docs
+- `,s` - Document symbols
+- `,h` - Toggle inlay hints
+
+**Completion (blink.cmp):** `<C-space>` open, `<C-n>`/`<C-p>` navigate, `<C-y>` accept,
+`<C-e>` dismiss. `<Tab>` is left to copilot.vim for accepting ghost text.
+
 **Tmux prefix:** `Ctrl-A`
 
 - `|` - Vertical split
@@ -70,6 +83,12 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 ## Architecture Notes
 
 - **Plugin management:** Neovim uses lazy.nvim; Vim uses vim-plug
+- **LSP:** Neovim 0.12's native `vim.lsp.enable()`; nvim-lspconfig is present only to
+  supply the `lsp/` server definitions on the runtimepath. Servers install via Homebrew.
+  ts_ls only starts where it can find a `tsserver.js` (workspace copy first, then the
+  mise-global `typescript@5`), so JS projects without one no longer raise an error.
+  `lazydev.nvim` feeds lua_ls the Neovim API types when editing this repo.
+- **Completion:** blink.cmp (pinned to `1.*` for its prebuilt Rust fuzzy matcher)
 - **Color scheme:** Tokyo Night (consistent across tmux, Neovim, and FZF)
 - **Formatting:** conform.nvim for auto-format on save (Ruby, Python, JavaScript)
 - **Linting:** nvim-lint for async linting (Ruby, Python, JavaScript); Vim still uses ALE

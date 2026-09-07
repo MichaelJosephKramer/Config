@@ -42,6 +42,9 @@ The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HO
 | `nvim/lua/plugins/lualine.lua`         | Statusline with Tokyo Night theme                                         |
 | `nvim/lua/plugins/tokyonight.lua`      | Color scheme                                                              |
 | `nvim/lua/plugins/vim-test.lua`        | Test runner keymaps                                                       |
+| `nvim/lua/plugins/lsp.lua`             | Native LSP (lua_ls, ruby_lsp, ts_ls, basedpyright, yamlls)                |
+| `nvim/lua/plugins/blink-cmp.lua`       | Completion                                                                |
+| `nvim/lua/plugins/lazydev.lua`         | Neovim API types for lua_ls                                               |
 | `nvim/lua/plugins/init.lua`            | Copilot, fugitive, surround, unimpaired, vinegar, tabular                 |
 
 ### Vim (legacy)
