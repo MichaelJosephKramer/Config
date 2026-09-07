@@ -17,6 +17,14 @@ plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
+# TRIAL (6f): a hand-rolled replacement for what oh-my-zsh provides, sourced
+# immediately after it so it overrides omz's settings while omz stays loaded as
+# a safety net. Everything in it is idempotent. Lives in a subdirectory because
+# omz auto-sources $ZSH_CUSTOM/*.zsh at the top level only.
+#   - happy after a week? delete the oh-my-zsh block above and move this inline
+#   - something missing?  note it, then just delete this one line
+[ -f "$ZSH_CUSTOM/trial/omz-replacement.zsh" ] && source "$ZSH_CUSTOM/trial/omz-replacement.zsh"
+
 # ******************************************************************************
 # EXPORTS
 # ******************************************************************************
