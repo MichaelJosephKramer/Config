@@ -31,6 +31,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # (the kramer theme shows the virtualenv itself). Replaces the virtualenv plugin.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+# History. oh-my-zsh defaults SAVEHIST to 10000 while HISTSIZE is 50000, so the
+# on-disk history silently truncates long before the in-memory list does. These
+# must stay below the oh-my-zsh source above, which sets both itself.
+HISTSIZE=100000
+SAVEHIST=100000
+
 # ******************************************************************************
 # TOOLS
 # ******************************************************************************
