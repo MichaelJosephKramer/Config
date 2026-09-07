@@ -45,6 +45,7 @@ The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HO
 | `nvim/lua/plugins/lsp.lua`             | Native LSP (lua_ls, ruby_lsp, ts_ls, basedpyright, yamlls)                |
 | `nvim/lua/plugins/blink-cmp.lua`       | Completion                                                                |
 | `nvim/lua/plugins/lazydev.lua`         | Neovim API types for lua_ls                                               |
+| `nvim/lua/plugins/aerial.lua`          | Symbol outline (F8)                                                       |
 | `nvim/lua/plugins/init.lua`            | Copilot, fugitive, surround, unimpaired, vinegar, tabular                 |
 
 ### Vim (legacy)
@@ -90,7 +91,7 @@ The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HO
 | `t<C-s>` | Run test suite        |
 | `t<C-l>` | Run last test         |
 | `t<C-g>` | Visit test file       |
-| `<F8>`   | Toggle Tagbar         |
+| `<F8>`   | Toggle Aerial outline |
 
 ### Tmux (prefix: `Ctrl-A`)
 
