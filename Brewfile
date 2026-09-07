@@ -30,6 +30,7 @@ brew "zsh-syntax-highlighting"   # command-line syntax highlighting (sourced las
 brew "git"
 brew "gh"                        # GitHub CLI
 brew "glab"                      # GitLab CLI
+brew "git-delta"                 # syntax-highlighted diff pager (.gitconfig)
 
 # --- Runtime versions ---
 brew "mise"                      # manages Ruby + Node; reads .ruby-version / .nvmrc

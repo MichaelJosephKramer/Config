@@ -13,6 +13,20 @@ This is a personal dotfiles repository containing configuration files for shell,
 rake
 ```
 
+delta's syntax theme is not symlinked, because bat only reads themes from its own
+cache. On a new machine, install it once after `brew bundle`:
+
+```bash
+mkdir -p ~/.config/bat/themes
+cp ~/.local/share/nvim/lazy/tokyonight.nvim/extras/sublime/tokyonight_night.tmTheme \
+  ~/.config/bat/themes/
+bat cache --build
+```
+
+The theme ships with the tokyonight.nvim plugin, so it stays in step with the editor
+colorscheme. bat identifies it by *filename* (`tokyonight_night`), not by the `TokyoNight`
+name inside the file.
+
 The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore` file to `$XDG_CONFIG_HOME/git/`, and `nvim/` to `$XDG_CONFIG_HOME/nvim/`. It prompts before overwriting existing files (options: y/n/a/q).
 
 ## Key Configuration Files
