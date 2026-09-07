@@ -61,13 +61,6 @@ export FZF_DEFAULT_OPTS='--color=fg:#c0caf5,bg:-1,hl:#ff9e64 --color=fg+:#c0caf5
 # tmuxinator
 alias mux=tmuxinator
 
-# Docker CLI completions (portable across machines; oh-my-zsh already ran
-# compinit above, so only re-run it here when the completions dir exists)
-if [ -d "$HOME/.docker/completions" ]; then
-  fpath=("$HOME/.docker/completions" $fpath)
-  autoload -Uz compinit && compinit
-fi
-
 # Source secrets (not tracked in git)
 [ -f ~/.secrets ] && source ~/.secrets
 
