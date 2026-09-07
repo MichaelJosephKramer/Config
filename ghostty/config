@@ -68,7 +68,11 @@ bell-features = attention, title, border
 # unknown terminfo entry. Setting term here would cost Ghostty its own
 # features, so let shell integration handle it per-connection: install the
 # terminfo entry when the host lacks it, and fall back to downgrading TERM.
-shell-integration-features = ssh-terminfo, ssh-env
+#
+# no-cursor keeps the block cursor at the prompt: the `cursor` feature is on by
+# default and switches the cursor to a bar there. Omitted features keep their
+# defaults, so it has to be disabled explicitly rather than just left out.
+shell-integration-features = ssh-terminfo, ssh-env, no-cursor
 
 # --- Keybindings ---
 # The profile's sole GlobalKeyMap entry. Shift+Enter has to emit a bare
