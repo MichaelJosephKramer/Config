@@ -43,21 +43,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # zoxide — smarter cd; `z <dir>` jumps to frecent dirs, `zi` picks interactively
 command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
-# chruby (lazy-loaded). Ruby is used only occasionally, so we don't source it at
-# startup. It loads on the first `chruby` call, or the first time we cd into a
-# directory with a .ruby-version; auto.sh then takes over auto-switching.
-lazy_load_chruby() {
-  unset -f chruby chruby_auto
-  add-zsh-hook -d chpwd _chruby_on_ruby_dir
-  source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-  source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-  chruby_auto
-}
-chruby() { lazy_load_chruby && chruby "$@"; }
-chruby_auto() { lazy_load_chruby; }
-_chruby_on_ruby_dir() { [[ $PWD != $HOME && -f .ruby-version ]] && lazy_load_chruby; }
-autoload -Uz add-zsh-hook
-add-zsh-hook chpwd _chruby_on_ruby_dir
+# mise — manages Ruby and Node (replaces chruby + nvm, and the lazy-loading
+# shims both used to need). It reads the existing .ruby-version and .nvmrc
+# files directly; the chruby-style `ruby-` prefix is understood and stripped.
+command -v mise >/dev/null && eval "$(mise activate zsh)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -66,18 +55,6 @@ export FZF_DEFAULT_OPTS='--color=fg:#c0caf5,bg:-1,hl:#ff9e64 --color=fg+:#c0caf5
 
 # tmuxinator
 alias mux=tmuxinator
-
-# nvm Config (lazy-loaded for faster shell startup)
-export NVM_DIR="$HOME/.config/nvm"
-lazy_load_nvm() {
-  unset -f nvm node npm npx
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-}
-nvm() { lazy_load_nvm && nvm "$@"; }
-node() { lazy_load_nvm && node "$@"; }
-npm() { lazy_load_nvm && npm "$@"; }
-npx() { lazy_load_nvm && npx "$@"; }
 
 # Docker CLI completions (portable across machines; oh-my-zsh already ran
 # compinit above, so only re-run it here when the completions dir exists)

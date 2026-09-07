@@ -31,9 +31,8 @@ brew "git"
 brew "gh"                        # GitHub CLI
 brew "glab"                      # GitLab CLI
 
-# --- Ruby (chruby, see CLAUDE.md) ---
-brew "chruby"
-brew "ruby-install"
+# --- Runtime versions ---
+brew "mise"                      # manages Ruby + Node; reads .ruby-version / .nvmrc
 
 # --- Language servers (nvim/lua/plugins/lsp.lua) ---
 brew "lua-language-server"       # lua_ls

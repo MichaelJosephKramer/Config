@@ -43,7 +43,7 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - `.tmux.conf` - Tmux with Ctrl-A prefix and vi-style navigation
 - `.gemrc` - RubyGems configuration
 - `.psqlrc` - PostgreSQL client configuration
-- `.ruby-version` - Ruby version for chruby
+- `.ruby-version` - Ruby version, read by mise
 - `.rspec` - RSpec default options
 
 ## Key Conventions
@@ -92,5 +92,6 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - **Color scheme:** Tokyo Night (consistent across tmux, Neovim, and FZF)
 - **Formatting:** conform.nvim for auto-format on save (Ruby, Python, JavaScript)
 - **Linting:** nvim-lint for async linting (Ruby, Python, JavaScript); Vim still uses ALE
-- **Ruby version:** Managed via chruby (currently 3.3.6)
-- **Node version:** Managed via NVM
+- **Runtime versions:** Managed via mise, which reads `.ruby-version` and `.nvmrc`
+  directly (the chruby-style `ruby-` prefix is understood). Replaced chruby + nvm
+  and the lazy-loading shims they required. Currently Ruby 4.0.6, Node 22.17.1.
