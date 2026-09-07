@@ -45,12 +45,6 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - `nvim/lua/plugins/` - Modular plugin configurations (conform, nvim-lint, fzf, treesitter, etc.)
 - Requires the `tree-sitter` CLI (`brew install tree-sitter-cli`): nvim-treesitter's `main` branch compiles parsers from grammar, so without the CLI parser builds fail and stale parsers cause query errors at startup.
 
-**Vim (legacy):**
-
-- `.vimrc` - Sources modular configs from `.vim/`
-- `.vim/plugins.vim` - vim-plug based plugin definitions
-- `.vim/general.vim` - Core settings
-
 ### Other Tools
 
 - `.gitconfig` - Git aliases and settings
@@ -64,7 +58,7 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 
 **Leader key:** `,` (comma)
 
-**Common mappings (Neovim/Vim):**
+**Common mappings:**
 
 - `kj` - Exit insert mode
 - `,w` - Save all files
@@ -96,7 +90,7 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 
 ## Architecture Notes
 
-- **Plugin management:** Neovim uses lazy.nvim; Vim uses vim-plug
+- **Plugin management:** lazy.nvim
 - **LSP:** Neovim 0.12's native `vim.lsp.enable()`; nvim-lspconfig is present only to
   supply the `lsp/` server definitions on the runtimepath. Servers install via Homebrew.
   ts_ls only starts where it can find a `tsserver.js` (workspace copy first, then the
@@ -105,7 +99,7 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - **Completion:** blink.cmp (pinned to `1.*` for its prebuilt Rust fuzzy matcher)
 - **Color scheme:** Tokyo Night (consistent across tmux, Neovim, and FZF)
 - **Formatting:** conform.nvim for auto-format on save (Ruby, Python, JavaScript)
-- **Linting:** nvim-lint for async linting (Ruby, Python, JavaScript); Vim still uses ALE
+- **Linting:** nvim-lint for async linting (Ruby, Python, JavaScript)
 - **Runtime versions:** Managed via mise, which reads `.ruby-version` and `.nvmrc`
   directly (the chruby-style `ruby-` prefix is understood). Replaced chruby + nvm
   and the lazy-loading shims they required. Currently Ruby 4.0.6, Node 22.17.1.

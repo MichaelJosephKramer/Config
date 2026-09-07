@@ -48,15 +48,6 @@ The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HO
 | `nvim/lua/plugins/aerial.lua`          | Symbol outline (F8)                                                       |
 | `nvim/lua/plugins/init.lua`            | Copilot, fugitive, surround, unimpaired, vinegar, tabular                 |
 
-### Vim (legacy)
-
-| File                | Purpose                               |
-| ------------------- | ------------------------------------- |
-| `.vimrc`            | Sources modular configs from `.vim/`  |
-| `.vim/plugins.vim`  | vim-plug plugins with ALE for linting |
-| `.vim/general.vim`  | Core settings                         |
-| `.vim/mappings.vim` | Key mappings                          |
-
 ### Other Tools
 
 | File            | Purpose                                                              |
