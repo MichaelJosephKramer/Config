@@ -1,4 +1,11 @@
 {
   "model": "opus",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/Config/.claude/statusline.sh"
+  }
 }
