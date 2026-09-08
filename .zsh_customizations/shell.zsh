@@ -1,4 +1,6 @@
-# --- what oh-my-zsh was providing, hand-rolled ---
+# Everything this shell used oh-my-zsh for, hand-rolled. Each block notes the
+# omz lib it replaces. Sourced from .zshrc before any other tooling, so fzf,
+# zsh-autosuggestions and zsh-syntax-highlighting still load after it.
 autoload -U colors && colors                 # $fg / $reset_color for the theme
 [[ -d $HOME/.cache/zsh ]] || mkdir -p $HOME/.cache/zsh
 autoload -Uz compinit && compinit -C         # -C skips the slow security audit

@@ -1,29 +1,12 @@
 # ******************************************************************************
-# oh-my-zsh SETUP
+# SHELL SETUP
 # ******************************************************************************
 
-ZSH=$HOME/.oh-my-zsh
-ZSH_CUSTOM=$HOME/.zsh_customizations
-ZSH_THEME="kramer"
-
-COMPLETION_WAITING_DOTS="true"
-DISABLE_AUTO_TITLE="true"
-DISABLE_AUTO_UPDATE="true"
-
-# No oh-my-zsh plugins: git workflow runs through .gitconfig aliases, and the
-# kramer theme renders the virtualenv indicator itself (see the
-# VIRTUAL_ENV_DISABLE_PROMPT export below).
-plugins=()
-
-source $ZSH/oh-my-zsh.sh
-
-# TRIAL (6f): a hand-rolled replacement for what oh-my-zsh provides, sourced
-# immediately after it so it overrides omz's settings while omz stays loaded as
-# a safety net. Everything in it is idempotent. Lives in a subdirectory because
-# omz auto-sources $ZSH_CUSTOM/*.zsh at the top level only.
-#   - happy after a week? delete the oh-my-zsh block above and move this inline
-#   - something missing?  note it, then just delete this one line
-[ -f "$ZSH_CUSTOM/trial/omz-replacement.zsh" ] && source "$ZSH_CUSTOM/trial/omz-replacement.zsh"
+# Completion, history, key bindings and the prompt theme. Replaces oh-my-zsh,
+# which charged ~60ms of startup for these while configured with plugins=().
+# The kramer theme never depended on it: my_git_prompt is hand-rolled against
+# `git status --porcelain` rather than omz's git_prompt_info.
+source $HOME/.zsh_customizations/shell.zsh
 
 # ******************************************************************************
 # EXPORTS
@@ -38,12 +21,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Keep a venv's activate script from injecting its own prefix into the prompt
 # (the kramer theme shows the virtualenv itself). Replaces the virtualenv plugin.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-# History. oh-my-zsh defaults SAVEHIST to 10000 while HISTSIZE is 50000, so the
-# on-disk history silently truncates long before the in-memory list does. These
-# must stay below the oh-my-zsh source above, which sets both itself.
-HISTSIZE=100000
-SAVEHIST=100000
 
 # ******************************************************************************
 # TOOLS

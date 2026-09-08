@@ -33,7 +33,8 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 
 ### Shell (zsh)
 
-- `.zshrc` - Main shell configuration using oh-my-zsh
+- `.zshrc` - Main shell configuration
+- `.zsh_customizations/shell.zsh` - Completion, history, key bindings and prompt (replaces oh-my-zsh)
 - `.zprofile` - Adds Homebrew to PATH
 - `.zsh_customizations/themes/kramer.zsh-theme` - Custom prompt with git status and virtualenv indicators
 
