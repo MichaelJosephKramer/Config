@@ -1,8 +1,4 @@
-.netrwhist
-.vim/autoload
-.vim/plugged
 .DS_Store
-tags
 
 # Claude Code: ignore local runtime state, track shared settings only
 .claude/*

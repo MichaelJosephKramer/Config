@@ -11,7 +11,6 @@
 brew "neovim"                    # primary editor (nvim/)
 brew "tree-sitter-cli"           # REQUIRED by nvim-treesitter main branch to compile parsers
 brew "tmux"                      # .tmux.conf
-brew "reattach-to-user-namespace" # macOS clipboard support for tmux
 cask "ghostty"                   # terminal emulator (ghostty/config)
 cask "font-fantasque-sans-mono-nerd-font" # font both ghostty/config and iTerm2 use
 
@@ -30,10 +29,17 @@ brew "zsh-syntax-highlighting"   # command-line syntax highlighting (sourced las
 brew "git"
 brew "gh"                        # GitHub CLI
 brew "glab"                      # GitLab CLI
+brew "git-delta"                 # syntax-highlighted diff pager (.gitconfig)
 
-# --- Ruby (chruby, see CLAUDE.md) ---
-brew "chruby"
-brew "ruby-install"
+# --- Runtime versions ---
+brew "mise"                      # manages Ruby + Node; reads .ruby-version / .nvmrc
+
+# --- Language servers (nvim/lua/plugins/lsp.lua) ---
+brew "lua-language-server"       # lua_ls
+brew "ruby-lsp"                  # ruby_lsp
+brew "typescript-language-server" # ts_ls (javascript + typescript)
+brew "basedpyright"              # basedpyright — types only; ruff owns lint/format
+brew "yaml-language-server"      # yamlls
 
 # --- Formatters & linters (conform.nvim + nvim-lint) ---
 brew "stylua"                    # Lua formatter
@@ -45,7 +51,10 @@ brew "markdownlint-cli"          # Markdown lint
 # --- Misc CLI ---
 brew "jq"                        # JSON wrangling
 
-# Tools referenced by the configs but NOT installed via Homebrew:
-#   prettierd, eslint_d  -> npm install -g @fsouza/prettierd eslint_d
-#   rubocop              -> gem install rubocop (or via bundler)
-#   nvm                  -> https://github.com/nvm-sh/nvm (node version manager)
+# Tools referenced by the configs but NOT installed via Homebrew.
+# These are managed by mise so they survive a Node/Ruby upgrade instead of
+# vanishing with the runtime they were installed under:
+#   mise use -g npm:eslint_d gem:rubocop npm:typescript@5
+# typescript@5 is what ts_ls falls back to for projects with no local copy;
+# it must stay on 5.x because TypeScript 7 no longer ships tsserver.js.
+# prettierd is still a plain global npm install under Homebrew's node prefix.

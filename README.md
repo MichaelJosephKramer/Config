@@ -1,20 +1,19 @@
 # Dotfiles
 
-Personal configuration files for macOS. Covers zsh, Neovim, Vim, tmux, git, and assorted dev tools. Designed to be symlinked to the home directory.
+Personal configuration files for macOS. Covers zsh, Neovim, tmux, git, and assorted dev tools. Designed to be symlinked to the home directory.
 
 ## Quick Start
 
 ```bash
-# 1. Install prerequisites
-brew install git neovim tmux fzf fd ripgrep chruby ruby-install
-ruby-install ruby 3.3.6
-
-# 2. Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# 3. Clone and install
+# 1. Clone
 git clone https://github.com/MichaelJosephKramer/Config.git ~/Config
-cd ~/Config && rake
+cd ~/Config
+
+# 2. Install everything the configs depend on
+brew bundle
+
+# 3. Symlink the dotfiles into place
+rake
 ```
 
 The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HOME/git/`, and `nvim/` to `$XDG_CONFIG_HOME/nvim/`. It prompts before overwriting existing files (y/n/a/q).
@@ -23,11 +22,12 @@ The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HO
 
 ### Shell (zsh)
 
-| File                                          | Purpose                                                       |
-| --------------------------------------------- | ------------------------------------------------------------- |
-| `.zshrc`                                      | Main config with oh-my-zsh, lazy-loaded chruby/nvm, FZF setup |
-| `.zprofile`                                   | Homebrew shellenv and PATH                                    |
-| `.zsh_customizations/themes/kramer.zsh-theme` | Custom prompt with git status and virtualenv                  |
+| File                                          | Purpose                                                              |
+| --------------------------------------------- | -------------------------------------------------------------------- |
+| `.zshrc`                                      | Main config: mise, zoxide, fzf, autosuggestions, syntax highlighting |
+| `.zprofile`                                   | Homebrew shellenv and PATH                                           |
+| `.zsh_customizations/shell.zsh`               | Completion, history, key bindings, prompt (replaces oh-my-zsh)       |
+| `.zsh_customizations/themes/kramer.zsh-theme` | Custom prompt with git status and virtualenv                         |
 
 ### Neovim (primary editor)
 
@@ -42,16 +42,11 @@ The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HO
 | `nvim/lua/plugins/lualine.lua`         | Statusline with Tokyo Night theme                                         |
 | `nvim/lua/plugins/tokyonight.lua`      | Color scheme                                                              |
 | `nvim/lua/plugins/vim-test.lua`        | Test runner keymaps                                                       |
+| `nvim/lua/plugins/lsp.lua`             | Native LSP (lua_ls, ruby_lsp, ts_ls, basedpyright, yamlls)                |
+| `nvim/lua/plugins/blink-cmp.lua`       | Completion                                                                |
+| `nvim/lua/plugins/lazydev.lua`         | Neovim API types for lua_ls                                               |
+| `nvim/lua/plugins/aerial.lua`          | Symbol outline (F8)                                                       |
 | `nvim/lua/plugins/init.lua`            | Copilot, fugitive, surround, unimpaired, vinegar, tabular                 |
-
-### Vim (legacy)
-
-| File                | Purpose                               |
-| ------------------- | ------------------------------------- |
-| `.vimrc`            | Sources modular configs from `.vim/`  |
-| `.vim/plugins.vim`  | vim-plug plugins with ALE for linting |
-| `.vim/general.vim`  | Core settings                         |
-| `.vim/mappings.vim` | Key mappings                          |
 
 ### Other Tools
 
@@ -87,7 +82,7 @@ The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HO
 | `t<C-s>` | Run test suite        |
 | `t<C-l>` | Run last test         |
 | `t<C-g>` | Visit test file       |
-| `<F8>`   | Toggle Tagbar         |
+| `<F8>`   | Toggle Aerial outline |
 
 ### Tmux (prefix: `Ctrl-A`)
 
