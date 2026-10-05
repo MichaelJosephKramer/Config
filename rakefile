@@ -1,19 +1,27 @@
 # frozen_string_literal: true
 
 require 'rake'
+require 'English'
+
+REPO_ROOT = __dir__
 
 desc 'do all the setup!'
 task default: :brew do
-  # .claude is handled separately: ~/.claude also holds Claude Code runtime state
-  # (sessions/, projects/, history.jsonl), which a whole-directory link would rm -rf.
-  dotfiles = Dir.glob('.*') - ['.git', '.gitmodules', '.', '..', '.gitignore', '.claude']
-  symlink_files(ENV['HOME'], dotfiles)
-  # Paths keep their '.claude/' prefix so they land inside the existing ~/.claude.
-  # Tracked files only, matching .gitignore: settings.local.json is per-checkout state.
-  symlink_files(ENV['HOME'], `git ls-files -z .claude`.split("\x00"))
-  xdg_config = ENV['XDG_CONFIG_HOME'] || File.join(ENV['HOME'], '.config')
-  symlink_files(File.join(xdg_config, 'git'), ['ignore'])
-  symlink_files(xdg_config, ['nvim', 'ghostty'])
+  Symlinker.new(home_dir, REPO_ROOT).link(home_dotfiles)
+  # .claude goes file-by-file because ~/.claude also holds Claude Code runtime state
+  # (sessions/, projects/, history.jsonl) that a whole-directory link would rm -rf. The
+  # paths keep their '.claude/' prefix so they land inside that existing directory, and
+  # staying with tracked files matches .gitignore: settings.local.json is per-checkout.
+  Symlinker.new(home_dir, REPO_ROOT).link(tracked_paths('.claude'))
+  xdg_config = env_dir('XDG_CONFIG_HOME', '.config')
+  Symlinker.new(File.join(xdg_config, 'git'), REPO_ROOT).link(['ignore'])
+  Symlinker.new(xdg_config, REPO_ROOT).link(%w[nvim ghostty])
+  install_bat_theme
+end
+
+desc "copy delta's syntax theme into bat's cache"
+task :bat_theme do
+  install_bat_theme
 end
 
 desc 'install Homebrew dependencies from the Brewfile'
@@ -21,82 +29,192 @@ task :brew do
   install_brew_dependencies
 end
 
-def install_brew_dependencies
-  unless system('command -v brew > /dev/null 2>&1')
-    puts ' => skipping brew bundle (Homebrew not installed)'
-    return
-  end
+# Dir.home already recovers from an unset HOME through the passwd database, but an
+# exported-but-empty one comes back as '' and would aim every link at the filesystem root.
+def home_dir
+  directory = Dir.home
+  abort(' => HOME is set but empty; cannot tell where to install') if directory.empty?
 
-  brewfile = File.join(File.dirname(__FILE__), 'Brewfile')
+  directory
+end
+
+# The XDG spec treats an empty value the same as an unset one, and Ruby's || does not: an
+# exported-but-empty XDG_CONFIG_HOME pointed the task at /git and /nvim, which got as far
+# as linking the $HOME dotfiles before dying on the filesystem root.
+def env_dir(name, *fallback)
+  value = ENV[name]
+  value.nil? || value.empty? ? File.join(home_dir, *fallback) : value
+end
+
+# Top-level tracked entries starting with a dot, each linked into $HOME as-is (a tracked
+# directory like .zsh_customizations/ links whole). Asking git rather than globbing the
+# checkout is what keeps build artifacts out: the deny-list this replaced named only the
+# files that existed when it was written, and ruby-lsp's untracked .ruby-lsp/ had already
+# started arriving in $HOME as a symlink back into the repo.
+#
+# .gitignore is held back because it is this repo's own ignore file, not a global one,
+# and .claude because the task links it file-by-file instead.
+def home_dotfiles
+  top_level = tracked_paths.map { |path| path.split('/').first }.uniq
+  top_level.grep(/\A\./) - ['.gitignore', '.claude']
+end
+
+# -C keeps the listing anchored to the repo rather than the caller's cwd: `rake -f
+# ~/Config/rakefile` from another directory used to ask git about *that* directory, which
+# on a non-repo answered "nothing tracked" and on another repo would have linked its files.
+def tracked_paths(*pathspec)
+  output = IO.popen(['git', '-C', REPO_ROOT, 'ls-files', '-z', *pathspec], &:read)
+  # An unchecked failure here now means "link nothing" rather than the glob's old
+  # "link everything", which would look like a successful no-op run.
+  abort(' => git ls-files failed; run rake from a checkout of this repo') unless $CHILD_STATUS.success?
+
+  output.split("\x00")
+end
+
+# Each installer converges tooling that a fresh machine may not have yet, so none of
+# them is fatal when its own command is missing -- `rake` on a bare checkout should still
+# get as far as the symlinks.
+def tool_available?(command, description)
+  return true if system("command -v #{command} > /dev/null 2>&1")
+
+  puts " => skipping #{description}"
+  false
+end
+
+def install_brew_dependencies
+  return unless tool_available?('brew', 'brew bundle (Homebrew not installed)')
+
+  brewfile = File.join(REPO_ROOT, 'Brewfile')
   puts ' => installing Homebrew dependencies'
   system('brew', 'bundle', "--file=#{brewfile}") || abort('brew bundle failed')
 end
 
-def symlink_files(destination, files)
-  @destination = destination
+# delta resolves syntax-theme names against bat's cache, so this one file is copied
+# instead of symlinked like everything else. The source ships with tokyonight.nvim,
+# which keeps the diff colors in step with the editor colorscheme; bat identifies the
+# theme by *filename* ('tokyonight_night'), not by the name inside the file.
+def install_bat_theme
+  return unless tool_available?('bat', 'bat theme (bat not installed)')
 
-  files.each do |file|
-    if file_identical?(file)    then skip_identical_file(file)
-    elsif replace_all_files?    then replace_file(file)
-    elsif file_missing?(file)   then link_file(file)
-    else
-      prompt_to_link_file(file)
+  source = bat_theme_source
+  unless File.exist?(source)
+    puts ' => skipping bat theme (tokyonight.nvim not installed; run nvim, then rake again)'
+    return
+  end
+
+  target = bat_theme_target(source)
+  return puts " => skipping identical #{target}" if bat_theme_current?(source, target)
+
+  copy_bat_theme(source, target)
+end
+
+def bat_theme_source
+  data_home = env_dir('XDG_DATA_HOME', '.local', 'share')
+  File.join(data_home, 'nvim/lazy/tokyonight.nvim/extras/sublime/tokyonight_night.tmTheme')
+end
+
+def bat_theme_target(source)
+  File.join(`bat --config-dir`.chomp, 'themes', File.basename(source))
+end
+
+# Both halves matter: the copy can be current while the cache is not (a fresh machine, or
+# `bat cache --clear`), and rebuilding is what actually makes delta see the theme.
+def bat_theme_current?(source, target)
+  File.exist?(target) && FileUtils.compare_file(source, target) && bat_theme_cached?
+end
+
+def bat_theme_cached?
+  `bat --list-themes`.split("\n").include?('tokyonight_night')
+end
+
+def copy_bat_theme(source, target)
+  puts " => copying #{File.basename(source)} to #{target}"
+  FileUtils.mkdir_p(File.dirname(target))
+  FileUtils.cp(source, target)
+  system('bat', 'cache', '--build') || abort('bat cache --build failed')
+end
+
+# Links repo files into one destination directory, asking before it clobbers anything
+# it does not already own. One instance per destination, which is what scopes the 'a'
+# answer: as a file-global flag it meant that agreeing to overwrite, say, ~/.gemrc also
+# silently pre-authorized the rm_rf that replaces ~/.config/nvim further down the task.
+class Symlinker
+  def initialize(destination, source_root)
+    @destination = destination
+    @source_root = source_root
+    @replace_all = false
+  end
+
+  def link(files)
+    files.each do |file|
+      if linked?(file)        then skip(file, 'skipping identical')
+      elsif @replace_all      then replace(file)
+      elsif unoccupied?(file) then create(file)
+      else
+        prompt(file)
+      end
     end
   end
-end
 
-# FILE CHECKS
-def file_exists?(file)
-  File.exist?("#{@destination}/#{file}")
-end
+  private
 
-# File.exist? follows the link, so a symlink whose target moved away (repo renamed, file
-# deleted upstream) reads as missing and then ln_s aborts the task with EEXIST.
-def file_missing?(file)
-  !file_exists?(file) && !File.symlink?(File.join(@destination, file))
-end
-
-def file_identical?(file)
-  File.identical? file, File.join(@destination, file.to_s)
-end
-
-def replace_all_files?
-  @replace_all == true
-end
-
-# FILE ACTIONS
-def prompt_to_link_file(file)
-  print "overwrite? #{@destination}/#{file} [ynaq]  "
-  case $stdin.gets.chomp
-  when 'y' then replace_file(file)
-  when 'a' then replace_all(file)
-  when 'q' then exit
-  else skip_file(file)
+  def source(file)
+    File.join(@source_root, file)
   end
-end
 
-def link_file(file)
-  puts " => symlinking #{file}"
-  directory = File.dirname(__FILE__)
-  target = File.join(@destination, file)
-  FileUtils.mkdir_p(File.dirname(target))
-  FileUtils.ln_s(File.join(directory, file), target, force: true)
-end
+  def target(file)
+    File.join(@destination, file)
+  end
 
-def replace_file(file)
-  FileUtils.rm_rf(File.join(@destination, file))
-  link_file(file)
-end
+  def linked?(file)
+    File.identical?(source(file), target(file))
+  end
 
-def replace_all(file)
-  @replace_all = true
-  replace_file(file)
-end
+  # File.exist? follows the link, so a symlink whose target moved away (repo renamed, file
+  # deleted upstream) reads as missing and then ln_s aborts the task with EEXIST. Asking
+  # about the link itself as well keeps those on the prompt path instead.
+  def unoccupied?(file)
+    !File.exist?(target(file)) && !File.symlink?(target(file))
+  end
 
-def skip_file(file)
-  puts " => skipping #{@destination}/#{file}"
-end
+  def prompt(file)
+    print "overwrite? #{target(file)} [ynaq]  "
+    case read_answer
+    when 'y' then replace(file)
+    when 'a' then replace_all(file)
+    when 'q' then exit
+    else skip(file)
+    end
+  end
 
-def skip_identical_file(file)
-  puts " => skipping identical #{@destination}/#{file}"
+  # gets returns nil once stdin runs dry (piped input, CI, `rake < /dev/null`), and
+  # chomping that raised NoMethodError mid-task, leaving a half-linked home directory.
+  # A prompt nobody can answer now declines, like any other unrecognized reply.
+  def read_answer
+    reply = $stdin.gets
+    return reply.chomp if reply
+
+    puts # no Enter was typed, so close the prompt line ourselves
+    'n'
+  end
+
+  def create(file)
+    puts " => symlinking #{file}"
+    FileUtils.mkdir_p(File.dirname(target(file)))
+    FileUtils.ln_s(source(file), target(file), force: true)
+  end
+
+  def replace(file)
+    FileUtils.rm_rf(target(file))
+    create(file)
+  end
+
+  def replace_all(file)
+    @replace_all = true
+    replace(file)
+  end
+
+  def skip(file, reason = 'skipping')
+    puts " => #{reason} #{target(file)}"
+  end
 end
