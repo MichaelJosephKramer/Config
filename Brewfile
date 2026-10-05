@@ -38,7 +38,7 @@ brew "mise"                      # manages Ruby + Node; reads .ruby-version / .n
 brew "lua-language-server"       # lua_ls
 brew "ruby-lsp"                  # ruby_lsp
 brew "typescript-language-server" # ts_ls (javascript + typescript)
-brew "basedpyright"              # basedpyright — types only; ruff owns lint/format
+brew "pyright"                   # pyright — types only, matches CI's pyright gate; ruff owns lint/format
 brew "yaml-language-server"      # yamlls
 
 # --- Formatters & linters (conform.nvim + nvim-lint) ---

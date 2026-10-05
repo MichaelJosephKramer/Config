@@ -26,14 +26,13 @@ return {
       },
     })
 
-    -- ruff (via nvim-lint and conform) owns lint + format for Python, so
-    -- basedpyright is types-and-navigation only and must not duplicate them.
-    vim.lsp.config("basedpyright", {
+    -- ruff (via nvim-lint and conform) owns lint + format for Python, so pyright
+    -- is types-and-navigation only. Plain pyright (not basedpyright) to match CI's
+    -- pyright gate -- basedpyright's superset rules surfaced warnings CI never fails on.
+    vim.lsp.config("pyright", {
       settings = {
-        basedpyright = {
-          disableOrganizeImports = true,
-          analysis = { typeCheckingMode = "standard" },
-        },
+        pyright = { disableOrganizeImports = true },
+        python = { analysis = { typeCheckingMode = "standard" } },
       },
     })
 
@@ -115,7 +114,7 @@ return {
       "lua_ls",
       "ruby_lsp",
       "ts_ls",
-      "basedpyright",
+      "pyright",
       "yamlls",
     })
 
