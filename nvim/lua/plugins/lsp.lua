@@ -42,9 +42,10 @@ return {
     -- Homebrew's formula followed, so on a project with no local TypeScript 5.x
     -- the server exits and every JS/TS buffer gets a "Could not find a valid
     -- TypeScript installation" error. These two lookups make that impossible:
-    -- the workspace copy is preferred so a project pins its own version, a
-    -- global install (mise: `mise use -g npm:typescript@5`) covers loose JS
-    -- files, and with neither the server simply never starts.
+    -- the workspace copy is preferred so a project pins its own version, any
+    -- global 5.x on PATH covers loose JS files, and with neither the server
+    -- simply never starts. Nothing installs a global copy any more: Homebrew
+    -- only offers 7.x, so loose JS files get no ts_ls by design.
     local function workspace_tsserver(root)
       local dir = root
       while dir and dir ~= "" do
@@ -61,7 +62,7 @@ return {
     end
 
     -- Derived from whatever `tsc` is on PATH rather than a hardcoded prefix, so
-    -- this keeps working across mise version bumps, Homebrew and plain npm.
+    -- this keeps working across Homebrew, a plain npm -g, or a version manager.
     local global_tsserver = function()
       local tsc = vim.fn.exepath("tsc")
       if tsc == "" then

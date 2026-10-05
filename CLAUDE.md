@@ -13,21 +13,24 @@ This is a personal dotfiles repository containing configuration files for shell,
 rake
 ```
 
-delta's syntax theme is not symlinked, because bat only reads themes from its own
-cache. On a new machine, install it once after `brew bundle`:
+`rake` also runs one setup step that is not a symlink (`rake bat_theme` runs it on
+its own):
 
-```bash
-mkdir -p ~/.config/bat/themes
-cp ~/.local/share/nvim/lazy/tokyonight.nvim/extras/sublime/tokyonight_night.tmTheme \
-  ~/.config/bat/themes/
-bat cache --build
-```
+- delta's syntax theme is copied, not symlinked, because bat only reads themes from
+  its own cache -- so the copy is followed by `bat cache --build`. The theme ships
+  with the tokyonight.nvim plugin, which keeps it in step with the editor
+  colorscheme; bat identifies it by *filename* (`tokyonight_night`), not by the
+  `TokyoNight` name inside the file. On a brand-new machine lazy.nvim has not
+  cloned the plugin yet, so this step skips until nvim has been opened once. It
+  compares current state first and no-ops when it already matches.
 
-The theme ships with the tokyonight.nvim plugin, so it stays in step with the editor
-colorscheme. bat identifies it by *filename* (`tokyonight_night`), not by the `TokyoNight`
-name inside the file.
+Everything else the configs shell out to comes from the Brewfile via `rake brew`.
 
-The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore` file to `$XDG_CONFIG_HOME/git/`, and `nvim/` to `$XDG_CONFIG_HOME/nvim/`. It prompts before overwriting existing files (options: y/n/a/q).
+The rakefile symlinks every tracked top-level dotfile (per `git ls-files`, excluding
+`.gitignore` and `.claude`) to `~/`, the tracked files under `.claude/` individually,
+the `ignore` file to `$XDG_CONFIG_HOME/git/`, and `nvim/` and `ghostty/` to
+`$XDG_CONFIG_HOME/`. It prompts before overwriting existing files (options: y/n/a/q),
+and a prompt with no tty on stdin declines rather than aborting the run.
 
 ## Key Configuration Files
 
@@ -52,7 +55,8 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - `.tmux.conf` - Tmux with Ctrl-A prefix and vi-style navigation
 - `.gemrc` - RubyGems configuration
 - `.psqlrc` - PostgreSQL client configuration
-- `.ruby-version` - Ruby version, read by mise
+- `.ruby-version` - Ruby version. Nothing reads it since mise was dropped; kept as a
+  declaration of intent for tools that look for it
 - `.rspec` - RSpec default options
 
 ## Key Conventions
@@ -94,13 +98,17 @@ The rakefile symlinks all dotfiles (`.*` excluding `.git*`) to `~/`, the `ignore
 - **Plugin management:** lazy.nvim
 - **LSP:** Neovim 0.12's native `vim.lsp.enable()`; nvim-lspconfig is present only to
   supply the `lsp/` server definitions on the runtimepath. Servers install via Homebrew.
-  ts_ls only starts where it can find a `tsserver.js` (workspace copy first, then the
-  mise-global `typescript@5`), so JS projects without one no longer raise an error.
+  ts_ls only starts where it can find a `tsserver.js`, which it resolves from the
+  workspace copy first and then from whatever `tsc` is on PATH, so JS projects without
+  one no longer raise an error. Homebrew's `typescript` is 7.x, which dropped that file
+  (native Go compiler), so there is deliberately no global TypeScript: ts_ls works in
+  projects that pin their own 5.x and stays quiet elsewhere.
   `lazydev.nvim` feeds lua_ls the Neovim API types when editing this repo.
 - **Completion:** blink.cmp (pinned to `1.*` for its prebuilt Rust fuzzy matcher)
 - **Color scheme:** Tokyo Night (consistent across tmux, Neovim, and FZF)
 - **Formatting:** conform.nvim for auto-format on save (Ruby, Python, JavaScript)
 - **Linting:** nvim-lint for async linting (Ruby, Python, JavaScript)
-- **Runtime versions:** Managed via mise, which reads `.ruby-version` and `.nvmrc`
-  directly (the chruby-style `ruby-` prefix is understood). Replaced chruby + nvm
-  and the lazy-loading shims they required. Currently Ruby 4.0.6, Node 22.17.1.
+- **Runtime versions:** Unmanaged. Ruby and Node come from Homebrew as dependencies of
+  the language servers (ruby <- ruby-lsp, node <- the JS/TS/YAML/Python servers) and
+  float with `brew upgrade`. chruby + nvm, then mise, each managed them in turn; mise
+  was dropped once it was doing nothing but pinning one npm package.

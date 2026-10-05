@@ -18,13 +18,15 @@ rake
 
 The rakefile symlinks all dotfiles to `~/`, the `ignore` file to `$XDG_CONFIG_HOME/git/`, and `nvim/` to `$XDG_CONFIG_HOME/nvim/`. It prompts before overwriting existing files (y/n/a/q).
 
+It then copies delta's syntax theme into bat's cache (`rake bat_theme`), a re-runnable no-op once it matches. The theme comes from the tokyonight.nvim plugin, so on a new machine that step skips until nvim has been opened once and lazy.nvim has cloned it.
+
 ## What's Inside
 
 ### Shell (zsh)
 
 | File                                          | Purpose                                                              |
 | --------------------------------------------- | -------------------------------------------------------------------- |
-| `.zshrc`                                      | Main config: mise, zoxide, fzf, autosuggestions, syntax highlighting |
+| `.zshrc`                                      | Main config: zoxide, fzf, autosuggestions, syntax highlighting |
 | `.zprofile`                                   | Homebrew shellenv and PATH                                           |
 | `.zsh_customizations/shell.zsh`               | Completion, history, key bindings, prompt (replaces oh-my-zsh)       |
 | `.zsh_customizations/themes/kramer.zsh-theme` | Custom prompt with git status and virtualenv                         |

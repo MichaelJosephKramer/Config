@@ -31,9 +31,6 @@ brew "gh"                        # GitHub CLI
 brew "glab"                      # GitLab CLI
 brew "git-delta"                 # syntax-highlighted diff pager (.gitconfig)
 
-# --- Runtime versions ---
-brew "mise"                      # manages Ruby + Node; reads .ruby-version / .nvmrc
-
 # --- Language servers (nvim/lua/plugins/lsp.lua) ---
 brew "lua-language-server"       # lua_ls
 brew "ruby-lsp"                  # ruby_lsp
@@ -47,14 +44,20 @@ brew "ruff"                      # Python format + lint
 brew "luacheck"                  # Lua lint
 brew "yamllint"                  # YAML lint
 brew "markdownlint-cli"          # Markdown lint
+brew "rubocop"                   # Ruby lint + format
+brew "eslint_d"                  # JS/TS lint daemon
 
 # --- Misc CLI ---
 brew "jq"                        # JSON wrangling
 
-# Tools referenced by the configs but NOT installed via Homebrew.
-# These are managed by mise so they survive a Node/Ruby upgrade instead of
-# vanishing with the runtime they were installed under:
-#   mise use -g npm:eslint_d gem:rubocop npm:typescript@5
-# typescript@5 is what ts_ls falls back to for projects with no local copy;
-# it must stay on 5.x because TypeScript 7 no longer ships tsserver.js.
-# prettierd is still a plain global npm install under Homebrew's node prefix.
+# Ruby and Node are not listed: they arrive as dependencies of the language servers
+# above (ruby <- ruby-lsp, node <- the JS/TS/YAML/Python servers), and nothing here
+# pins their versions.
+#
+# Tools referenced by the configs but NOT installed via Homebrew:
+# prettierd is a plain global npm install under Homebrew's node prefix.
+#
+# TypeScript is deliberately absent. ts_ls needs tsserver.js, which TypeScript 7
+# dropped and Homebrew's formula followed, so the only global copy Homebrew can offer
+# is one ts_ls cannot use. nvim/lua/plugins/lsp.lua prefers a workspace
+# node_modules/typescript and simply does not start the server when there is none.
