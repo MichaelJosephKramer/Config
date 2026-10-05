@@ -1,0 +1,14 @@
+---
+AllCops:
+  NewCops: enable
+  Exclude:
+    # A Homebrew Bundle manifest, not this repo's Ruby. It parses as Ruby, so RuboCop
+    # picks it up by default and objects to the trailing comments being aligned into a
+    # column -- which is the whole point of how that file is written.
+    - "Brewfile"
+
+# The rakefile reads XDG_CONFIG_HOME and XDG_DATA_HOME alongside HOME, each as
+# `ENV['...'] || fallback`. ENV.fetch('X', nil) spells that same expression with more
+# ceremony and no more safety.
+Style/FetchEnvVar:
+  Enabled: false
