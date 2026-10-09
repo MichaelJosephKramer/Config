@@ -1,11 +1,15 @@
 {
-  "model": "opus",
-  "editorMode": "vim",
-  "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true
-  },
   "statusLine": {
     "type": "command",
     "command": "~/Config/.claude/statusline.sh"
-  }
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "seekr-qa@seekr-marketplace": true,
+    "code-review@claude-plugins-official": true,
+    "seekr-core@seekr-marketplace": true
+  },
+  "editorMode": "vim"
 }
